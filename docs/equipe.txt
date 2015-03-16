@@ -1,3 +1,5 @@
-Álvaro: programador
-Macartur: designer
-Carlos: gerente
+Null Pointer Corporation
+
+Álvaro Fernando: Gerente
+Macartur Sousa: Programador
+Carlos Oliveira: Designer
