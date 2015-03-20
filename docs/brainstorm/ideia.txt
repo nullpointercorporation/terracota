@@ -1,0 +1,1 @@
+Jogo estilo briga de rua, ou Beat'em Up, no padrão Double Dragon/Little Fighter 2, cenário cyber punk, com ritmo de jogo em ondas de inimigos(Double Dragon e Little Fighter 2) e dinâmico(Super Meat Boy).
