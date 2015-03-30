@@ -1,53 +1,56 @@
 1. linguagem de programação;
     - C/C++:
              É uma linguagem de uso geral, usada tanto em baixo e alto nível em ambiente acadêmico e comercial,
-             principalmente no setor de jogos devido ao alto desempenho.liberdade de escolha de paradigmas 
-             Orientado a objetos e Estruturado e possui suporte a várias bibliotecas atraentes como 
-             Bibliotecas graficas,OpenGL, SDL e DirectX entre outros.
+             principalmente no setor de jogos devido ao alto desempenho. Permite a liberdade de escolha de paradigmas 
+             orientado a objetos e estruturado e possui suporte a várias bibliotecas como OpenGL, SDL, 
+             DirectX entre outros.
 
 2. compilador ou máquina virtual;
 
     clang-3.5: 
-            É um compilador mais rapido e usa muito menos memoria que o GCC, tem auta compatibilidade com GCC,
-            suporta varias extensões de linguagem alguns dos quais não são implementadas pelo GCC, e como por exemplo
+            É um compilador mais rápido e usa muito menos memória que o GCC. Tem alta compatibilidade com GCC,
+            suporta varias extensões de linguagem alguns dos quais não são implementadas pelo GCC, como por exemplo
             atributos para verificar a segurança de thread e tipos de vetores estendidos.
-    máquina virtual do lua:    
-            Maquina virtual que permite interpretar a linguagem de script lua, em que é tipada dinamicamente    
-            e interpretada a partir de bytecodes utilizada pelos registradores da maquina virtual e tem como vantagem 
-            um gerenciamento automatico de memória com coleta de lixo incremental, fazendo assim uma linguagem ideal 
+    máquina virtual do Lua:    
+            Maquina virtual que permite interpretar a linguagem de script Lua, a qual é tipada dinamicamente    
+            e interpretada a partir de bytecodes utilizada pelos registradores da máquina virtual. Tem como vantagem 
+            um gerenciamento automático de memória com coleta de lixo incremental, fazendo assim uma linguagem ideal 
             para configuração.
 
 3. linguagem de script;
 
-    - lua:  é uma engine rápida e pequena que pode ser facilmente embutida em aplicações. Lua tem uma API simples
-            é bem documentada que permite uma integração forte com codigos em outras linguagens, simples de entender 
+    - Lua:  
+            Possui uma engine rápida e pequena que pode ser facilmente embutida em aplicações. Lua tem uma API simples,
+            bem documentada, que permite uma integração forte com códigos em outras linguagens, é simples de entender 
             e possui bibliotecas escritas em outras linguagens. Lua hoje é a única linguagem de programação desenvolvida 
             fora do primeiro mundo.
 
 4. editor de texto;
-    - vim:  editor simples , open source, pode ser instaldo facilmente em maquinas linux, tem suporte a marcação de linguagens c/c++ e lua
+    - vim:  
+            Editor simples, open source, que pode ser instalado facilmente em máquinas Linux. Tem suporte a realce de
+            sintaxe para as linguagens C/C++ e Lua.
     
 5. depurador;
-    valgrind:   
-            Framework para contrução de ferramentas de analise dinamica.O valgrind possui ferramentas que podem detectar 
+    - valgrind:   
+            Framework para construção de ferramentas de analise dinâmica. O valgrind possui ferramentas que podem detectar 
             automaticamente erros de gerenciamento de memória, dois detectores de erros em thread, cache 
-            branch-prediction profile, e gerador de graficos e heap profile.
+            branch-prediction profile, e gerador de gráficos e heap profile.
 
 6. ferramenta de controle de versão;
     - git: 
-            Ferramenta de controle de versão em que é possivel criar uma copia bem mais rápido que outras ferramentas de 
-            controle de versão, é bem mais otimizado para funcionar na internet, repositorios ocupam menos espaços, é mais 
-            facil de administrar diferentes fontes de modificações, permite uma gama maior de fluxo de trabalho.
+            Ferramenta de controle de versão em que é possível criar uma cópia bem mais rápido que outras ferramentas de 
+            controle de versão, é otimizada para funcionar na internet, seus repositórios ocupam menos espaços, é mais 
+            fácil de administrar diferentes fontes de modificações, permitindo uma gama maior de fluxo de trabalho.
 
 7. API gráfica;
-    - sdl2:
-            É uma biblioteca multimidia livre escrita em C, que permite representações gráficas, som, rede e dispositivos de 
+    - SDL2:
+            É uma biblioteca multimídia livre escrita em C, que permite representações gráficas, som, rede e dispositivos de 
             entrada em várias plataformas como Windows, Mac OS X, Linux, iOS, and Android.
 
 8. API de áudio;
     - SDL_mixer:
-             Biblioteca sdl com funções de áudio complexas, principalmente para mixagem de som, permite carregamento de 
-             bibliotecas dinamicas FLAC,Ogg Vorbis, SMPEG MP3.
+             Biblioteca SDL com funções de áudio complexas, principalmente para mixagem de som, permite carregamento de 
+             bibliotecas dinâmicas FLAC, Ogg Vorbis, SMPEG MP3.
 
 9. API de rede;
     - SDL_net:
@@ -55,9 +58,9 @@
 
 10. APIs para manipulação de arquivos;
     - SDL_image:
-            API que permite a manipulação de imagens em varios formatos (BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, 
-            TIFF, WEBP, XCF, XPM, XV), carregando as imagens como uma estrutura SDL surface e texturas , permitindo 
-            um controle das imagens sobre a api SDL de montagem de janelas.
+            API que permite a manipulação de imagens em vários formatos (BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, 
+            TIFF, WEBP, XCF, XPM, XV), carregando as imagens como uma estrutura SDL, permitindo 
+            um controle das imagens sobre a API SDL de montagem de janelas.
     
 11. sistema operacional.
     - Ubuntu:   
