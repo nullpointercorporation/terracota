@@ -1,4 +1,4 @@
-1. linguagem de programação;
+1. Linguagem de programação;
 
 - C/C++:
   É uma linguagem de uso geral, usada tanto em baixo e alto nível em ambiente 
@@ -7,7 +7,7 @@
   estruturado e possui suporte a várias bibliotecas como OpenGL, SDL, DirectX
   entre outros.
 
-2. compilador ou máquina virtual;
+2. Compilador ou máquina virtual;
 
 - Clang: 
   É um compilador mais rápido e usa muito menos memória que o GCC. Tem alta 
@@ -22,7 +22,7 @@
   automático de memória com coleta de lixo incremental, fazendo assim uma 
   linguagem ideal para configuração.
 
-3. linguagem de script;
+3. Linguagem de script;
 
 - Lua:  
   Possui uma engine rápida e pequena que pode ser facilmente embutida em 
@@ -31,29 +31,28 @@
   possui bibliotecas escritas em outras linguagens. Lua hoje é a única linguagem
   de programação desenvolvida fora do primeiro mundo.
 
-4. editor de texto;
+4. Editor de texto;
 
 - vim:  
   Editor simples, open source, que pode ser instalado facilmente em máquinas 
   Linux. Tem suporte a realce de sintaxe para as linguagens C/C++ e Lua.
     
-5. depurador;
+5. Depurador;
 
 - gdb:
-  Também chamado de GNU Debugger o gdb é um ferramenta de debugger usada em 
+  O GNU Debugger (gdb) é um ferramenta de debugger usada em 
   arquivos executáveis, na qual é possível fazer o percurso de uma execução
-  e identificar problemas de erros de execução como ponteiro nulo, esta 
+  e identificar problemas de erros de execução como ponteiro nulo. Esta 
   ferramenta não possui interface gráfica.
 
-
-6. ferramenta de controle de versão;
+6. Ferramenta de controle de versão;
 
 - git: 
   Ferramenta de controle de versão em que é possível criar uma cópia bem mais 
   rápido que outras ferramentas de controle de versão, é otimizada para 
   funcionar na internet, seus repositórios ocupam menos espaços, é mais fácil de
-  administrar diferentes fontes de modificações, permitindo uma gama maior de 
-  fluxo de trabalho.
+  administrar diferentes fontes de modificações, permitindo um melhor fluxo de 
+  trabalho.
 
 7. API gráfica;
 
@@ -66,8 +65,8 @@
 
 - SDL_mixer:
   Biblioteca SDL com funções de áudio complexas, principalmente para mixagem de 
-  som, permite carregamento de bibliotecas dinâmicas FLAC, Ogg Vorbis, SMPEG 
-  MP3.
+  som, permite carregamento de arquivos de áudio em formato FLAC, Ogg Vorbis, 
+  SMPEG e MP3.
 
 9. API de rede;
 
@@ -78,8 +77,8 @@
 - valgrind:   
   Framework para construção de ferramentas de analise dinâmica. O valgrind 
   possui ferramentas que podem detectar automaticamente erros de gerenciamento 
-  de memória, dois detectores de erros em thread, cache branch-prediction 
-  profile, e gerador de gráficos e heap profile.
+  de memória, dois detectores de erros em thread, cache, branch-prediction, 
+  profile, gerador de gráficos e heap profile.
 
 11. APIs para manipulação de arquivos;
 
@@ -89,7 +88,7 @@
   uma estrutura SDL, permitindo um controle das imagens sobre a API SDL de 
   montagem de janelas.
     
-12. sistema operacional.
+12. Sistema Operacional
 
 - Ubuntu:   
   Sistema operacional open source, desenvolvido pela comunidade, que possui uma 
