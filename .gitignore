@@ -29,3 +29,6 @@
 
 # Swap files
 *.swp
+
+# PDF files
+*.pdf
