@@ -2,8 +2,9 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
- 
+\usepackage[section]{placeins} 
 \usepackage{graphicx}
+
 \begin{document}
 \title{TerraCota}
 \author{NullPointer Corporation}
@@ -14,7 +15,6 @@
 
 \tableofcontents
 \newpage
-\part{Apresentação e Resumo do jogo}
 \section{Apresentação}
 TerraCota é um jogo do tipo aventura com uso de puzzle para progresso na história do jogo.  O protagonista irá se comunicar com os habitantes das torres através de símbolos, os quais necessitarão ser traduzidos para cumprir os objetivos das missões.
 
@@ -26,34 +26,30 @@ Em uma das torres vive Inti, numa sociedade que esqueceu da existência do mundo
 Um dia, por algum motivo, ele acaba encontrando a saída da torre, e ao descobrir que existe algo além da torre, decide explorar.
 
 Ele encontra Killa sentada nos galhos de uma árvore, e ela misteriosamente possui um interesse grande por ele.
-\newpage
-\part{Principais Características}
 
+\section{Principais Características}
+Uma das características mais interessantes do jogo é o modo como os gêneros aventura e puzzle interagem entre si, fazendo com o que o jogador precise pensar e decifrar qual será sua missão, pois as informações serão dadas através de símbolos.
 
-\newpage
-\part{Público e plataformas alvo}
 \section{Público}
 O jogo é voltado para o público geral por não possuir nenhum conteúdo que o faz ser censurado a nenhuma idade.
 \section{Plataformas alvo}
 As plataformas suportadas, inicialmente, serão Windows e Linux.
 O Linux possui um grande suporte de bibliotecas e ferramentas de desenvolvimento de software e o Windows possui uma grande base de usuários jogadores, fazendo com que ambas os sistemas operacionais se tornem alvos para o jogo.
 
-\newpage
-\part{Relação dos logotipos}
-\section{Conceito de logotipo}
-\begin{figure}[htp]
+\section{Relação de logotipo}
+
+\begin{figure}[!htp]
 \centering
 \includegraphics[scale=0.75]{logo-terracota.jpg}
 \caption{Logo do jogo TerraCota}
 \label{TerraCota logo}
 \end{figure}
 
-\newpage
-\part{Equipe}
-\section{Contato por e-mail}
+\section{Equipe}
+\subsection{Contato por e-mail}
 A equipe pode ser contatada através do email: \textit{nullpointercorporation@gmail.com}
 
-\section{Contato por repositório}
+\subsection{Contato por repositório}
 Caso a intenção seja contatar a equipe para reportar algum \textit{bug} no jogo, o endereço a seguir deve ser acessado: https://github.com/nullpointercorporation/terracota/issues/
 \newpage
 \end{document}
