@@ -1,22 +1,24 @@
-#include <iostream>
 #include "game.h"
+#include "terracota.h"
+#include "environment.h"
 
-using namespace std;
-
-int main(){
-
-   Game game("Terracota");
-
-    try
-    {
-        game.init();
-        game.run();
-    } catch (Exception ex)
-    {
-        cerr << ex.message() << endl;
-        return -1;
-    }
-
-    return 0;
+Terracota::Terracota() throw (Exception) 
+	: is_fullscreen(false), width(640),height(480) 
+{
+	env = Environment::get_instance();
 }
 
+void 
+Terracota::process_input(){
+	
+	SDL_Event event;
+
+	while(SDL_PollEvent(&event))
+	{
+		 env->video->clear();
+		 if (event.type == SDL_QUIT)
+            {
+                m_done = true;
+            }
+	}
+}
