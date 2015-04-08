@@ -1,0 +1,72 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}       % front image
+\usepackage{hyperref}       % links and email
+\usepackage[brazil]{babel} % linebreaks for english words
+\usepackage{eurosym}
+\usepackage{pbox}           % linebreaks in tables
+
+% footnotes in tables
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+
+% auto update years
+\usepackage{datenumber}
+\newcounter{dateone}
+\newcounter{datetwo}
+\newcommand{\difftoday}[3]{%
+      \setmydatenumber{dateone}{\the\year}{\the\month}{\the\day}%
+      \setmydatenumber{datetwo}{#1}{#2}{#3}%
+      \addtocounter{datetwo}{-\thedateone}%
+      \the\numexpr-\thedatetwo/365\relax
+}
+
+% opening
+\title{Plano de Negócio\\TerraCota}
+\author{Álvaro Fernando\\Desenvolvedor - Gerente}
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    \maketitle
+    \thispagestyle{empty}   % discard page number
+    \includegraphics[width=10cm]{logo_inicial.jpg}
+    \vfill
+    {\raggedright
+    Álvaro Fernando\\
+    https://github.com/nullpointercorporation\\
+    \href{mailto:alvarofernandoms@gmail.com}{alvarofernandoms@gmail.com}\\
+    }
+\end{titlepage}
+
+\begin{abstract}
+%UM RESUMO DEVE SER ESCRITO AQUI
+Um resumo deve ser escrito aqui.
+\end{abstract}
+
+\pagebreak
+\tableofcontents
+\pagebreak
+
+\section{Triângulo de Prioridades}
+
+\section{Plataformas}
+
+\section{Público-alvo}
+
+\section{Estratégia de divulgação}
+
+\section{Recursos disponíveis}
+
+\section{Lucro esperado}
+
+\section{Número estimado de cópias a serem vendidas}
+
+\section{Custos em software, hardware, material de consumo e recursos humanos}
+
+\section{Preço estimado de venda}
+
+\section{Projeção do número de cópias a serem vendidas para recuperar o
+	    investimento e para se obter o lucro esperado}
+
+\end{document}
