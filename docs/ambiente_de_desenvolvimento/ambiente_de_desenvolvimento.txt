@@ -35,7 +35,15 @@
 
 - vim:  
   Editor simples, open source, que pode ser instalado facilmente em máquinas 
-  Linux. Tem suporte a realce de sintaxe para as linguagens C/C++ e Lua.
+  Linux. Tem suporte a realce de sintaxe para as linguagens C/C++ e Lua. 
+- sublime-text:
+  Editor de texto, proprietário, multi-plataforma, com instalação através de 
+  pacotes deb/rpm, instalador do Windows e Mac OS X. Sua licença custa US$70,00.
+- chrome dev editor:
+  Editor de texto web, funciona como uma aplicação do navegador proprietário
+  Google Chrome e open-source Chromium. Desenvolvido pela Google, possui realce
+  de sintaxe para as mais diversas linguagens de programação e marcação. Pode
+  ser instalado através do Chrome Web Store. Aplicação gratuita.
     
 5. Depurador;
 
