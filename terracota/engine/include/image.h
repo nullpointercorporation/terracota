@@ -20,7 +20,7 @@ public:
 
 private:
 	SDL_Texture *m_texture;
-	int m_w, m_h, m_a;
+	int m_w, m_h;
 };
 
 #endif
