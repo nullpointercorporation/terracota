@@ -1,5 +1,5 @@
 #NAME
-NAME = 'terracota'
+NAME = 'terracota.exe'
 
 # DIR
 INC_DIR= -I include
