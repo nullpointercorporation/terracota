@@ -1,12 +1,13 @@
-#include <iostream>
+#include "terracota_game.h"
 
-#include "terracota.h"
-#include "exception.h"
+#include <iostream>
 
 using namespace std;
 
-int main(){
-    try{
+int main()
+{
+    try
+    {
         Terracota terracota;
         terracota.init("Terracota", 640, 480);
         terracota.run();
@@ -15,7 +16,7 @@ int main(){
         cerr << ex.message() << endl;
         return -1;
     }
+
     return 0;
 }
-
 
