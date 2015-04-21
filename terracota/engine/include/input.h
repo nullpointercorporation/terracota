@@ -17,16 +17,15 @@ public:
     void quitGame();
     void handle(SDL_Event &event);
     bool hasQuit();
-
-private:
+    static Input* getInstance();
+protected:
+    void onKeyDown(SDL_Event &event);
     Input(bool done=false);
     Input(Input const&);
     Input& operator=(Input const&);
     ~Input(){};
-
-    void onKeyDown(SDL_Event &event);
+private:
     bool m_done;
-
     static Input * instance;
 };
 
