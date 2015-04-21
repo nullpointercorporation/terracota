@@ -12,7 +12,7 @@ ENGINE_LIB=engine/lib/ijengine.a
 
 #FLAGS
 CC=clang++-3.5
-CFLAGS=  -Wall -W -pedantic -ansi -std=c++11 -MMD
+CFLAGS=  -Wall -W -pedantic -ansi -std=c++11 
 SDL2_FLAGS=`sdl2-config --libs` -lSDL2_image -lSDL2_ttf 
 
 all:
