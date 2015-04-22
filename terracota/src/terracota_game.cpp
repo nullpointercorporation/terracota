@@ -11,11 +11,11 @@ Terracota::load_level(const string& id)
 {
     if (id == "a")
     {
-        return new FrontEnd("b", "res/images/hexagon.png");
+        return new FrontEnd("b", "res/images/logo-terracota.jpg");
     }
     else if (id == "b")
     {
-        return new FrontEnd("c", "res/images/star.png");
+        return new FrontEnd("c", "res/images/logo-sdl.png");
     }
     else if (id == "c")
     {
