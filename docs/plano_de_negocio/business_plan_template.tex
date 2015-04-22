@@ -5,6 +5,12 @@
 \usepackage[brazil]{babel} % linebreaks for english words
 \usepackage{eurosym}
 \usepackage{pbox}           % linebreaks in tables
+\usepackage{geometry}           
+\usepackage{tabularx}           
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+
+\geometry{verbose,tmargin=1.5cm,bmargin=1.5cm,lmargin=1.5cm,rmargin=1.5cm}
 
 % footnotes in tables
 \usepackage{footnote}
@@ -80,9 +86,6 @@ O jogo TerraCota será divulgado nas seguintes mídias:
     \item Divulgação nos grupos de desenvolvimento de jogos independentes, exemplo Indie Developers Brasil, Boteco Gamer, GameDev-DF, etc.
   \end{itemize}
   \item Fóruns de jogos eletrônicos
-    \begin{itemize}
-      \item QUAIS?	 (TODO)
-  \end{itemize}
   \item Steam Greenlight
 \end{itemize}
 
@@ -91,6 +94,7 @@ O jogo TerraCota será divulgado nas seguintes mídias:
 Os recursos disponíveis para o desenvolvimento contam com uma equipe de sete pessoas, sendo três desenvolvedores, três artistas e um músico, também contam os equipamentos usados por cada membro da equipe. A seguir é apresentada uma tabela com os dados financeiros relacionados aos recursos disponíveis.
 
 \begin{table}[h]
+\centering
 \begin{tabular}{|l|l|l|l|l}
 \cline{1-4}
 \multicolumn{1}{|c|}{\textbf{Recursos}} & \multicolumn{1}{c|}{\textbf{Quantidade}} & \multicolumn{1}{c|}{\textbf{Valor Unitário}} & \multicolumn{1}{c|}{\textbf{Valor Total}} &  \\ \cline{1-4}
@@ -115,13 +119,20 @@ Publicação na Steam Greenligth          & 1                                   
 \\
 
 \begin{table}[h]
-\begin{tabular}{|l|l|l|l|l}
-\cline{1-4}
-\multicolumn{1}{|c|}{\textbf{Recursos}} & \multicolumn{1}{c|}{\textbf{Quantidade}} & \multicolumn{1}{c|}{\textbf{Valor Hora}} & \multicolumn{1}{c|}{\textbf{Valor Total}} &  \\ \cline{1-4}
-Desenvolvedor                           & 3                                        & R\$ 21,51                                & R\$ 41.299,20                             &  \\ \cline{1-4}
-Designer Gráfico                        & 3                                        & R\$ 11,94                                & R\$ 2.2924,80                             &  \\ \cline{1-4}
-Músico                                  & 1                                        & R\$ 8,35                                 & R\$ 5.344,00                              &  \\ \cline{1-4}
-\multicolumn{3}{|c|}{\textbf{Total}}                                                                                          & R\$ 69.568,00                             &  \\ \cline{1-4}
+\centering
+\begin{tabular}{lcrcr}
+\toprule
+\textbf{Recursos} & \textbf{Qtd} & \textbf{Valor/Hora} & \textbf{Horas} &
+\textbf{Total} \\
+\midrule
+Desenvolvedor & 3 & R\$ 21,51 & 1920 & R\$ 41.299,20 \\
+\rowcolor[gray]{0.9}
+Designer Gráfico & 3 & R\$ 11,94 & 1920 & R\$ 2.2924,80 \\
+Músico & 1 & R\$ 8,35 & 1920 & R\$ 5.344,00\\
+\midrule
+\rowcolor[gray]{0.7}
+\multicolumn{4}{r}{\textbf{Total}} & R\$ 69.568,00\\
+\bottomrule
 \end{tabular}
 \caption {Recursos Humanos}
 \end{table}
@@ -138,9 +149,10 @@ A equipe espera alcançar um lucros perto de 40\% em cima dos valores gastos par
 
 \section{Número estimado de cópias a serem vendidas}
 
-A seguir é apresentada uma tabela com determinados preços para o jogo e o número estimado de cópias que deveriam ser vendidas para se alcançar os lucros esperados, considerando também o custo do projeto. Os valores positivos são lucros além dos R\$ 124.369,42 (custo + lucro\_esperado). 
+A seguir é apresentada uma tabela com determinados preços para o jogo e o número estimado de cópias que deveriam ser vendidas para se alcançar os lucros esperados, considerando também o custo do projeto. Os valores positivos são lucros além dos R\$ 124.369,42 (custo + lucro esperado). 
 
 \begin{table}[h]
+\centering
 \begin{tabular}{|l|l|l|l|l}
 \cline{1-4}
 \multicolumn{1}{|c|}{\textbf{Valor do Jogo}} & \multicolumn{1}{c|}{\textbf{5k cópias vendidas}} & \multicolumn{1}{c|}{\textbf{10k cópias vendidas}} & \multicolumn{1}{c|}{\textbf{15k cópias vendidas}} &  \\ \cline{1-4}
