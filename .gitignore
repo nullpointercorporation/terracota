@@ -30,5 +30,8 @@
 # Swap files
 *.swp
 
-# PDF files
+# LaTeX generated files
 *.pdf
+*.aux
+*.log
+*.toc
