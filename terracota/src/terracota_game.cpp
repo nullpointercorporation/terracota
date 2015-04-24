@@ -19,7 +19,7 @@ Terracota::load_level(const string& id)
     }
     else if (id == "c")
     {
-        return new FrontEnd("", "res/images/spiral.png");
+        return new FrontEnd("", "res/images/faixa_etaria.jpg");
     }
 
     return nullptr;
