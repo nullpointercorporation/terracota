@@ -9,7 +9,7 @@ int main()
     try
     {
         Terracota terracota;
-        terracota.init("Terracota", 640, 480);
+        terracota.init("Terracota", 1024, 600);
         terracota.run();
     } catch (Exception ex)
     {
