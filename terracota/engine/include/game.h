@@ -10,12 +10,16 @@
 
 #include "exception.h"
 #include "level.h"
+#include "systemeventlistener.h"
+#include "keyboardeventlistener.h"
 
 #include <string>
 
 using std::string;
 
-class Game
+class Environment;
+
+class Game : public SystemEventListener, KeyboardEventListener
 {
 public:
     Game(const string& id);
@@ -24,10 +28,14 @@ public:
     void init(const string& title, int w = 800, int h = 600) throw (Exception);
     void run();
 
+    bool onSystemEvent(const SystemEvent& event);
+    bool onKeyboardEvent(const KeyboardEvent& event);
+
 protected:
     string m_id;
     Level *m_level;
     bool m_done;
+    Environment *env;
 
     virtual Level * load_level(const string& id);
 
