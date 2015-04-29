@@ -1,4 +1,4 @@
-#include "terracota_front_end.h"
+#include "front_end.h"
 #include "environment.h"
 #include "image.h"
 
@@ -36,3 +36,4 @@ FrontEnd::update_self(unsigned long elapsed)
         m_done = true;
     }
 }
+

@@ -1,5 +1,6 @@
-#include "terracota_game.h"
-#include "terracota_front_end.h"
+#include "terracota.h"
+#include "front_end.h"
+#include "menu.h"
 
 Terracota::Terracota()
     : Game("a")
@@ -19,8 +20,12 @@ Terracota::load_level(const string& id)
     }
     else if (id == "c")
     {
-        return new FrontEnd("", "res/images/faixa_etaria.jpg");
+        return new FrontEnd("d", "res/images/faixa_etaria.jpg");
     }
+    else if (id == "d")
+	{
+		return new Menu("","res/images/background.png");
+	}
 
     return nullptr;
 }

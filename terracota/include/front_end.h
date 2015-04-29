@@ -3,6 +3,10 @@
 
 #include "level.h"
 
+#include "mousebuttonevent.h"
+#include "joystickevent.h"
+#include "mousemotionevent.h"
+
 class Image;
 
 class FrontEnd : public Level
