@@ -4,18 +4,14 @@
 
 #include "vector"
 #include "level.h"
-#include "mousebuttoneventlistener.h"
-#include "mousemotioneventlistener.h"
 
 class Image;
 
-class Menu : public Level,MouseButtonEventListener,MouseMotionEventListener
+class Menu : public Level
 {
 public:
     Menu(const string& next, const string& background);
 	~Menu();
-    bool onMouseButtonEvent(const MouseButtonEvent& event);
-    bool onMouseMotionEvent(const MouseMotionEvent& event);
     void create_buttons();
 private:
    Image* m_background;
