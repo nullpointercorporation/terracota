@@ -3,7 +3,7 @@
 #include "frontend.h"
 #include "titlescreen.h"
 #include "stage.h"
-
+#include "settings.h"
 
 Terracota::Terracota()
     : Game ("a")
@@ -23,5 +23,8 @@ Terracota::load_level(const string& id)
         return new TitleScreen();
     if (id == "stage1")
         return new Stage("stage1");
+    if (id == "settings")
+        return new Settings();
+    
     return nullptr; 
 }

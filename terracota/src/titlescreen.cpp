@@ -22,11 +22,14 @@ TitleScreen::TitleScreen()
     double by = h/2;
 
     Button* ok = new Button(this,"ok", bx, by, bw , bh);
-    Button* exit = new Button(this,"exit", bx, by+bh+20, bw, bh, Color::RED);
+    Button* exit = new Button(this,"exit", bx, by+bh+80, bw, bh, Color::RED);
+	Button* settings = new Button(this,"settings",bx,by+bh+20,bw,bh,Color::YELLOW);
     
     ok->add_observer(this);
+    settings->add_observer(this);
     exit->add_observer(this);
         
+    add_child(settings);
     add_child(ok);
     add_child(exit);
 }
@@ -56,6 +59,8 @@ TitleScreen::on_message(Object* object, MessageID id, Parameters)
         return false;
     if(button->id() == "ok")
         m_next = "stage1";
+	if (button->id() == "settings")
+		m_next = "settings";
 
     m_done = true;
     return true;
