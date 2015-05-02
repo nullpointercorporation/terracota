@@ -1,19 +1,14 @@
 #include "character.h"
 #include  "image.h"
 #include "environment.h"
+#include "animation.h"
 
 using std::string;
 
-Character::Character(Object *parent,ObjectID id,const string& sprites,int w, int h)
-	: Object(parent,id), m_sprites(nullptr),m_clip(Rect(10,10,w,h)),
-	  m_speed_x(0),m_speed_y(0)
+Character::Character(Object *parent,ObjectID id)
+	: Object(parent,id), m_speed_x(0),m_speed_y(0)
 {
-    Environment* env = Environment::get_instance();
-    shared_ptr<Resource> r;
-    r  = env->resources_manager->get(Resource::IMAGE, sprites);
-	
-	m_sprites = dynamic_cast<Image *>(r.get());
-	
+	Environment* env = Environment::get_instance();
     env->events_manager->register_keyboard_event_listener(this);
     env->events_manager->register_joystick_event_listener(this);
 }
@@ -28,8 +23,7 @@ Character::~Character()
 void 
 Character::draw_self()
 {
-	Environment* env = Environment::get_instance();	
-	env->canvas->draw(m_sprites,m_clip,x(),y());
+	m_animation->draw(x(),y());
 }
 
 void 
@@ -73,4 +67,11 @@ double
 Character::speed_y()
 {
 	return speed[1];
+}
+
+void 
+Character::set_animation(Animation* animation)
+{
+	m_animation = animation;
+	set_dimensions(animation->w(),animation->h());
 }
