@@ -1,43 +1,31 @@
-#ifndef BUTTON_H
-#define BUTTON_H
+#ifndef H_BUTTON_H
+#define H_BUTTON_H
 
-#include <string>
-#include "rect.h"
 #include "object.h"
-
-#include "mousebuttonevent.h"
-#include "mousemotionevent.h"
 #include "mousebuttoneventlistener.h"
-#include "mousemotioneventlistener.h"
 
-using std::string;
+#include <memory>
+#include "color.h"
 
-class Image;
-typedef enum{ IDLE,ON_HOVER, SELECTED} Type ;
+using std::unique_ptr;
 
-class Button : public Rect, Object, 
-                      MouseButtonEventListener,MouseMotionEventListener
+
+class Button : public Object, public MouseButtonEventListener
 {
 public:
-    Button(const string& id, Object * parent,
-           double x, double y, double w, double h,
-           const string& idle_image = "", 
-           const string& on_hover_image = "",
-           const string& selected_image = "");
+    Button(Object* parant = nullptr, ObjectID id = "",
+           double x = 0, double y =0, double w = 100, double h = 100,
+           const Color& background = Color::BLUE);
     ~Button();
-
-    void on_hover(double x, double y);
-    void selected(double x , double y);
-
     bool onMouseButtonEvent(const MouseButtonEvent& event);
-    bool onMouseMotionEvent(const MouseMotionEvent& event);
-    void update_self(unsigned long elapsed);
-    void draw_self();
+
+    static ActionID clickedID;
+
 private:
-    Image * im_idle;
-    Image * im_hover;
-    Image * im_selected;
-    int type; 
+    class Impl;
+    unique_ptr<Impl> m_impl;
+
+    void draw_self();
 };
 
 #endif

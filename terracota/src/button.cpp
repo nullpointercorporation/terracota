@@ -1,95 +1,54 @@
 #include "button.h"
-#include "image.h"
+#include "rect.h"
+#include "color.h"
 #include "environment.h"
+#include "mousebuttonevent.h"
 
-#include <iostream>
+#include <cstdio>
 
-using namespace std;
-
-Button::Button(const string& id, Object * parent,
-			   double x, double y, double w, double h,
-			   const string& idle_image, 
-			   const string& on_hover_image, 
-			   const string& selected_image)
-	: Rect(x,y,w,h), Object(id,parent),im_idle(nullptr), 
-				  im_hover(nullptr),im_selected(nullptr) 
+class Button::Impl
 {
-    Environment *env = Environment::get_instance();
-	type = IDLE;
+public:
+	Impl(const Color& bg) : background(bg) {}
+	Color background;
+};
 
-    shared_ptr<Resource> r;
+MessageID Button::clickedID = "clicked()";
 
-	if ( idle_image != "" )
-	{
-		r = env->resources_manager->get(Resource::IMAGE, idle_image);
-    	im_idle = dynamic_cast<Image *>(r.get());
-	}
-	if(on_hover_image != "")
-	{	
-   		r = env->resources_manager->get(Resource::IMAGE, on_hover_image);
-	    im_hover = dynamic_cast<Image *>(r.get());
-	}
-	if(selected_image != "")
-	{
-   		r = env->resources_manager->get(Resource::IMAGE, selected_image);
-	    im_selected = dynamic_cast<Image *>(r.get());
-	}
-
-    env->events_manager->register_mouse_button_event_listener(this);
-    env->events_manager->register_mouse_motion_event_listener(this);
+Button::Button(Object* parant, ObjectID id, 
+			   double x, double y, double w, double h,
+			   const Color& background)
+	: Object(parant, id, x, y, w, h), m_impl(new Impl(background))
+{
+	Environment* env  = Environment::get_instance();
+	env->events_manager->register_mouse_button_event_listener(this);
 }
- 
+
 Button::~Button()
 {
-    Environment *env = Environment::get_instance();
-    env->events_manager->unregister_mouse_button_event_listener(this);
-    env->events_manager->unregister_mouse_motion_event_listener(this);
-}
-
-void 
-Button::on_hover(double x, double y)
-{
-	if ( (x >= this->x() && x <= this->x() + this->w()) &&
-		 (y >= this->y() && y <= this->y() +this->h()) )
-        type = ON_HOVER;
-    else
-    	type = IDLE;
-}
-    
-void 
-Button::update_self(unsigned long elapsed)
-{
-	
+	Environment* env  = Environment::get_instance();
+	env->events_manager->unregister_mouse_button_event_listener(this);
 }
 
 void 
 Button::draw_self()
 {
-    Environment *env = Environment::get_instance();
-    if (type == IDLE)
-    	env->canvas->draw(im_idle, this->x(), this->y());
-    else if (type == ON_HOVER)
-    	env->canvas->draw(im_hover, this->x(), this->y());
-	else if (type == SELECTED)
-		env->canvas->draw(im_selected, this->x(), this->y());
+	Environment* env = Environment::get_instance();
+	env->canvas->fill(bounding_box(),m_impl->background);
 }
 
-bool 
+bool
 Button::onMouseButtonEvent(const MouseButtonEvent& event)
 {
-	//cout <<"\r OnMouseButtonEvent(x = " <<event.x()<<"y = "<<event.y()<<")"<<endl;
-	return false;
-}
+	if(event.state()  == MouseButtonEvent::PRESSED and
+	   event.button() == MouseButtonEvent::LEFT    and
+	   bounding_box().contains(event.x(), event.y()) )
+	{
+		char coords[64];
+		sprintf(coords, "%.2f,%.2f", event.x(),event.y());
 
-bool 
-Button::onMouseMotionEvent(const MouseMotionEvent& event)
-{
-    on_hover(event.x(),event.y()); 
-	//cout <<"\r OnMouseMotionEvent(x = " <<event.x()<<"y = "<<event.y()<<")"<<endl;
+		notify(clickedID,coords);
+		return true;
+	}
 	return false;
-}
-    
-void 
-Button::selected(double x , double y)
-{
 }

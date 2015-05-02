@@ -1,22 +1,22 @@
-#include "terracota.h"
-
 #include <iostream>
+
+#include "terracota.h"
 
 using namespace std;
 
-int main()
+int 
+main(int  , char** )
 {
     try
     {
         Terracota terracota;
-        terracota.init("Terracota", 800, 600);
+        terracota.init("Terracota",800,600);
         terracota.run();
-    } catch (Exception ex)
+    }
+    catch (Exception e)
     {
-        cerr << ex.message() << endl;
+        cerr << e.message() << endl;
         return -1;
     }
-
     return 0;
 }
-

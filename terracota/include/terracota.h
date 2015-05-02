@@ -1,5 +1,5 @@
-#ifndef TERRACOTA_GAME_H
-#define TERRACOTA_GAME_H
+#ifndef H_TERRACOTA_H
+#define H_TERRACOTA_H
 
 #include "game.h"
 
@@ -9,8 +9,7 @@ public:
     Terracota();
 
 private:
-    Level * load_level(const string& id);
+    Level* load_level(const string& id);
 };
 
 #endif
-
