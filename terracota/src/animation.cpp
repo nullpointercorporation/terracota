@@ -53,28 +53,31 @@ Animation::changeAnimation(int number)
 }
 
 void
-Animation::update()
+Animation::update(unsigned long elapsed )
 {
-
-	if(  current_frame+1 == m_frames  )
+	if (not m_start)
+		m_start = elapsed;
+	if ( elapsed - m_start >= 60 )
 	{
-		current_frame = 0;
-		m_clip.set(m_x,  m_clip.y() );
-		m_clip.set_dimensions(m_w,m_h);
-		return ;
+		m_start = 0;
+		if(  current_frame+1 == m_frames  )
+		{
+			current_frame = 0;
+			m_clip.set(m_x,  m_clip.y() );
+			m_clip.set_dimensions(m_w,m_h);
+			return ;
+		}
+		
+		double x = m_clip.x() + m_w;
+		m_clip.set_x(x);
+
+		current_frame++;
 	}
-	
-	double x = m_clip.x() + m_w;
-	m_clip.set_x(x);
-
-	current_frame++;
-
 }
 
 void
 Animation::draw(double position_x ,double  position_y   )
 {
 	Environment* env = Environment::get_instance();
-	update();
 	env->canvas->draw(m_sprites,m_clip,position_x,position_y);
 }

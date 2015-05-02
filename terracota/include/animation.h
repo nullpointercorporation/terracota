@@ -16,6 +16,7 @@ public:
     void update();
     void changeAnimation(int number);
     void draw(double x, double y);
+	void update(unsigned long elapsed);
 
     double x();
     double y();
@@ -27,6 +28,7 @@ private:
     int m_frames;
     int current_frame;
     Rect m_clip;
+	unsigned long m_start;	
 };
 
 #endif

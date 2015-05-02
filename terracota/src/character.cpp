@@ -29,6 +29,8 @@ Character::draw_self()
 void 
 Character::update_self(unsigned long elapsed)
 {
+	m_animation->update(elapsed);
+
 	if ( not m_speed_x && not m_speed_y)
 	{
 		m_last = 0;
@@ -37,6 +39,7 @@ Character::update_self(unsigned long elapsed)
 
 	if ( not m_last )
 		m_last = elapsed;
+
 	Environment* env = Environment::get_instance();
 
 	double px = x() + m_speed_x *((elapsed - m_last)/1000.0);
