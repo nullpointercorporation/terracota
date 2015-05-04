@@ -1,0 +1,7 @@
+Game		Breath of Fire III
+Section		NPCs
+Filesize	86.00 KB
+Submitter	Barubary
+Format		PNG (image/png)
+Size		688x1292 pixels
+Link 		http://www.spriters-resource.com/playstation/breathoffire3/sheet/40368/

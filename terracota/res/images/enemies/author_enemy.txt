@@ -1,0 +1,7 @@
+Game		Castlevania Series
+Section		Enemies
+Filesize	2.97 KB
+Submitter	SmithyGCN
+Format		PNG (image/png)
+Size		227x92 pixels
+Link 		http://www.spriters-resource.com/custom_edited/castlevania/sheet/32009/
