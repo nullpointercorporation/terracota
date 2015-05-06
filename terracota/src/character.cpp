@@ -46,10 +46,10 @@ Character::update_self(unsigned long elapsed)
 	double py = y() + m_speed_y *((elapsed - m_last)/1000.0);
 	m_last = elapsed;
 	
-	if (px < 0)	px = 0;
+	if (px < 0 - w()/2) px =0;	
 	if (py < 0)	py = 0;
-	if (px + w() >= env->canvas->w()) px = env->canvas->w() - w();
-	if (py + h() >= env->canvas->h()) py = env->canvas->h() - h();	
+	if ((px+w())/2 > env->canvas->w() ) px = w()/2 ; 
+	if ((py+h())/2 > env->canvas->h() ) py = h()/2; 
 	set_position(px,py);
 }
 	

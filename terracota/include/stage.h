@@ -10,7 +10,6 @@ public:
     Stage(ObjectID id);
 
 private:
-    Character* person;
     void draw_self();
 };
 

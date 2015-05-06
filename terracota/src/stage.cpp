@@ -4,7 +4,7 @@
 Stage::Stage(ObjectID id)
 	:Level(id)
 {
-	person = new Character(this,"firstPerson");
+/*	person = new Character(this,"firstPerson");
 	person->set_position(0,0);
 	person->set_speed(10,10);
 
@@ -12,7 +12,7 @@ Stage::Stage(ObjectID id)
 	person->set_animation(animation);
 
 	add_child(person);
-
+*/
 }
 
 void 
