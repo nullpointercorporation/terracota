@@ -15,15 +15,16 @@ TitleScreen::TitleScreen()
     double w  = env->canvas->w();
     double h  = env->canvas->h();
 
-    double bw = 100;
-    double bh = 50;
+    double bw = 304;
+    double bh = 93;
 
     double bx = (w - bw)/2;
-    double by = h/2;
+    double by = h/3;
 
-    Button* ok = new Button(this,"ok", bx, by, bw , bh);
-    Button* exit = new Button(this,"exit", bx, by+bh+80, bw, bh, Color::RED);
-	Button* settings = new Button(this,"settings",bx,by+bh+20,bw,bh,Color::YELLOW);
+	m_background = env->resources_manager->get_image("res/images/titlescreen/background_terracota.jpg");
+    Button* ok = new Button(this,"ok", "res/images/buttons/start_button.png", bx, by, bw , bh);
+	Button* settings = new Button(this,"settings","res/images/buttons/option_button.png",bx,by+bh+10,bw,bh);
+    Button* exit = new Button(this,"exit","res/images/buttons/quit_button.png", bx, by+bh+115, bw, bh);
     
     ok->add_observer(this);
     settings->add_observer(this);
@@ -32,6 +33,7 @@ TitleScreen::TitleScreen()
     add_child(settings);
     add_child(ok);
     add_child(exit);
+
 }
 
 TitleScreen::~TitleScreen()
@@ -43,6 +45,7 @@ TitleScreen::draw_self()
 {
     Environment* env = Environment::get_instance();
     env->canvas->clear(Color::WHITE);
+	env->canvas->draw(m_background.get());
 }
 
 bool

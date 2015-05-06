@@ -2,7 +2,6 @@
 #define STAGE_H
 
 #include "level.h"
-#include "character.h"
 
 class Stage : public Level
 {

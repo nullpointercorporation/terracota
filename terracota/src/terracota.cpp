@@ -23,7 +23,6 @@ Terracota::load_level(const string& id)
         return new TitleScreen();
     if (id == "settings")
         return new Settings();
-
 	if (id == "stage1")
 		return new Stage("stage1");
 

@@ -3,28 +3,31 @@
 
 #include "object.h"
 #include "mousebuttoneventlistener.h"
+#include "mousemotioneventlistener.h"
 
+#include "image.h"
 #include <memory>
-#include "color.h"
 
-using std::unique_ptr;
+using std::shared_ptr;
+using std::string;
+
+typedef enum  { IDLE, ON_HOVER } State;
 
 
-class Button : public Object, public MouseButtonEventListener
+class Button : public Object, public MouseButtonEventListener, MouseMotionEventListener
 {
 public:
-    Button(Object* parant = nullptr, ObjectID id = "",
-           double x = 0, double y =0, double w = 100, double h = 100,
-           const Color& background = Color::BLUE);
+    Button(Object* parant = nullptr, ObjectID id = "",const string& image= "",
+           double x = 0, double y =0, double w = 100, double h = 100);
     ~Button();
     bool onMouseButtonEvent(const MouseButtonEvent& event);
+    bool onMouseMotionEvent(const MouseMotionEvent& event);
 
     static ActionID clickedID;
 
 private:
-    class Impl;
-    unique_ptr<Impl> m_impl;
-
+    shared_ptr<Image>  m_image;
+    State m_state;
     void draw_self();
 };
 

@@ -3,38 +3,43 @@
 #include "color.h"
 #include "environment.h"
 #include "mousebuttonevent.h"
+#include "mousemotionevent.h"
 
 #include <cstdio>
 
-class Button::Impl
-{
-public:
-	Impl(const Color& bg) : background(bg) {}
-	Color background;
-};
 
 MessageID Button::clickedID = "clicked()";
 
-Button::Button(Object* parant, ObjectID id, 
-			   double x, double y, double w, double h,
-			   const Color& background)
-	: Object(parant, id, x, y, w, h), m_impl(new Impl(background))
+Button::Button(Object* parant, ObjectID id, const string& image,
+			   double x, double y, double w, double h)
+	: Object(parant, id, x, y, w, h), m_image(nullptr)
 {
 	Environment* env  = Environment::get_instance();
 	env->events_manager->register_mouse_button_event_listener(this);
+	env->events_manager->register_mouse_motion_event_listener(this);
+	
+	m_image = env->resources_manager->get_image(image);
+	m_state = IDLE;
+
 }
 
 Button::~Button()
 {
 	Environment* env  = Environment::get_instance();
 	env->events_manager->unregister_mouse_button_event_listener(this);
+	env->events_manager->unregister_mouse_motion_event_listener(this);
 }
 
 void 
 Button::draw_self()
 {
 	Environment* env = Environment::get_instance();
-	env->canvas->fill(bounding_box(),m_impl->background);
+
+	if ( m_state == IDLE  )
+		env->canvas->draw(m_image.get(),Rect(0,0,w(),h()) ,x(),y());
+	if ( m_state == ON_HOVER)
+		env->canvas->draw(m_image.get(),Rect(0,h(),w(),h()),x(),y());
+	
 }
 
 bool
@@ -45,10 +50,23 @@ Button::onMouseButtonEvent(const MouseButtonEvent& event)
 	   bounding_box().contains(event.x(), event.y()) )
 	{
 		char coords[64];
-		sprintf(coords, "%.2f,%.2f", event.x(),event.y());
 
 		notify(clickedID,coords);
 		return true;
 	}
 	return false;
 }
+
+bool
+Button::onMouseMotionEvent(const MouseMotionEvent& event)
+{
+	if ( bounding_box().contains(event.x(),event.y()))
+	{
+		m_state = ON_HOVER;
+		return true;
+	}
+	m_state = IDLE;
+	return false;
+}
+
+
