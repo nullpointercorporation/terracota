@@ -8,11 +8,11 @@ Stage::Stage(ObjectID id,const string& background, double x, double y, double w,
 	Environment* env = Environment::get_instance();
 	m_background = env->resources_manager->get_image(background);
 
-	Animation* idle  = new Animation("res/images/characters/idle_char.png",0,0,232,439,10,100,true);
-	Animation* running  = new Animation("res/images/characters/running_char.png",0,0,363,458,10,50,true);
+	Animation* idle  = new Animation("res/images/characters/idle_char.png",0,0,111.8,312,10,100,true);
+	Animation* running  = new Animation("res/images/characters/running_char.png",0,0,162,361,10,50,true);
 	Character* p = new Character(this,"person",idle,running);
 
-	p->set_position(20,20);
+	p->set_position(10,150);
 
 	add_child(p);	
 }
