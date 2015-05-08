@@ -29,15 +29,14 @@ Character::onKeyboardEvent(const KeyboardEvent& event)
         case KeyboardEvent::LEFT:
                 m_speed_x = -1; 
                 return true;
-
             case KeyboardEvent::RIGHT:
                 m_speed_x = 1;
                 return true;
 			case KeyboardEvent::UP:
-				m_speed_y = -1;
+				m_speed_y = -10;
 				break;
 			case KeyboardEvent::DOWN:
-				m_speed_y = 1;
+				m_speed_y = 10;
 				break;
             default:
                 return false;
@@ -88,19 +87,21 @@ Character::update_self(unsigned long elapsed)
 	if (not m_last)  m_last = elapsed;
 	Environment* env = Environment::get_instance();
 
+	if (m_speed_x > 0 | m_speed_y > 0){
+		m_animation_running->set_row(0);
+		m_animation_idle->set_row(0);
+	}else if(m_speed_x < 0 | m_speed_y < 0){
+		m_animation_running->set_row(1);
+		m_animation_idle->set_row(1);
+	}
 	if (m_speed_x != 0)
 	{
 		double x =  this->x() + m_speed_x*((elapsed - m_last)/1000.0);
 		if(x) this->set_x(x);
-		if (m_speed_x > 0){
-			m_animation_running->set_row(0);
-		}else if(m_speed_x < 0){
-			m_animation_running->set_row(1);
-		}
 	}	
 	if (m_speed_y != 0)
 	{
-		double y =  this->y() + m_speed_x*((elapsed - m_last)/1000.0);
+		double y =  this->y() + m_speed_y*((elapsed - m_last)/1000.0);
 		if(y) this->set_y(y);
 	}
 }
