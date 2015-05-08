@@ -11,7 +11,7 @@
 using std::shared_ptr;
 using std::string;
 
-typedef enum  { IDLE, ON_HOVER } State;
+typedef enum  { IDLE, ON_HOVER, HIDE } State;
 
 
 class Button : public Object, public MouseButtonEventListener, MouseMotionEventListener
@@ -24,6 +24,8 @@ public:
     bool onMouseMotionEvent(const MouseMotionEvent& event);
 
     static ActionID clickedID;
+	void set_hide();
+	void set_show();
 
 private:
     shared_ptr<Image>  m_image;

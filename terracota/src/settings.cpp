@@ -14,20 +14,21 @@ Settings::Settings()
 	double bw = 304;
 	double bh = 93;
 	
-	double bx = (w - bw)/2;
-	double by = h/2;
+	double bx = (w-bw)/2;
+	double by = 90; 
 
 	m_background = env->resources_manager->get_image("res/images/titlescreen/background_terracota.jpg");
-	Button* fullscreen = new Button(this, "fullscreen","res/images/buttons/fullscreen_mode_button.png",0,0,bw,bh);
-	Button* window_mode = new Button(this, "window_mode","res/images/buttons/window_mode_button.png",bx,by,bw,bh);
-	Button* back = new Button(this,"back","res/images/buttons/back_button.png",bx,by+bh+20,bw,bh);
 
-	fullscreen->add_observer(this);
-	window_mode->add_observer(this);
+    Button* fullscreen = new Button(this, "fullscreen","res/images/buttons/fullscreen_mode_button.png",bx,by+100,bw,bh);
+    Button* window_mode = new Button(this, "window_mode","res/images/buttons/window_mode_button.png",bx,by+200,bw,bh);
+	Button* back = new Button(this,"back","res/images/buttons/back_button.png",bx,by+bh+300,bw,bh);
+
 	back->add_observer(this);
-
+    window_mode->add_observer(this);
+    fullscreen->add_observer(this);
+        
+    add_child(window_mode);
 	add_child(fullscreen);
-	add_child(window_mode);
 	add_child(back);
 }
 Settings::~Settings()

@@ -45,7 +45,8 @@ Button::draw_self()
 bool
 Button::onMouseButtonEvent(const MouseButtonEvent& event)
 {
-	if(event.state()  == MouseButtonEvent::PRESSED and
+	if( m_state != HIDE and
+	   event.state()  == MouseButtonEvent::PRESSED and
 	   event.button() == MouseButtonEvent::LEFT    and
 	   bounding_box().contains(event.x(), event.y()) )
 	{
@@ -60,6 +61,7 @@ Button::onMouseButtonEvent(const MouseButtonEvent& event)
 bool
 Button::onMouseMotionEvent(const MouseMotionEvent& event)
 {
+	if (m_state == HIDE) return false;
 	if ( bounding_box().contains(event.x(),event.y()))
 	{
 		m_state = ON_HOVER;
@@ -69,4 +71,13 @@ Button::onMouseMotionEvent(const MouseMotionEvent& event)
 	return false;
 }
 
-
+void 
+Button::set_hide()
+{
+	m_state = HIDE;
+}
+void
+Button::set_show()
+{
+	m_state = IDLE;
+}
