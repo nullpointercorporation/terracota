@@ -1,6 +1,7 @@
 #include "stage.h"
 #include "animation.h"
-#include "character.h"
+#include <map>
+#include "sprite.h"
 
 Stage::Stage(ObjectID id,const string& background, double x, double y, double w,double h )
 	:Level(id),m_background(nullptr),m_rect(Rect(x,y,w,h))
@@ -8,13 +9,16 @@ Stage::Stage(ObjectID id,const string& background, double x, double y, double w,
 	Environment* env = Environment::get_instance();
 	m_background = env->resources_manager->get_image(background);
 
-	Animation* idle  = new Animation("res/images/characters/idle_char.png",0,0,111.8,312,10,100,true);
-	Animation* running  = new Animation("res/images/characters/running_char.png",0,0,162,361,10,50,true);
-	Character* p = new Character(this,"person",idle,running);
 
-	p->set_position(10,150);
+    map<int,Animation* > actions;
+    actions[Sprite::IDLE] = new Animation("res/images/characters/idle_char.png", 0, 0, 111.8, 312, 10,100, true);
+    actions[Sprite::RUNNING] = new Animation("res/images/characters/running_char.png", 0, 0, 162,  361, 10, 50, true);
 
-	add_child(p);	
+	Sprite* person = new Sprite(this,"person",actions);
+
+	person->set_position(10,150);
+
+	add_child(person);	
 }
 
 void 
