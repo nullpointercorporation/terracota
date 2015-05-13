@@ -2,10 +2,13 @@
 
 #include "environment.h"
 #include "button.h"
+#include "gameflow.h"
 
 Settings::Settings()
 	: Level("settings")
 {
+	GameFlow::get_instance()->set_state(GameState::SETTINGS);
+
 	Environment* env = Environment::get_instance();
 	
 	double w = env->canvas->w();

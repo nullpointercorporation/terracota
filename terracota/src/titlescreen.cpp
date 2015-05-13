@@ -2,6 +2,7 @@
 
 #include "environment.h"
 #include "button.h"
+#include "gameflow.h"
 
 #include <iostream>
 
@@ -10,6 +11,8 @@ using namespace std;
 TitleScreen::TitleScreen()
     : Level("title")
 {
+	GameFlow::get_instance()->set_state(GameState::MENU);
+	
     Environment* env = Environment::get_instance();
     
     double w  = env->canvas->w();
