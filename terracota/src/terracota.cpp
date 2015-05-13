@@ -1,6 +1,6 @@
 #include "terracota.h"
 
-#include "frontend.h"
+#include <util/frontend.h>
 #include "titlescreen.h"
 #include "settings.h"
 #include "stage.h"
