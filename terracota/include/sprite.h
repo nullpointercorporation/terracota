@@ -58,6 +58,7 @@ public:
 
 protected:
     short m_left, m_right;
+	short m_height;
     unsigned long m_last;
 
     State m_state;

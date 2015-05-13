@@ -11,12 +11,12 @@ Stage::Stage(ObjectID id,const string& background, double x, double y, double w,
 
 
     map<int,Animation* > actions;
-    actions[Sprite::IDLE] = new Animation("res/images/characters/idle_char.png", 0, 0, 111.8, 312, 10,100, true);
-    actions[Sprite::RUNNING] = new Animation("res/images/characters/running_char.png", 0, 0, 162,  361, 10, 50, true);
+    actions[Sprite::IDLE] = new Animation("res/images/characters/idle_char.png", 0, 0, 128, 172, 10,100, true);
+    actions[Sprite::RUNNING] = new Animation("res/images/characters/running_char.png", 0, 0, 128,  172, 10, 50, true);
 
 	Sprite* person = new Sprite(this,"person",actions);
 
-	person->set_position(10,150);
+	person->set_position(10,250);
 
 	add_child(person);	
 }
