@@ -21,7 +21,10 @@ public:
     Level(const string& id, const string& next = "");
 
     string next() const;
-    bool is_done() const;
+    bool finished() const;
+
+    void finish();
+    void set_next(const string& next);
 
 protected:
     string m_next;
