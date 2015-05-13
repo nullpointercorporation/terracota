@@ -89,10 +89,10 @@ public:
             m_parent->report_event(Sprite::STOPPED);
         } else if (dir < 0)
         {
-            m_animation->set_row(0);
+            m_animation->set_row(1);
         } else
         {
-            m_animation->set_row(1);
+            m_animation->set_row(0);
         }
     }
 
