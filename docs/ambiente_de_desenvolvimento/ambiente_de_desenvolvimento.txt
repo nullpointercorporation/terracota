@@ -66,10 +66,12 @@
 
 8. API de áudio;
 
-- SDL_mixer:
-  Biblioteca SDL com funções de áudio complexas, principalmente para mixagem de
-  som, permite carregamento de arquivos de áudio em formato FLAC, Ogg Vorbis,
-  SMPEG e MP3.
+- OpenAL
+  É uma API livre , muitiplataforma desenvolvida pela empresa Loki Software
+  para lidar com audio multicanal tridimencional, é usado normalmento com o
+  openGL.As funcionalidades da biblioteca são baseads em tres conceitos: 
+  objetos que emitem som, som que será mantido por algum objeto e ouvinte 
+  da sena.
 
 9. API de rede;
 
