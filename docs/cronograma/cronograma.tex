@@ -25,11 +25,19 @@
 \usepackage[protrusion=true,expansion=true]{microtype} % Better typography
 \usepackage{graphicx} % Required for including pictures
 \usepackage{wrapfig} % Allows in-line images
-\usepackage[bottom=2cm,top=3cm,left=1.5cm,right=1.5cm]{geometry}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+
+\geometry{verbose,tmargin=1.5cm,bmargin=1.5cm,lmargin=1.5cm,rmargin=1.5cm}
+\usepackage{pgfgantt}
 
 \usepackage{mathpazo} % Use the Palatino font
 \usepackage[T1]{fontenc} % Required for accented characters
 \linespread{1.05} % Change line spacing here, Palatino benefits from a slight increase by default
+
+
 
 \makeatletter
 \renewcommand\@biblabel[1]{\textbf{#1.}} % Change the square brackets for each bibliography item from '[1]' to '1.'
@@ -63,28 +71,183 @@
 \section*{Tabela de atividades}
 
 \begin{table}[h]
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-\textbf{Atividade}                           & \textbf{Início} & \textbf{Fim} & \textbf{Conclusão} & \textbf{Progresso} & \textbf{Responsável} \\ \hline
-Formar da Equipe                             & 17/03           & 25/03        & 25/03              & 100\%              & Equipe              \\ \hline
-Criar documento de visão                     & 17/03           & 04/04        & 04/04              & 100\%                & Designer             \\ \hline
-Realizar Brainstorm                          & 18/03           & 20/03        & 20/03              & 100\%              & Gerente              \\ \hline
-Criar documento de apresentação da equipe    & 25/03           & 08/04        & 		              & 70\%              & Gerente              \\ \hline
-Definir Conceito do Jogo                     & 25/03           & 25/03        & 25/03              & 100\%               & Gerente              \\ \hline
-Definir Ambiente de Desenvolvimento          & 29/03           & 31/03        & 31/03              & 100\%                & Programador          \\ \hline
-Criar laço principal                         & 29/03           &              &                    & 80\%              & Programador          \\ \hline
-Criar Janela                                 & 07/04           &              &                    & 0\%                & Programador          \\ \hline
-Criar cronograma                             & 08/04           & 08/04        &   				 & 50\%              & Gerente              \\ \hline
-Criar plano de negócio                       & 08/04           &              &                    & 0\%                & Gerente              \\ \hline
-Criar GDD                                    & 10/04           & 10/05        &                    & 0\%                & Designer             \\ \hline
-Módulo de Vídeo                     			&                 &              &                    & 0\%                & Programador          \\ \hline
-\textbf{(Marco) MILESTONE 1 (30\% do jogo)}  & 29/05           & 29/05        &                    & 0\%                & Equipe		           \\ \hline
-									        &          		  &         		&                    & 0\%                & 	     	           \\ \hline
-\textbf{(Marco) MILESTONE 2 (70\% do jogo)}  & 19/06           & 19/06        &                    & 0\%                & Equipe		           \\ \hline
-									        &          		  &         		&                    & 0\%                & 	     	           \\ \hline
-\textbf{(Marco) MILESTONE 3 (100\% do jogo)} & 10/07           & 10/07        &                    & 0\%                & Equipe		           \\ \hline
-									        &          		  &         		&                    & 0\%                & 	     	           \\ \hline
+\centering
+\begin{tabular}{lccrc}
+\toprule
+\textbf{Atividade} & \textbf{Início} & \textbf{Conclusão} & \textbf{Progresso} & \textbf{Responsável} \\
+\midrule
+Formar da Equipe                     & 17/03 & 25/03 & 100\% & Equipe \\ %ok grantt
+\rowcolor[gray]{0.9}
+Versão Inicial do documento de visão & 17/03 & 04/04 & 100\% & Designer \\ %ok grantt
+Brainstorm                           & 18/03 & 20/03 & 100\% & Gerente \\ %ok grantt
+\rowcolor[gray]{0.9}
+Documento de apresentação da equipe  & 25/03 & 10/04 & 100\% & Gerente \\ %ok grantt
+Conceito do Jogo                     & 25/03 & 25/03 & 100\% & Gerente \\ %ok grantt
+\rowcolor[gray]{0.9}
+Ambiente de Desenvolvimento          & 29/03 & 31/03 & 100\% & Programador \\ %ok grantt
+Laço principal                       & 29/03 & 09/04 & 100\% & Programador \\ %ok grantt
+\rowcolor[gray]{0.9}
+Janela                               & 07/04 & 09/04 & 100\% & Programador \\ %ok grantt
+Cronograma                           & 08/04 & xx/xx & 50\%  & Gerente \\ %ok grantt
+\rowcolor[gray]{0.9}
+Plano de negócio                     & 08/04 & 22/04 & 100\% & Gerente \\ %ok grantt
+Versão Final do Documento de Visão   & 13/04 & xx/xx & 0\%   & Designer \\ %ok grantt
+\rowcolor[gray]{0.9}
+Versão Inicial do GDD                & 13/04 & xx/xx & 0\%   & Designer \\ %ok grantt
+Textos                               & 18/04 & xx/xx & 0\%   & Programador \\ %ok grantt
+\rowcolor[gray]{0.9}
+Módulo de Vídeo                      & 18/04 & xx/xx & 0\%   & Programador \\ %ok grantt
+Low-Fi Sketches                      & 28/04 & 02/05 & 100\% & Gerente \\ %ok grantt
+\rowcolor[gray]{0.9}
+Animações                            & 02/05 & xx/xx & 0\%   & Programador \\ %ok grantt
+Imagens                              & 06/05 & xx/xx & 0\%   & Programador \\ %ok grantt
+\rowcolor[gray]{0.9}
+Tela de Apresentação                 & 09/05 & 12/05 & 100\% & Programador \\ %ok grantt
+GDD: Requisitos Tecnológicos         & xx/xx & xx/xx & 0\%   & Designer \\
+\rowcolor[gray]{0.9}
+GDD: Front End                       & xx/xx & xx/xx & 0\%   & Designer \\
+GDD: Telas                           & xx/xx & xx/xx & 0\%   & Designer \\
+\rowcolor[gray]{0.9}
+Câmera e HUD                         & xx/xx & xx/xx & 0\%   & Designer \\
+Personagem Principal                 & xx/xx & xx/xx & 0\%   & Designer \\
+\rowcolor[gray]{0.9}
+Hi-Fi Sketches                       & xx/xx & xx/xx & 0\%   & Gerente \\
+Controles                            & xx/xx & xx/xx & 0\%   & Programador \\
+\rowcolor[gray]{0.9}
+Gameplay                             & xx/xx & xx/xx & 0\%   & Programador \\
+Power Ups                            & xx/xx & xx/xx & 0\%   & Designer \\
+\rowcolor[gray]{0.9}
+Saúde                                & xx/xx & xx/xx & 0\%   & Designer \\
+Sistema de Pontuação                 & xx/xx & xx/xx & 0\%   & Designer \\
+\rowcolor[gray]{0.9}
+Economia                             & xx/xx & xx/xx & 0\%   & Designer \\
+Principais Personagens do Mundo do Jogo & xx/xx & xx/xx & 0\% & Designer \\
+\rowcolor[gray]{0.9}
+Veículos                             & xx/xx & xx/xx & 0\%   & Designer \\
+\midrule
 \end{tabular}
 \end{table}
+
+\newpage
+\begin{table}[h]
+\centering
+\begin{tabular}{lccrc}
+\toprule
+\textbf{Atividade} & \textbf{Início} & \textbf{Conclusão} & \textbf{Progresso} & \textbf{Responsável} \\
+\midrule
+Progresso do Jogo                    & xx/xx & xx/xx & 0\%   & Designer \\
+\rowcolor[gray]{0.9}
+Visão Geral do Mundo do Jogo         & xx/xx & xx/xx & 0\%   & Designer \\
+Mecânicas Universais                 & xx/xx & xx/xx & 0\%   & Designer \\
+\rowcolor[gray]{0.9}
+Níveis                               & xx/xx & xx/xx & 0\%   & Designer \\
+Inimigos                             & xx/xx & xx/xx & 0\%   & Designer \\
+\rowcolor[gray]{0.9}
+NPCs                                 & xx/xx & xx/xx & 0\%   & Designer \\
+Objetos Colecionáveis                & xx/xx & xx/xx & 0\%   & Designer \\
+\rowcolor[gray]{0.9}
+Minigames                            & xx/xx & xx/xx & 0\%   & Designer \\
+Músicas e Efeitos Sonoros            & xx/xx & xx/xx & 0\%   & Designer \\
+\rowcolor[gray]{0.9}
+Músicas                              & xx/xx & xx/xx & 0\%   & Gerente \\
+Efeitos Sonoros                      & xx/xx & xx/xx & 0\%   & Gerente \\
+\rowcolor[gray]{0.9}
+Arte Definitiva                      & xx/xx & xx/xx & 0\%   & Gerente \\
+Instalador                           & xx/xx & xx/xx & 0\%   & Gerente \\
+\rowcolor[gray]{0.9}
+Manual                               & xx/xx & xx/xx & 0\%   & Gerente \\
+Áudio                                & xx/xx & xx/xx & 0\%   & Programador \\
+\rowcolor[gray]{0.9}
+Rede                                 & xx/xx & xx/xx & 0\%   & Programador \\
+Primeira Fase Jogável                & xx/xx & xx/xx & 0\%   & Programador \\
+\midrule
+\rowcolor[gray]{0.7}
+\textbf{(Marco) MILESTONE 1 (30\% do jogo)} & 29/05 & 29/05 & 0\% & Equipe\\
+\midrule
+Versão Alfa                          & xx/xx & xx/xx & 0\%   & Programador \\
+\midrule
+\rowcolor[gray]{0.7}
+\textbf{(Marco) MILESTONE 2 (70\% do jogo)} & 19/06 & 19/06 & 0\% & Equipe\\
+\midrule
+Versão Beta                          & xx/xx & xx/xx & 0\%   & Programador \\
+\midrule
+\rowcolor[gray]{0.7}
+\textbf{(Marco) MILESTONE 3 (100\% do jogo)} & 10/07 & 10/07 & 0\% & Equipe\\
+\midrule
+                                     & xx/xx & xx/xx & 0\%   &      \\
+\midrule
+\end{tabular}
+\end{table}
+
+\newpage
+\section*{Gráfico Gantt - Divido por semanas}
+\definecolor{linkred}{RGB}{165,0,33}
+\setganttlinklabel{f-s}{}
+\begin{ganttchart}[
+    canvas/.append style={fill=none, draw=black!15, line width=.75pt},
+    hgrid style/.style={draw=black!5, line width=.75pt},
+    vgrid={*1{draw=black!15, line width=.75pt}},
+    today=11,
+    today rule/.style={
+      draw=black!64,
+      dash pattern=on 3.5pt off 4.5pt,
+      line width=1.5pt
+    },
+    today label font=\small\bfseries,
+    title/.style={draw=none, fill=none},
+    title label font=\bfseries\footnotesize,
+    title label node/.append style={below=7pt},
+    include title in canvas=false,
+    bar label font=\mdseries\small\color{black!70},
+    bar label node/.append style={left=.2cm},
+    bar/.append style={draw=none, fill=black!63},
+    bar incomplete/.append style={fill=barblue},
+    bar progress label font=\mdseries\footnotesize\color{black!70},
+    group incomplete/.append style={fill=groupblue},
+    group left shift=0,
+    group right shift=0,
+    group height=.5,
+    group peaks tip position=0,
+    group label node/.append style={left=.6cm},
+    group progress label font=\bfseries\small,
+    link/.style={-latex, line width=1.5pt, linkred},
+    link label font=\scriptsize\bfseries,
+    link label node/.append style={below left=-2pt and 0pt}
+  ]{1}{18}
+ \gantttitle[
+    title label node/.append style={below left=7pt and 2pt}
+  ]{SEMANAS:\quad}{0}
+  \gantttitlelist{1,...,18}{1} \\
+  \ganttgroup{MILESTONE 1}{1}{12} \\
+  \ganttbar[name=task1]{Brainstorm}{2}{2} \\
+  \ganttbar[name=task2]{Formação da Equipe}{2}{3} \\
+  \ganttbar[name=task3]{Versão Inicial do Documento de Visão}{2}{4} \\
+  \ganttbar[name=task4]{Conceito do Jogo}{3}{3} \\
+  \ganttbar[name=task5]{Ambiente de Desenvolvimento}{3}{3} \\
+  \ganttbar[name=task6]{Laço Principal}{3}{5} \\
+  \ganttbar[name=task7]{Documento de Apresentação da Equipe}{3}{9} \\
+  \ganttbar[name=task8]{Janela}{5}{5} \\
+  \ganttbar[name=task9]{Plano de Negócio}{5}{7} \\
+  \ganttbar[name=task10]{Cronograma}{5}{11} \\
+  \ganttbar[name=task11]{Versão Final do Documento de Visão}{6}{12} \\
+  \ganttbar[name=task12]{Versão Inicial do GDD}{6}{12} \\
+  \ganttbar[name=task13]{Textos}{6}{12} \\
+  \ganttbar[name=task14]{Módulo de Vídeo}{6}{12} \\
+  \ganttbar[name=task15]{Low-Fi Sketches}{7}{8} \\
+  \ganttbar[name=task16]{Animações}{8}{12} \\
+  \ganttbar[name=task17]{Tela de Apresentação}{9}{10} \\
+  \ganttbar[name=task18]{Imagens}{9}{12} \\
+  \ganttmilestone{Milestone 1 - Marco}{12} \\
+  \ganttgroup{MILESTONE 2}{13}{15} \\
+  \ganttgroup{MILESTONE 3}{16}{18} \\
+  \ganttlink[link type=f-s]{task1}{task4}
+  \ganttlink[link type=f-s]{task2}{task5}
+  \ganttlink[link type=f-s]{task2}{task7}
+  \ganttlink[link type=f-s]{task5}{task6}
+  \ganttlink[link type=f-s]{task3}{task11}
+  \ganttlink[link type=f-s]{task11}{task12}
+  \ganttlink[link type=f-s]{task12}{task16}
+  \ganttlink[link type=f-s]{task15}{task18}
+\end{ganttchart}
 
 \end{document}
