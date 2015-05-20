@@ -67,8 +67,8 @@ principalmente, do jogos Capitão Comando, Little Fighter 2 e Double Dragon.
 \section{Visão geral}
 O jogo é dividido em 5 segmentos, ou 5 capítulos:
 \begin{enumerate}
-\item Tutorial pra interação com o mundo, tarefas simples como "ir falar com o carteiro" ou "buscar o leite na despensa" para o jogador se acostumar com a linguagem do jogo.
-Após essa pequena tarefa é revelado que alguns morcegos/monstros invadiram o último andar da torre, e o jogador deve ir se livrar deles.
+\item Tutorial pra interação com o mundo, tarefas simples como "ir falar com o carteiro" ou "buscar o leite na despensa" para o jogador se acostumar com a linguagem do jogo. Este tutorial será exibido na forma de uma cutscene, dessa forma não haverá interação do usuário.
+Após essa pequena introdução é revelado que alguns morcegos/monstros invadiram o último andar da torre, e o jogador deve ir se livrar deles.
 \item O jogador precisa de alguma arma, então deve ir até o ferreiro para conseguir uma espada simples. Ele sobe até o último andar da torre e elimina os morcegos, mas por acidente desperta o mecanismo de defesa da torre, que o ataca (chefão 1).
 Durante a batalha, a espada do Inti se prova ineficaz (pode talvez quebrar) porém ele acha uma espada fincada na parede próxima ao chefão. Ele remove a espada (o que destranca a porta para a saída pro mundo afora) e usa ela pra derrotar o chefão.
 Ao derrotar o chefão uma porta atrás dele se revela e abre, revelando um mundo inteiro do lado de fora.
@@ -103,7 +103,7 @@ O personagem poderá se movimentar da seguinte maneira:
     \item Ataque
 \end{itemize}
 
-\subsection{Esquema básico}
+\subsection{Esquema básico com teclado}
 
 [W] [A] [S] [D] - Movimentação
 
@@ -144,6 +144,27 @@ O personagem poderá se movimentar da seguinte maneira:
 [Y] - Trocar personagem
 
 [START] - Pause(durante jogo)
+
+\section{Saúde}
+
+\subsection{Aspectos Gerias}
+Cada personagem (Inti e Killa) terá sua própria barra de vida. Elas serão exebidas no canto superior esquerdo da tela.
+
+
+A barra de vida/saúde terá 9 espaços {\bf sem} divisões visíveis desses;
+Se um dos personagens tiver a vida esgotada, ele fica incapacitado (por exemplo, não pode atacar).
+
+
+Após 30 segundos, a vida recarrega 3 espaços
+
+\subsection{Estados anormais}
+O jogo não terá estados anormais de saúde das personagens
+
+\subsection{Vidas}
+O aspecto principal da saúde das personagens no jogo será a barra de saúde. Não haverá acumulo de vidas como os conceitos relacionados ao cogumelo verde do Mario.
+
+\subsection{Morte}
+Quando a barra de vida/saúde dos dois personagens se extinguir, a tela de sinalizando o fim do jogo irá aparecer e o jogador terá as opções do menu principal novamente expostas e com uma opção de voltar à um ponto anterior da morte.
 
 \end{document}
 
