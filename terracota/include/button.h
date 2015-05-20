@@ -1,11 +1,12 @@
 #ifndef H_BUTTON_H
 #define H_BUTTON_H
 
-#include "object.h"
-#include "mousebuttoneventlistener.h"
-#include "mousemotioneventlistener.h"
+#include <core/object.h>
+#include <core/mousebuttoneventlistener.h>
+#include <core/mousemotioneventlistener.h>
 
-#include "image.h"
+#include <core/image.h>
+#include <core/texture.h>
 #include <memory>
 
 using std::shared_ptr;
@@ -28,7 +29,7 @@ public:
 	void set_show();
 
 private:
-    shared_ptr<Image>  m_image;
+    shared_ptr<Texture>  m_image;
     State m_state;
     void draw_self();
 };

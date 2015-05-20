@@ -1,6 +1,6 @@
 #include "titlescreen.h"
 
-#include "environment.h"
+#include <core/environment.h>
 #include "button.h"
 #include "gameflow.h"
 
@@ -24,7 +24,7 @@ TitleScreen::TitleScreen()
     double bx = (w - bw)/2;
     double by = h/3;
 
-	m_background = env->resources_manager->get_image("res/images/titlescreen/background_terracota.jpg");
+	m_background = env->resources_manager->get_texture("res/images/titlescreen/background_terracota.jpg");
     Button* ok = new Button(this,"ok", "res/images/buttons/start_button.png", bx, by, bw , bh);
 	Button* settings = new Button(this,"settings","res/images/buttons/option_button.png",bx,by+bh+10,bw,bh);
     Button* exit = new Button(this,"exit","res/images/buttons/quit_button.png", bx, by+bh+115, bw, bh);

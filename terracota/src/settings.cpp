@@ -1,6 +1,6 @@
 #include "settings.h"
 
-#include "environment.h"
+#include <core/environment.h>
 #include "button.h"
 #include "gameflow.h"
 
@@ -20,7 +20,7 @@ Settings::Settings()
 	double bx = (w-bw)/2;
 	double by = 90; 
 
-	m_background = env->resources_manager->get_image("res/images/titlescreen/background_terracota.jpg");
+	m_background = env->resources_manager->get_texture("res/images/titlescreen/background_terracota.jpg");
 
     Button* fullscreen = new Button(this, "fullscreen","res/images/buttons/fullscreen_mode_button.png",bx,by+100,bw,bh);
     Button* window_mode = new Button(this, "window_mode","res/images/buttons/window_mode_button.png",bx,by+200,bw,bh);

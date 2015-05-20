@@ -2,11 +2,12 @@
 NAME = terracota.exe
 
 # ENGINE INCLUDES
-ENGINE_INC = -I /usr/share/ijengine/include/
-ENGINE_LIB = -L /usr/share/ijengine/lib/ -lijengine
+ENGINE_PATH =  /usr/local/include/ijengine/
+ENGINE_INC = -I $(ENGINE_PATH)
+ENGINE_LIB = -L /usr/local/lib/ -lijengine
 
 # DIR
-INCLUDES= -I include $(ENGINE_INC)
+INCLUDES=  $(ENGINE_INC) -I include
 SRC_DIR  = src
 TEST_DIR=test
 OBJ_DIR = obj
@@ -15,7 +16,7 @@ OBJ_DIR = obj
 #FLAGS
 CC=clang++
 CFLAGS=  -Wall -W -pedantic -std=c++11
-LIBS = $(ENGINE_LIB) `sdl2-config --libs` -lSDL2_image -lSDL2_ttf
+LIBS = $(ENGINE_LIB) `sdl2-config --libs` -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 
 SRC = ${wildcard $(SRC_DIR)/*.cpp}
 OBJ = ${addprefix $(OBJ_DIR)/, ${notdir ${SRC:.cpp=.o}}}

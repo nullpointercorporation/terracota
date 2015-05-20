@@ -1,10 +1,11 @@
 #ifndef STAGE_H
 #define STAGE_H
 
-#include "level.h"
-#include "image.h"
-#include "rect.h"
+#include <core/level.h>
+#include <core/image.h>
+#include <core/rect.h>
 
+#include <core/sprite.h>
 #include <memory>
 
 using std::string;
@@ -16,7 +17,7 @@ public:
     Stage(ObjectID id,const string& background, double x, double y, double w,double h);
 
 private:
-    shared_ptr<Image> m_background;
+    shared_ptr<Texture> m_background;
     void draw_self();
 	Rect m_rect;
 };

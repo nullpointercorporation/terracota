@@ -2,8 +2,8 @@
 #define H_SETTINGS_H
 
 
-#include "level.h"
-#include "image.h"
+#include <core/level.h>
+#include <core/image.h>
 
 #include <memory>
 using std::shared_ptr;
@@ -19,7 +19,7 @@ public:
 	bool on_message(Object* sender, MessageID id, Parameters parameters);
 
 private:
-	shared_ptr<Image> m_background;
+	shared_ptr<Texture> m_background;
 	void draw_self();
 };
 

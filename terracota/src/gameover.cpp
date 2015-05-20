@@ -1,6 +1,6 @@
 #include "gameover.h"
 #include "button.h"
-#include "object.h"
+#include <core/object.h>
 
 
 
@@ -12,7 +12,7 @@ GameOver::GameOver()
 	double w = env->canvas->w();
 	double h = env->canvas->h();
 	
-	m_background = env->resources_manager->get_image("res/images/gameover/gameover.png");
+	m_background = env->resources_manager->get_texture("res/images/gameover/gameover.png");
 }
 
 GameOver::~GameOver()

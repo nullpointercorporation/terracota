@@ -1,8 +1,8 @@
 #ifndef H_TERRACOTA_H
 #define H_TERRACOTA_H
 
-#include <game.h>
-#include <keyboardevent.h>
+#include <core/game.h>
+#include <core/keyboardevent.h>
 
 class Terracota : public Game
 {

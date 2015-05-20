@@ -1,9 +1,9 @@
 #include "button.h"
-#include "rect.h"
-#include "color.h"
-#include "environment.h"
-#include "mousebuttonevent.h"
-#include "mousemotionevent.h"
+#include <core/rect.h>
+#include <core/color.h>
+#include <core/environment.h>
+#include <core/mousebuttonevent.h>
+#include <core/mousemotionevent.h>
 
 #include <cstdio>
 
@@ -18,7 +18,7 @@ Button::Button(Object* parant, ObjectID id, const string& image,
 	env->events_manager->register_mouse_button_event_listener(this);
 	env->events_manager->register_mouse_motion_event_listener(this);
 	
-	m_image = env->resources_manager->get_image(image);
+	m_image = env->resources_manager->get_texture(image);
 	m_state = IDLE;
 
 }
