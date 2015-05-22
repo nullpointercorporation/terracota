@@ -30,6 +30,7 @@ public:
     bool onJoyStickEvent(const JoyStickEvent& event);
 private:
     Inti* m_inti; 
+    Inti* m_inti2; 
 };
 
 #endif

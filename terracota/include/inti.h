@@ -9,8 +9,8 @@ using std::pair;
 class Inti: public Sprite
 {
 public:
-    typedef enum { NONE, IDLE, WALKING,ATACKING, INTERACTING } State;
-    typedef enum { MOVED, STOPPED,CHANGING,INTERACTED } Event;
+    typedef enum { NONE, IDLE, WALKING,ATTACKING, INTERACTING } State;
+    typedef enum { MOVED, STOPPED,ATTACKED,CHANGING,INTERACTED } Event;
     typedef enum { LEFT, RIGHT ,UP,DOWN } Direction;
 
 	Inti(Object* parent,const string& id);

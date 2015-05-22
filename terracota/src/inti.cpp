@@ -1,6 +1,9 @@
 #include "inti.h"
 #include <core/environment.h>
 #include <core/keyboardevent.h>
+#include <iostream>
+
+using namespace std;
 
 using std::make_pair;
 class Inti::Impl
@@ -32,7 +35,7 @@ class Idle : public SpriteState
 public:
     Idle(Inti *inti)
         : m_inti(inti), m_animation(new Animation("res/images/characters/inti/idle_1.png",
-            0, 0, 127, 172, 24, 50, true)), m_left(0), m_right(0)
+            0, 0, 127, 172, 24, 50, true)), m_left(0), m_right(0),m_up(0),m_down(0)
     {
     }
 
@@ -41,7 +44,7 @@ public:
     void enter(int)
     {
         m_inti->set_dimensions(m_animation->w(), m_animation->h());
-        m_right = m_left = 0;
+        m_right = m_left = m_up = m_down = 0;
     }
 
     void leave(int)
@@ -54,22 +57,38 @@ public:
 
     void update(unsigned long elapsed)
     {
-        short res = m_right - m_left;
+        short xres = m_right - m_left;
+        short yres = m_up - m_down;
 
-        if (res < 0)
+        if (xres < 0)
         {
             m_inti->set_moviment(-1.0, 0.0);
             m_inti->set_direction(Inti::LEFT);
             m_inti->report_event(Inti::MOVED);
-        } else if (res > 0)
+        } 
+        else if (xres > 0)
         {
             m_inti->set_moviment(1.0, 0.0);
             m_inti->set_direction(Inti::RIGHT);
             m_inti->report_event(Inti::MOVED);
         }
 
+        if (yres > 0)
+        {
+            m_inti->set_moviment(0.0,-1.0);
+            m_inti->set_direction(Inti::DOWN);
+            m_inti->report_event(Inti::MOVED);
+        }
+
+        else if(yres < 0)
+        {
+            m_inti->set_moviment(0.0,1.0);
+            m_inti->set_direction(Inti::UP);
+            m_inti->report_event(Inti::MOVED);
+        }
+
         Inti::Direction dir = m_inti->direction();
-        int row = dir == Inti::LEFT ? 0 : 1;
+        int row = dir == Inti::LEFT ? 1 : 0;
         m_animation->set_row(row);
         m_animation->update(elapsed);
     }
@@ -84,11 +103,15 @@ public:
             case KeyboardEvent::LEFT:
                 m_left = 1;
                 return true;
-
+            case KeyboardEvent::UP:
+                m_up = 1;
+                return true;
             case KeyboardEvent::RIGHT:
                 m_right = 1;
                 return true;
-
+            case KeyboardEvent::DOWN:
+                m_down = 1;
+                return true;
             default:
                 break;
             }
@@ -100,11 +123,15 @@ public:
             case KeyboardEvent::LEFT:
                 m_left = 0;
                 return true;
-
+            case KeyboardEvent::UP:
+                m_up = 0;
+                return true;
             case KeyboardEvent::RIGHT:
                 m_right = 0;
                 return true;
-
+            case KeyboardEvent::DOWN:
+                m_down = 0;
+                return true;
             default:
                 break;
             }
@@ -117,16 +144,16 @@ public:
 private:
     Inti *m_inti;
     unique_ptr<Animation> m_animation;
-    int m_left, m_right;
+    int m_left, m_right,m_up,m_down;
 };
 
 class Walking : public SpriteState
 {
 public:
-    Walking(Inti *dinoman)
-        : m_inti(dinoman), m_animation(
+    Walking(Inti *inti)
+        : m_inti(inti), m_animation(
         new Animation("res/images/characters/inti/walking_1.png", 0, 0, 127, 177, 21, 50, true)),
-        m_left(0), m_right(0), m_last(0)
+        m_left(0), m_right(0),m_down(0),m_up(0),m_last(0)
     {
     }
 
@@ -142,13 +169,16 @@ public:
 
         m_right = dir == Inti::RIGHT ? 1 : 0;
         m_left = dir == Inti::LEFT ? 1 : 0;
+        m_up = dir == Inti::UP ? 1 : 0;
+        m_down = dir == Inti::DOWN ? 1 : 0;
         m_last = 0;
 
         if (from == Inti::IDLE)
         {
             auto moviment = m_inti->moviment();
             double x = moviment.first * speed;
-            m_inti->set_moviment(x, 0.0);
+            double y = moviment.second * speed;
+            m_inti->set_moviment(x, y);
         }
     }
 
@@ -171,9 +201,14 @@ public:
             case KeyboardEvent::LEFT:
                 m_left = 1;
                 return true;
-
+            case KeyboardEvent::UP:
+                m_up = 1;
+                return true;
             case KeyboardEvent::RIGHT:
                 m_right = 1;
+                return true;
+            case KeyboardEvent::DOWN:
+                m_down = 1;
                 return true;
 
             default:
@@ -187,9 +222,16 @@ public:
             case KeyboardEvent::LEFT:
                 m_left = 0;
                 return true;
-
+            case KeyboardEvent::UP:
+                m_up = 0;
+                cout << "UP RELEASED"<<endl;
+                return true;
             case KeyboardEvent::RIGHT:
-                m_right = 0;
+                m_right =0;
+                return true;
+            case KeyboardEvent::DOWN:
+                m_down = 0;
+                cout << "DOWN RELEASED"<<endl;
                 return true;
 
             default:
@@ -203,18 +245,22 @@ public:
 
     void update(unsigned long elapsed)
     {
-        short res = m_right - m_left;
+        short xres = m_right - m_left;
+        short yres = m_up - m_down;
+        cout << yres << "<<<----"<<endl;
 
-        if (res < 0)
+        if (xres < 0)
         {
-            m_inti->set_moviment(-speed, 0.0);
             m_inti->set_direction(Inti::LEFT);
-        } else if (res > 0)
+        } else if (xres > 0)
         {
-            m_inti->set_moviment(speed, 0.0);
             m_inti->set_direction(Inti::RIGHT);
-            m_inti->report_event(Inti::MOVED);
-        } else
+        } 
+
+            
+        m_inti->set_moviment(xres*speed ,yres*speed);
+
+        if (xres ==0 and  yres == 0)
         {
             m_inti->report_event(Inti::STOPPED);
         }
@@ -231,7 +277,9 @@ public:
         auto moviment = m_inti->moviment();
         unsigned long delta = elapsed - m_last;
         double x = m_inti->x() + (moviment.first * delta)/1000.0;
+        double y = m_inti->y() + (moviment.second * delta)/1000.0;
         m_inti->set_x(x);
+        m_inti->set_y(y);
 
         m_last = elapsed;
         m_animation->update(elapsed);
@@ -240,7 +288,7 @@ public:
 private:
     Inti *m_inti;
     unique_ptr<Animation> m_animation;
-    short m_left, m_right;
+    short m_left, m_right,m_down,m_up;
     unsigned long m_last;
 };
 

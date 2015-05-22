@@ -8,11 +8,14 @@
 
 
 GameControl::GameControl(Object *parent, ObjectID id)
-	: Object(parent,id), m_inti(nullptr) 
+	: Object(parent,id), m_inti(nullptr),m_inti2(nullptr) 
 {
 	m_inti = new Inti(this,"inti");
+	m_inti2 = new Inti(this,"inti2");
+	m_inti2->set_position(200,300);
 	m_inti->set_position(0,300);
 	add_child(m_inti);
+	add_child(m_inti2);
 }
 
 GameControl::~GameControl()
@@ -23,7 +26,7 @@ bool
 GameControl::onKeyboardEvent(const KeyboardEvent& event)
 {
 
-	return m_inti->onKeyboardEvent(event);
+	return false;
 }
 bool 
 GameControl::onMouseButtonEvent(const MouseButtonEvent& event)

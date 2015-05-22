@@ -26,7 +26,7 @@ Terracota::load_level(const string& id)
     if (id == "settings")
         return new Settings();
 	if (id == "stage1")
-		return new Stage("stage1","res/images/stages/background_t.png",0,300,800,600);
+		return new Stage("stage1","res/images/stages/first_map/1.jpg",500,200,800,600);
 
     
     return nullptr; 
