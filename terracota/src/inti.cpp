@@ -30,6 +30,7 @@ private:
 };
 
 
+
 class Idle : public SpriteState
 {
 public:
@@ -116,6 +117,7 @@ public:
             case KeyboardEvent::S:
                 m_down = 1;
                 return true;
+           
             default:
                 break;
             }
@@ -154,6 +156,145 @@ private:
     unique_ptr<Animation> m_animation;
     int m_left, m_right,m_up,m_down;
 };
+
+class Attacking: public SpriteState
+{
+public:
+    Attacking(Inti *inti)
+       : m_inti(inti),m_animation(
+        new Animation("res/images/characters/inti/attack_1.png",0,0,174,224,12,50,true)),
+        m_left(0),m_right(0),m_down(0),m_up(0),m_last(0)
+    {
+    }
+
+    ~Attacking(){}
+
+    const double speed = 160.0;
+
+    void enter(int from)
+    {
+        m_inti->set_dimensions(m_animation->w(), m_animation->h());
+
+        Inti::Direction dir = m_inti->direction();
+
+        m_right = dir == Inti::RIGHT ? 1 : 0;
+        m_left = dir == Inti::LEFT ? 1 : 0;
+        m_up = dir == Inti::UP ? 1 : 0;
+        m_down = dir == Inti::DOWN ? 1 : 0;
+        m_last = 0;
+
+        if (from == Inti::IDLE)
+        {
+            auto moviment = m_inti->moviment();
+            double x = moviment.first * speed;
+            double y = moviment.second * speed;
+            m_inti->set_moviment(x, y);
+        }
+    }
+    void draw()
+    {   
+        m_animation->draw(m_inti->x(), m_inti->y());
+    }
+
+    bool onKeyboardEvent(const KeyboardEvent& event)
+    {
+        switch (event.state())
+        {
+        case KeyboardEvent::PRESSED:
+            switch (event.key())
+            {
+            case KeyboardEvent::LEFT:
+                m_left = 1;
+                return true;
+            case KeyboardEvent::UP:
+                m_up = 1;
+                return true;
+            case KeyboardEvent::RIGHT:
+                m_right = 1;
+                return true;
+            case KeyboardEvent::DOWN:
+                m_down = 1;
+                return true;
+
+            default:
+                break;
+            }
+            break;
+
+        case KeyboardEvent::RELEASED:
+            switch (event.key())
+            {
+            case KeyboardEvent::LEFT:
+                m_left = 0;
+                return true;
+            case KeyboardEvent::UP:
+                m_up = 0;
+                return true;
+            case KeyboardEvent::RIGHT:
+                m_right =0;
+                return true;
+            case KeyboardEvent::DOWN:
+                m_down = 0;
+                return true;
+
+            default:
+                break;
+            }
+            break;
+        }
+
+        return false;
+    }
+
+    void update(unsigned long elapsed)
+    {
+        short xres = m_right - m_left;
+        short yres = m_down -  m_up ;
+
+        if (xres < 0)
+        {
+            m_inti->set_direction(Inti::LEFT);
+        } else if (xres > 0)
+        {
+            m_inti->set_direction(Inti::RIGHT);
+        } 
+
+            
+        m_inti->set_moviment(xres*speed ,yres*speed);
+
+        if (xres ==0 and  yres == 0)
+        {
+            m_inti->report_event(Inti::STOPPED);
+        }
+
+        Inti::Direction dir = m_inti->direction();
+        int row = dir == Inti::LEFT ? 0 : 1;
+        m_animation->set_row(row);
+
+        if (not m_last)
+        {
+            m_last = elapsed;
+        }
+
+        auto moviment = m_inti->moviment();
+        unsigned long delta = elapsed - m_last;
+        double x = m_inti->x() + (moviment.first * delta)/1000.0;
+        double y = m_inti->y() + (moviment.second * delta)/1000.0;
+        m_inti->set_x(x);
+        m_inti->set_y(y);
+
+        m_last = elapsed;
+        m_animation->update(elapsed);
+    }
+
+private:
+    Inti *m_inti;
+    unique_ptr<Animation> m_animation;
+    short m_left, m_right,m_down,m_up;
+    unsigned long m_last;
+};
+
+
 
 class Walking : public SpriteState
 {
@@ -261,7 +402,6 @@ public:
     {
         short xres = m_right - m_left;
         short yres = m_down -  m_up ;
-        cout << yres << "<<<----"<<endl;
 
         if (xres < 0)
         {
@@ -314,6 +454,7 @@ Inti::Inti(Object *parent, const string& id)
 
     add_transition(MOVED, IDLE, WALKING);
     add_transition(STOPPED, WALKING, IDLE);
+    add_transition(ATTACKED, ATTACKING , IDLE);
     change_state(IDLE, NONE);
 
     Environment *env = Environment::get_instance();
