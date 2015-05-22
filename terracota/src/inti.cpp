@@ -101,15 +101,19 @@ public:
             switch (event.key())
             {
             case KeyboardEvent::LEFT:
+            case KeyboardEvent::A:
                 m_left = 1;
                 return true;
             case KeyboardEvent::UP:
+            case KeyboardEvent::W:
                 m_up = 1;
                 return true;
             case KeyboardEvent::RIGHT:
+            case KeyboardEvent::D:
                 m_right = 1;
                 return true;
             case KeyboardEvent::DOWN:
+            case KeyboardEvent::S:
                 m_down = 1;
                 return true;
             default:
@@ -121,15 +125,19 @@ public:
             switch (event.key())
             {
             case KeyboardEvent::LEFT:
+            case KeyboardEvent::A:
                 m_left = 0;
                 return true;
             case KeyboardEvent::UP:
+            case KeyboardEvent::W:
                 m_up = 0;
                 return true;
             case KeyboardEvent::RIGHT:
+            case KeyboardEvent::D:
                 m_right = 0;
                 return true;
             case KeyboardEvent::DOWN:
+            case KeyboardEvent::S:
                 m_down = 0;
                 return true;
             default:
@@ -199,18 +207,21 @@ public:
             switch (event.key())
             {
             case KeyboardEvent::LEFT:
+            case KeyboardEvent::A:
                 m_left = 1;
                 return true;
             case KeyboardEvent::UP:
+            case KeyboardEvent::W:
                 m_up = 1;
                 return true;
             case KeyboardEvent::RIGHT:
+            case KeyboardEvent::D:
                 m_right = 1;
                 return true;
             case KeyboardEvent::DOWN:
+            case KeyboardEvent::S:
                 m_down = 1;
                 return true;
-
             default:
                 break;
             }
@@ -220,20 +231,23 @@ public:
             switch (event.key())
             {
             case KeyboardEvent::LEFT:
+            case KeyboardEvent::A:
                 m_left = 0;
                 return true;
             case KeyboardEvent::UP:
+            case KeyboardEvent::W:
                 m_up = 0;
                 cout << "UP RELEASED"<<endl;
                 return true;
             case KeyboardEvent::RIGHT:
+            case KeyboardEvent::D:
                 m_right =0;
                 return true;
             case KeyboardEvent::DOWN:
+            case KeyboardEvent::S:
                 m_down = 0;
                 cout << "DOWN RELEASED"<<endl;
                 return true;
-
             default:
                 break;
             }
