@@ -58,7 +58,7 @@ public:
     void update(unsigned long elapsed)
     {
         short xres = m_right - m_left;
-        short yres = m_up - m_down;
+        short yres = m_down - m_up;
 
         if (xres < 0)
         {
@@ -246,7 +246,7 @@ public:
     void update(unsigned long elapsed)
     {
         short xres = m_right - m_left;
-        short yres = m_up - m_down;
+        short yres = m_down -  m_up ;
         cout << yres << "<<<----"<<endl;
 
         if (xres < 0)
