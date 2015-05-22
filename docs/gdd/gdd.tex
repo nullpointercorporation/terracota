@@ -12,7 +12,7 @@
 \begin{document}
 \title{TerraCota\\Game Design Document}
 \author{NullPointer Corporation}
-\date{v0.1}
+\date{v0.3}
 \maketitle
 
 \newpage
@@ -26,6 +26,7 @@
     0.1 & 22/04/2015 & Carlos Oliveira  & Versão Inicial \\
     \rowcolor[gray]{0.9}
     0.2 & 20/05/2015 & Álvaro Fernando & Adicionando novas seções \\
+    0.3 & 22/05/2015 & Carlos Oliveira & Front-end \\
     \bottomrule
   \end{tabular}
   \caption{Histórico de Revisões}
@@ -37,6 +38,9 @@
 
 \newpage
 
+\listoffigures
+
+\newpage
 \section{Objetivo do jogo}
 
 \subsection{Conceito do jogo}
@@ -169,45 +173,33 @@ O personagem poderá se movimentar da seguinte maneira:
 
 \subsection{Esquema básico com teclado}
 
-[W] [A] [S] [D] - Movimentação
-
-[ESC] - Sair do jogo(no menu)
-
-[E] [N] - Interagir
-
-[SPACE] - Atacar
-
-[C] - Trocar personagem
-
-[ESC] [P] - Pause(durante jogo)
-
+\begin{itemize}
+    \item \textbar W\textbar \textbar A\textbar \textbar S\textbar \textbar D\textbar - Movimentação
+    \item \textbar ESC\textbar - Sair do jogo(no menu)
+    \item \textbar E\textbar \textbar N\textbar - Interagir
+    \item \textbar SPACE\textbar - Atacar
+    \item \textbar C\textbar - Trocar personagem
+    \item \textbar ESC\textbar \textbar P\textbar - Pause(durante jogo)
+\end{itemize}
 \subsection{Esquema com o controle de PS4}
-
-[SETAS DIRECIONAIS] - movimentação
-
-[BOLA] - Interação
-
-[QUADRADO] - Atacar
-
-[X] - Interagir
-
-[TRIÂNGULO] - Trocar personagem
-
-[OPTIONS] - Pause(durante jogo)
+\begin{itemize}
+\item \textbar SETAS DIRECIONAIS\textbar - movimentação
+\item \textbar BOLA\textbar - Interação
+\item \textbar QUADRADO\textbar - Atacar
+\item \textbar X\textbar - Interagir
+\item \textbar TRIÂNGULO\textbar - Trocar personagem
+\item \textbar OPTIONS\textbar - Pause(durante jogo)
+\end{itemize}
 
 \subsection{Esquema com o controle de Xbox 360}
-
-[SETAS DIRECIONAIS] - movimentação
-
-[A] - Interação
-
-[X] - Atacar
-
-[B] - Interagir
-
-[Y] - Trocar personagem
-
-[START] - Pause(durante jogo)
+\begin{itemize}
+\item \textbar SETAS DIRECIONAIS\textbar - movimentação
+\item \textbar A\textbar - Interação
+\item \textbar X\textbar - Atacar
+\item \textbar B\textbar - Interagir
+\item \textbar Y\textbar - Trocar personagem
+\item \textbar START\textbar - Pause(durante jogo)
+\end{itemize}
 
 \section{Saúde}
 
@@ -301,5 +293,33 @@ colisão;
 colisão;
 \subitem {\bf Recompensas:} entrega quest/missão para segunda torre.
 
-\end{document}
+\section{Front-End}
+Esta seção apresenta as telas que são exibidas no início do jogo. As seguintes imagens são apresentadas no decorrer da abertura do jogo.
 
+\subsection{Logotipo da empresa}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.5]{logo-terracota.jpg}
+    \caption{Logotipo Terracota}
+    \label{fig:terracota_logo}
+\end{figure}
+
+\subsection{Softwares de Terceiros}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.2]{logo-sdl.png}
+    \caption{Logotipo SDL}
+    \label{fig:sdl_logo}
+\end{figure}
+
+\subsection{Requisitos legais}
+
+\begin{figure}[!htp]
+    \centering
+    \includegraphics[scale=0.3]{faixa_etaria.jpg}
+    \caption{Faixa indicativa}
+    \label{fig:faixa_indicativa}
+\end{figure}
+\end{document}
