@@ -1,28 +1,33 @@
 #include "stage.h"
 #include <core/animation.h>
-#include <map>
+#include <core/environment.h>
+
+#include "layer.h"
 #include "gameflow.h"
 #include "gamecontrol.h"
 
-Stage::Stage(ObjectID id,const string& background, double x, double y, double w,double h )
-	:Level(id),m_background(nullptr),m_rect(Rect(x,y,w,h))
+#include <iostream>
+using namespace std;
+Stage::Stage(Object* parent,ObjectID id)
+	:Object(parent,id),gamecontrol(nullptr)
 {
 	GameFlow::get_instance()->set_state(GameState::PLAYING);
-
-	Environment* env = Environment::get_instance();
-	m_background = env->resources_manager->get_texture(background);
-
-	GameControl* game  = new GameControl(this,"characters");	
-	game->set_position(0,200);
-
-	add_child(game);
+    gamecontrol = new GameControl(this,"gamecontrol");
+	add_child(gamecontrol);
 }
-
 
 void 
 Stage::draw_self(){
 	Environment* env = Environment::get_instance();
 	env->canvas->clear();
-    env->canvas->draw(m_background.get(),m_rect);
+    for( unsigned int i=0;i<m_layers.size();i++)
+    {
+        m_layers[i]->draw();
+    }
 }
 
+void 
+Stage::add_layer(Layer* layer)
+{
+    m_layers.push_back(layer);
+}

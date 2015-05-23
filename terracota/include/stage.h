@@ -1,25 +1,29 @@
 #ifndef STAGE_H
 #define STAGE_H
 
-#include <core/level.h>
+#include <core/object.h>
 #include <core/image.h>
-#include <core/rect.h>
 
 #include <core/sprite.h>
+#include <vector>
 #include <memory>
 
 using std::string;
 using std::shared_ptr;
+using std::vector;
 
-class Stage : public Level
+class GameControl;
+class Layer;
+
+class Stage : public Object
 {
 public:
-    Stage(ObjectID id,const string& background, double x, double y, double w,double h);
-
+    Stage(Object * parent,ObjectID id);
+	void add_layer(Layer* layer);
 private:
-    shared_ptr<Texture> m_background;
+	GameControl* gamecontrol;
+	vector < Layer* > m_layers;
     void draw_self();
-	Rect m_rect;
 };
 
 #endif

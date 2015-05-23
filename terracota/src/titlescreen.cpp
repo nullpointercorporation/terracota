@@ -64,7 +64,7 @@ TitleScreen::on_message(Object* object, MessageID id, Parameters)
     if (not button)
         return false;
     if(button->id() == "ok")
-        m_next = "stage1";
+        m_next = "map1";
 	if (button->id() == "settings")
 		m_next = "settings";
 
