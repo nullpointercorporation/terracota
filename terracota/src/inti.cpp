@@ -36,7 +36,7 @@ class Idle : public SpriteState
 public:
     Idle(Inti *inti)
         : m_inti(inti), m_animation(new Animation("res/images/characters/inti/idle_1.png",
-            0, 0, 127, 172, 24, 50, true)), m_left(0), m_right(0),m_up(0),m_down(0)
+            0, 0, 127, 172, 24, 50, true)), m_left(0), m_right(0),m_up(0),m_down(0),m_attack(0)
     {
     }
 
@@ -45,7 +45,7 @@ public:
     void enter(int)
     {
         m_inti->set_dimensions(m_animation->w(), m_animation->h());
-        m_right = m_left = m_up = m_down = 0;
+        m_right = m_left = m_up = m_down = m_attack= 0;
     }
 
     void leave(int)
@@ -87,6 +87,10 @@ public:
             m_inti->set_direction(Inti::UP);
             m_inti->report_event(Inti::MOVED);
         }
+		if ( m_attack > 0)
+		{
+            m_inti->report_event(Inti::ATTACKED);
+		}
 
         Inti::Direction dir = m_inti->direction();
         int row = dir == Inti::LEFT ? 1 : 0;
@@ -117,7 +121,9 @@ public:
             case KeyboardEvent::S:
                 m_down = 1;
                 return true;
-           
+            case KeyboardEvent::C:
+				m_attack = 1;
+                return true;
             default:
                 break;
             }
@@ -142,6 +148,9 @@ public:
             case KeyboardEvent::S:
                 m_down = 0;
                 return true;
+            case KeyboardEvent::C:
+				m_attack = 0;
+                return true;
             default:
                 break;
             }
@@ -153,8 +162,10 @@ public:
 
 private:
     Inti *m_inti;
+	
     unique_ptr<Animation> m_animation;
     int m_left, m_right,m_up,m_down;
+	int m_attack;
 };
 
 class Attacking: public SpriteState
@@ -163,7 +174,7 @@ public:
     Attacking(Inti *inti)
        : m_inti(inti),m_animation(
         new Animation("res/images/characters/inti/attack_1.png",0,0,174,224,12,50,true)),
-        m_left(0),m_right(0),m_down(0),m_up(0),m_last(0)
+        m_left(0),m_right(0),m_down(0),m_up(0),m_attack(0),m_last(0)
     {
     }
 
@@ -181,16 +192,14 @@ public:
         m_left = dir == Inti::LEFT ? 1 : 0;
         m_up = dir == Inti::UP ? 1 : 0;
         m_down = dir == Inti::DOWN ? 1 : 0;
+		m_attack = 1;
         m_last = 0;
-
-        if (from == Inti::IDLE)
-        {
-            auto moviment = m_inti->moviment();
-            double x = moviment.first * speed;
-            double y = moviment.second * speed;
-            m_inti->set_moviment(x, y);
-        }
     }
+
+    void leave(int)
+    {
+    }
+
     void draw()
     {   
         m_animation->draw(m_inti->x(), m_inti->y());
@@ -203,19 +212,9 @@ public:
         case KeyboardEvent::PRESSED:
             switch (event.key())
             {
-            case KeyboardEvent::LEFT:
-                m_left = 1;
+            case KeyboardEvent::C:
+				m_attack = 1;
                 return true;
-            case KeyboardEvent::UP:
-                m_up = 1;
-                return true;
-            case KeyboardEvent::RIGHT:
-                m_right = 1;
-                return true;
-            case KeyboardEvent::DOWN:
-                m_down = 1;
-                return true;
-
             default:
                 break;
             }
@@ -224,19 +223,9 @@ public:
         case KeyboardEvent::RELEASED:
             switch (event.key())
             {
-            case KeyboardEvent::LEFT:
-                m_left = 0;
+            case KeyboardEvent::C:
+				m_attack = 0;
                 return true;
-            case KeyboardEvent::UP:
-                m_up = 0;
-                return true;
-            case KeyboardEvent::RIGHT:
-                m_right =0;
-                return true;
-            case KeyboardEvent::DOWN:
-                m_down = 0;
-                return true;
-
             default:
                 break;
             }
@@ -248,49 +237,20 @@ public:
 
     void update(unsigned long elapsed)
     {
-        short xres = m_right - m_left;
-        short yres = m_down -  m_up ;
-
-        if (xres < 0)
-        {
-            m_inti->set_direction(Inti::LEFT);
-        } else if (xres > 0)
-        {
-            m_inti->set_direction(Inti::RIGHT);
-        } 
-
-            
-        m_inti->set_moviment(xres*speed ,yres*speed);
-
-        if (xres ==0 and  yres == 0)
-        {
+		if (not m_attack )
+		{
             m_inti->report_event(Inti::STOPPED);
-        }
-
+		}
         Inti::Direction dir = m_inti->direction();
-        int row = dir == Inti::LEFT ? 0 : 1;
+        int row = dir == Inti::LEFT ? 1 : 0;
         m_animation->set_row(row);
-
-        if (not m_last)
-        {
-            m_last = elapsed;
-        }
-
-        auto moviment = m_inti->moviment();
-        unsigned long delta = elapsed - m_last;
-        double x = m_inti->x() + (moviment.first * delta)/1000.0;
-        double y = m_inti->y() + (moviment.second * delta)/1000.0;
-        m_inti->set_x(x);
-        m_inti->set_y(y);
-
-        m_last = elapsed;
         m_animation->update(elapsed);
     }
 
 private:
     Inti *m_inti;
     unique_ptr<Animation> m_animation;
-    short m_left, m_right,m_down,m_up;
+    short m_left, m_right,m_down,m_up,m_attack;
     unsigned long m_last;
 };
 
@@ -378,7 +338,6 @@ public:
             case KeyboardEvent::UP:
             case KeyboardEvent::W:
                 m_up = 0;
-                cout << "UP RELEASED"<<endl;
                 return true;
             case KeyboardEvent::RIGHT:
             case KeyboardEvent::D:
@@ -387,7 +346,6 @@ public:
             case KeyboardEvent::DOWN:
             case KeyboardEvent::S:
                 m_down = 0;
-                cout << "DOWN RELEASED"<<endl;
                 return true;
             default:
                 break;
@@ -451,10 +409,14 @@ Inti::Inti(Object *parent, const string& id)
 {
     add_state(IDLE, new Idle(this));
     add_state(WALKING, new Walking(this));
+	add_state(ATTACKING,new Attacking(this));
 
+	/* to action*/
     add_transition(MOVED, IDLE, WALKING);
+    add_transition(ATTACKED, IDLE, ATTACKING);
+	/* to stop*/
     add_transition(STOPPED, WALKING, IDLE);
-    add_transition(ATTACKED, ATTACKING , IDLE);
+    add_transition(STOPPED, ATTACKING, IDLE);
     change_state(IDLE, NONE);
 
     Environment *env = Environment::get_instance();
