@@ -1,10 +1,12 @@
 #include "terracota.h"
 
 #include <util/frontend.h>
+
 #include "titlescreen.h"
 #include "settings.h"
 #include "stage.h"
 #include "gameflow.h"
+#include "gameover.h"
 
 Terracota::Terracota()
     : Game ("a")
@@ -27,7 +29,8 @@ Terracota::load_level(const string& id)
         return new Settings();
 	if (id == "stage1")
 		return new Stage("stage1","res/images/stages/first_map/1.jpg",500,200,800,600);
-
+	if (id == "gameover")
+		return new GameOver(); 
     
     return nullptr; 
 }

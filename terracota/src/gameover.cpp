@@ -5,7 +5,7 @@
 
 
 GameOver::GameOver()
-	: Level("GameOver")
+	: Level("gameover")
 {
 	Environment* env = Environment::get_instance();
 	

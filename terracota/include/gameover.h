@@ -12,6 +12,7 @@ class Image;
 
 class GameOver: public Level
 {
+public:
     GameOver();
     ~GameOver();
 

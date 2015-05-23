@@ -25,6 +25,16 @@ GameControl::~GameControl()
 bool 
 GameControl::onKeyboardEvent(const KeyboardEvent& event)
 {
+	switch(event.state())
+	{
+		case KeyboardEvent::PRESSED:
+			switch(event.key())
+			{
+				case KeyboardEvent::ESCAPE:
+					
+					return true;
+			}
+	}
 
 	return false;
 }
