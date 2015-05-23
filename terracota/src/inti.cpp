@@ -121,7 +121,7 @@ public:
             case KeyboardEvent::S:
                 m_down = 1;
                 return true;
-            case KeyboardEvent::C:
+            case KeyboardEvent::SPACE:
 				m_attack = 1;
                 return true;
             default:
@@ -148,7 +148,7 @@ public:
             case KeyboardEvent::S:
                 m_down = 0;
                 return true;
-            case KeyboardEvent::C:
+            case KeyboardEvent::SPACE:
 				m_attack = 0;
                 return true;
             default:
@@ -212,7 +212,7 @@ public:
         case KeyboardEvent::PRESSED:
             switch (event.key())
             {
-            case KeyboardEvent::C:
+            case KeyboardEvent::SPACE:
 				m_attack = 1;
                 return true;
             default:
@@ -223,7 +223,7 @@ public:
         case KeyboardEvent::RELEASED:
             switch (event.key())
             {
-            case KeyboardEvent::C:
+            case KeyboardEvent::SPACE:
 				m_attack = 0;
                 return true;
             default:
