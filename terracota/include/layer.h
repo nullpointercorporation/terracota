@@ -25,7 +25,7 @@ public:
 	pair<double,double> dimension_clip();
 	void set_clip_position(double x,double y );
 	void set_clip_dimension(double w,double h);
-private:
+protected:
 	shared_ptr<Texture> m_texture;
 	Rect m_clip;
 };
