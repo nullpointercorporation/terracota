@@ -2,8 +2,8 @@
 #define H_BUTTON_H
 
 #include <core/object.h>
-#include <core/mousebuttoneventlistener.h>
-#include <core/mousemotioneventlistener.h>
+#include <core/mousebuttonevent.h>
+#include <core/mousemotionevent.h>
 
 #include <core/image.h>
 #include <core/texture.h>
@@ -15,7 +15,7 @@ using std::string;
 typedef enum  { IDLE, ON_HOVER, HIDE } State;
 
 
-class Button : public Object, public MouseButtonEventListener, MouseMotionEventListener
+class Button : public Object, public MouseButtonEvent, MouseMotionEvent
 {
 public:
     Button(Object* parant = nullptr, ObjectID id = "",const string& image= "",
