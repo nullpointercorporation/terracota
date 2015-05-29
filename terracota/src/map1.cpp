@@ -1,6 +1,7 @@
 #include "map1.h"
 #include "layer.h"
 #include "background.h"
+#include <core/audiomanager.h>
 
 
 Map1::Map1(ObjectID id)
@@ -9,6 +10,8 @@ Map1::Map1(ObjectID id)
 	m_stage = new Stage(this,"map1"); 
 	add_child(m_stage);
 	generate_map();
+	Environment* env = Environment::get_instance();
+	env->music->play("res/sounds/1.mp3",50);
 }
 
 Map1::~Map1()

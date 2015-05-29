@@ -44,7 +44,6 @@ Stage::update_self(unsigned long elapsed)
     if (!b->horizontal(env->canvas->w())){
         inti->set_x(env->canvas->w()/2);
     }
-
 }
 
 void 
