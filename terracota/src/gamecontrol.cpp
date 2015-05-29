@@ -7,7 +7,7 @@ GameControl::GameControl(Object *parent, ObjectID id)
 	: Object(parent,id), m_inti(nullptr)
 {
 	m_inti = new Inti(this,"inti");
-	m_inti->set_position(0,300);
+	m_inti->set_position(300,300);
 	add_child(m_inti);
 }
 

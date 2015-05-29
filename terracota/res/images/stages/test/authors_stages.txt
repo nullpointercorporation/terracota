@@ -1,0 +1,32 @@
+Game		Final Fight 3
+Section		Backgrounds
+Filesize	42.28 KB
+Submitter	Shaybe
+Format		PNG (image/png)
+Size		768x312 pixels
+Link		http://www.spriters-resource.com/snes/finalfight3/sheet/60581/
+
+Game		Final Fight 3
+Section		Backgrounds
+Filesize	63.32 KB
+Submitter	Shaybe
+Format		PNG (image/png)
+Size		1019x281 pixels
+Link		http://www.spriters-resource.com/snes/finalfight3/sheet/60580/
+
+Game		Battle Blaze
+Section		Backgrounds
+Filesize	43.43 KB
+Submitter	Davias
+Format		PNG (image/png)
+Size		512x388 pixels
+Link		http://www.spriters-resource.com/snes/battleblaze/sheet/48368/
+
+Game		Battletoads and Double Dragon
+Section		Backgrounds
+Filesize	179.28 KB
+Submitter	World of Battletoads
+Format		PNG (image/png)
+Size		2724x596 pixels
+Link		http://www.spriters-resource.com/snes/toadsanddragon/sheet/32899/
+

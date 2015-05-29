@@ -20,6 +20,8 @@ public:
 	double ymin();
 	double xmin();
 	void draw();
+	void reposition(pair<double,double>moviment);
+	
 
 	pair<double,double> position_clip();
 	pair<double,double> dimension_clip();

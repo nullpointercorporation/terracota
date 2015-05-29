@@ -180,10 +180,11 @@ public:
 
     ~Attacking(){}
 
-    const double speed = 160.0;
+    const double speed = 0.5;
 
     void enter(int from)
     {
+		m_inti->set_position(m_animation->w(),m_animation->h()-52);
         m_inti->set_dimensions(m_animation->w(), m_animation->h());
 
         Inti::Direction dir = m_inti->direction();
@@ -198,6 +199,7 @@ public:
 
     void leave(int)
     {
+		m_inti->set_position(m_animation->w(),m_animation->h());
     }
 
     void draw()

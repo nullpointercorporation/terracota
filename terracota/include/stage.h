@@ -28,5 +28,4 @@ private:
 	GameControl* gamecontrol;
 	vector < Layer* > m_layers;
 };
-
 #endif

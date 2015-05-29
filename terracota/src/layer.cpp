@@ -30,10 +30,10 @@ void
 Layer::draw()
 {
 	Environment* env = Environment::get_instance();
-	if (not m_clip.w() and not m_clip.h() )
+	if (not m_clip.w() and not m_clip.h())
     	env->canvas->draw(m_texture.get());
 	else
-    	env->canvas->draw(m_texture.get(),m_clip);
+    	env->canvas->draw(m_texture.get(),m_clip,x(),y());
 }
 
 pair<double,double>
@@ -60,3 +60,15 @@ Layer::set_clip_dimension(double w,double h)
 	m_clip.set_dimensions(w,h);
 }
 
+
+void 
+Layer::reposition(pair<double,double> moviment)
+{
+	double mx = moviment.first;
+	double my = moviment.second;
+
+	if( mx > 0 ) set_x((x()-0.5));
+	if( mx < 0 ) set_x((x()+0.5));
+	if (my > 0 ) set_y((y()-0.5));
+	if (my < 0 ) set_y((y()+0.5));
+}
