@@ -27,6 +27,8 @@
     \rowcolor[gray]{0.9}
     0.2 & 20/05/2015 & Álvaro Fernando & Adicionando novas seções \\
     0.3 & 22/05/2015 & Carlos Oliveira & Front-end \\
+    \rowcolor[gray]{0.9}
+    0.4 & 30/05/2015 & Álvaro Fernando & Objetos Colecionáveis \\
     \bottomrule
   \end{tabular}
   \caption{Histórico de Revisões}
@@ -68,6 +70,11 @@ plataforma, que contém só um, desconsiderando a função de pular, também é 
 característica diferenciada do jogo, pois traz um modo de exploração em visão
 em múltiplos planos. A inspiração desse estilo de movimentação veio,
 principalmente, do jogos Capitão Comando, Little Fighter 2 e Double Dragon.
+
+Não estará presente no jogo elementos relacionados à economia e/ou obtenção de
+recursos, tais como dinheiro, moeda, cristais, etc. Levando em consideração o
+conceito do jogo, a humanidade se abstém de um sistema monetário, colocando em
+prática a barganha para obtenção de itens, peças, alimentos, etc.
 
 \section{Visão geral}
 O jogo é dividido em 5 segmentos, ou 5 capítulos:
@@ -149,6 +156,9 @@ objetos que emitem som, som que será mantido por algum objeto e ouvinte da cena
 O Terracota {\bf não} terá suporte à multijogadores em rede, seja local ou online.
 
 \section{Controles}
+Esta seção trata dos controles do jogo e sua respectiva ação/movimento. Para
+o mecanismo de movimentação pelo mundo será utilizado apenas os movimentos
+corporais do protagonista. Por tanto não haverá {\bf veículos} no jogo.
 
 \subsection{Lista de movimentos}
 O personagem poderá se movimentar da seguinte maneira:
@@ -231,7 +241,7 @@ ao da morte.
 
 \section{NPCs}
 O jogo terá cinco NPCs (non-player character - personagem não jogável):
-\enumerate
+\begin{enumerate}
 \item Mãe do personagem Inti:
 \subitem {\bf Nome:} desconhecido;
 \subitem {\bf Sexo:} feminino;
@@ -292,9 +302,11 @@ colisão;
 \subitem {\bf Colisão:} jogador aciona tecla/botão de interação para iniciar a
 colisão;
 \subitem {\bf Recompensas:} entrega quest/missão para segunda torre.
+\end{enumerate}
 
 \section{Front-End}
-Esta seção apresenta as telas que são exibidas no início do jogo. As seguintes imagens são apresentadas no decorrer da abertura do jogo.
+Esta seção apresenta as telas que são exibidas no início do jogo. As seguintes
+imagens são apresentadas no decorrer da abertura do jogo.
 
 \subsection{Logotipo da empresa}
 
@@ -322,4 +334,30 @@ Esta seção apresenta as telas que são exibidas no início do jogo. As seguint
     \caption{Faixa indicativa}
     \label{fig:faixa_indicativa}
 \end{figure}
+
+\section{Objetos Colecionáveis}
+Esta seção contempla a descrição dos objetos colecionáveis do jogo.
+
+\subsection{Primeira Espada}
+Encontrada no primeiro nível, recebida do NPC Ferreiro. Possibilita ao jogador
+o movimento de ataque.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.5]{sword1.png}
+    \caption{Primeira Espada}
+    \label{fig:primeira_espada}
+\end{figure}
+
+\subsection{Segunda Espada}
+Encontrada na segunda torre, na qual mora Killa. Recebida após encontrar
+um baú de tesouro nesta torre. Possibilita ao jogador o movimento de ataque.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.5]{sword2.png}
+    \caption{Segunda Espada}
+    \label{fig:segunda_espada}
+\end{figure}
+
 \end{document}
