@@ -24,15 +24,9 @@ Button::Button(Object* parant, ObjectID id, const string& image,
 
 Button::~Button()
 {
-<<<<<<< HEAD
 	Environment* env  = Environment::get_instance();
 	env->events_manager->unregister_listener(this);
 	env->events_manager->unregister_listener(this);
-=======
-    Environment* env  = Environment::get_instance();
-    env->events_manager->unregister_listener(this);
-    env->events_manager->unregister_listener(this);
->>>>>>> 3696018cd80d9edbb6823f08a61632b451a01caf
 }
 
 void
