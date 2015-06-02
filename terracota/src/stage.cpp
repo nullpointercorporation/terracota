@@ -23,16 +23,10 @@ Stage::update_self(unsigned long elapsed)
 {
 	Background* b = (( Background*) m_layers[0]);
 	Inti* inti = gamecontrol->get_main_char();
-	pair<double,double> coords = inti->moviment();	
 	
-	pair<double,double>	center = b->center();
-
-	inti->set_position(800/2,600/2);
-
-	if (coords.first >0) b->move_camera(0.5,0);
-	if (coords.first <0) b->move_camera(-0.5,0);
-	if (coords.second>0) b->move_camera(0,0.5);
-	if (coords.second<0) b->move_camera(0,-0.5);
+	Environment* env = Environment::get_instance();
+    env->camera->set_mode(Camera::FOLLOWING);
+    env->camera->follow(inti);
 }
 
 void 

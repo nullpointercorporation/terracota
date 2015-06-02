@@ -59,8 +59,8 @@ Settings::on_message(Object* object, MessageID id, Parameters)
 		return false;
 	
 	if( button->id() == "back"){
-		m_next = "title";
-	    m_done = true;
+		set_next("title");
+	    finish();
 	}
 	if( button->id() == "fullscreen")
 	{

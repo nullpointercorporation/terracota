@@ -7,6 +7,7 @@
 
 #include <core/image.h>
 #include <core/texture.h>
+#include <core/listener.h>
 #include <memory>
 
 using std::shared_ptr;
@@ -15,14 +16,14 @@ using std::string;
 typedef enum  { IDLE, ON_HOVER, HIDE } State;
 
 
-class Button : public Object, public MouseButtonEventListener, MouseMotionEventListener
+class Button : public Object, Listener 
 {
 public:
     Button(Object* parant = nullptr, ObjectID id = "",const string& image= "",
            double x = 0, double y =0, double w = 100, double h = 100);
     ~Button();
-    bool onMouseButtonEvent(const MouseButtonEvent& event);
-    bool onMouseMotionEvent(const MouseMotionEvent& event);
+    bool on_event(const MouseButtonEvent& event);
+    bool on_event(const MouseMotionEvent& event);
 
     static ActionID clickedID;
 	void set_hide();

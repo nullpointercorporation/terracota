@@ -98,7 +98,7 @@ public:
         m_animation->update(elapsed);
     }
 
-    bool onKeyboardEvent(const KeyboardEvent& event)
+    bool on_event(const KeyboardEvent& event)
     {
         switch (event.state())
         {
@@ -205,7 +205,7 @@ public:
         m_animation->draw(m_inti->x(), m_inti->y());
     }
 
-    bool onKeyboardEvent(const KeyboardEvent& event)
+    bool on_event(const KeyboardEvent& event)
     {
         switch (event.state())
         {
@@ -300,7 +300,7 @@ public:
         m_animation->draw(m_inti->x(), m_inti->y());
     }
 
-    bool onKeyboardEvent(const KeyboardEvent& event)
+    bool on_event(const KeyboardEvent& event)
     {
         switch (event.state())
         {
@@ -420,13 +420,13 @@ Inti::Inti(Object *parent, const string& id)
     change_state(IDLE, NONE);
 
     Environment *env = Environment::get_instance();
-    env->events_manager->register_keyboard_event_listener(this);
+    env->events_manager->register_listener(this);
 }
 
 Inti::~Inti()
 {
     Environment *env = Environment::get_instance();
-    env->events_manager->unregister_keyboard_event_listener(this);
+    env->events_manager->unregister_listener(this);
 }
 
 Inti::Direction

@@ -64,11 +64,11 @@ TitleScreen::on_message(Object* object, MessageID id, Parameters)
     if (not button)
         return false;
     if(button->id() == "ok")
-        m_next = "map1";
+        set_next("map1");
 	if (button->id() == "settings")
-		m_next = "settings";
+		set_next("settings");
 
-    m_done = true;
+    finish();
     return true;
 }
 

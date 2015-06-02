@@ -22,8 +22,7 @@ Map1::generate_map()
 	shared_ptr<Texture> handle;
 	handle = get_texture("res/images/stages/first_map/1.jpg");
 	Background* background = 
-			new Background("background",handle,
-				0,300,env->canvas->w(),env->canvas->h());
+			new Background("background",handle);
 
 	m_stage->add_layer(background);
 }
