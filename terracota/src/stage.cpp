@@ -21,11 +21,9 @@ Stage::Stage(Object* parent,ObjectID id)
 void 
 Stage::update_self(unsigned long elapsed)
 {
-	Background* b = (( Background*) m_layers[0]);
-	Inti* inti = gamecontrol->get_main_char();
-	
-	Environment* env = Environment::get_instance();
+    Environment* env = Environment::get_instance();
     env->camera->set_mode(Camera::FOLLOWING);
+    Inti* inti = gamecontrol->get_main_char();
     env->camera->follow(inti);
 }
 
