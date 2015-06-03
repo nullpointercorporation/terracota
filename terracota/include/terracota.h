@@ -8,7 +8,7 @@ class Terracota : public Game
 {
 public:
     Terracota();
-    bool onKeyboardEvent(const KeyboardEvent& event);
+    bool on_event(const KeyboardEvent& event);
 private:
     Level* load_level(const string& id);
 };

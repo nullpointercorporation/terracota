@@ -37,7 +37,7 @@ Terracota::load_level(const string& id)
 }
 
 bool
-Terracota::onKeyboardEvent(const KeyboardEvent& event)
+Terracota::on_event(const KeyboardEvent& event)
 {
 	GameState state  = GameFlow::get_instance()->state();
 	
