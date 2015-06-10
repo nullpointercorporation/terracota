@@ -362,7 +362,7 @@ class Interacting: public SpriteState
 public:
     Interacting(Inti *inti)
         : m_inti(inti), m_animation(
-              new Animation("res/images/characters/inti/end_interact.png", 0, 0, 127, 177, 18, 50, true)),
+              new Animation("res/images/characters/inti/interact.png", 0, 0, 128, 177, 18, 50, true)),
           m_left(0), m_right(0), m_down(0), m_up(0), m_interacting(0), m_last(0)
     {
     }
