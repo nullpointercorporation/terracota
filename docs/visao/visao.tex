@@ -1,53 +1,85 @@
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
 
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
 \usepackage[section]{placeins}
 \usepackage{graphicx}
 \usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{background}
+
+% Background author: Fabián Mayta http://keronetex.deviantart.com/
+
+\backgroundsetup{
+	scale=1,
+	angle=0,
+	opacity=.4,  %% adjust
+	contents={\includegraphics[width=\paperwidth,height=\paperheight]
+	{papiro_keronetex.png}}
+}
+
+\geometry{verbose,tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
 
 \begin{document}
-\title{TerraCota}
-\author{NullPointer Corporation}
+\title{\Huge TerraCota}
+\author{\Large NullPointer Corporation}
 \date{}
 \maketitle
 
 \newpage
 \section{Apresentação}
-TerraCota é um jogo do tipo aventura com uso de \textit{puzzles} para progresso na história do jogo.  O protagonista irá se comunicar com os habitantes das torres através de símbolos, os quais devem ser traduzidos para cumprir os objetivos das missões.
+TerraCota é um jogo do tipo aventura com uso de \textit{puzzles} para progresso
+na história do jogo. O protagonista irá se comunicar com os habitantes das torres
+através de símbolos, os quais devem ser traduzidos para cumprir os objetivos das
+missões.
 
 \section{Resumo do jogo}
-Por conta de um desastre iminente, a humanidade construiu diversas torres autossuficientes para se abrigar.
-Centenas de anos depois, o mundo já reequilibrado, a sociedade \lq\lq evoluiu\rq\rq\ e passou a falar por meio de símbolos, ao invés de sons e palavras, e retornou às culturas de seus ancestrais.
+Por conta de um desastre iminente, a humanidade construiu diversas torres
+autossuficientes para se abrigar.
+Centenas de anos depois, o mundo já reequilibrado, a sociedade \lq\lq evoluiu\rq\rq\
+e passou a falar por meio de símbolos, ao invés de sons e palavras, e retornou
+às culturas de seus ancestrais.
 
-Em uma das torres vive Inti, em uma sociedade que esqueceu da existência do mundo exterior.  Um dia, por algum motivo, ele acaba encontrando a saída da torre, e ao descobrir que existe algo além da torre, decide explorar.
+Em uma das torres vive Inti, em uma sociedade que esqueceu da existência do mundo
+exterior. Um dia, por algum motivo, ele acaba encontrando a saída da torre, e ao
+descobrir que existe algo além da torre, decide explorar.
 
-Ele encontra Killa sentada nos galhos de uma árvore, e ela misteriosamente possui um interesse grande por ele.
+Ele encontra Killa sentada nos galhos de uma árvore, e ela misteriosamente possui
+um interesse grande por ele.
 
 \section{Principais Características}
-Uma das características mais interessantes do jogo é o modo como os gêneros aventura e puzzle interagem entre si, fazendo com o que o jogador precise pensar e decifrar qual será sua missão, pois as informações serão dadas através de símbolos.
+Uma das características mais interessantes do jogo é o modo como os gêneros
+aventura e puzzle interagem entre si, fazendo com o que o jogador precise pensar
+e decifrar qual será sua missão, pois as informações serão dadas através de símbolos.
 
-A movimentação é em dois eixos, vertical e horizontal, mais do que um jogo de plataforma, que contém só um, desconsiderando a função de pular, também é uma característica diferenciada do jogo, pois traz um modo de exploração em visão em múltiplos planos. A inspiração desse estilo de movimentação veio, principalmente, do jogos Capitão Comando, Little Fighter 2 e Double Dragon.
+A movimentação é em dois eixos, vertical e horizontal, mais do que um jogo de
+plataforma, que contém só um, desconsiderando a função de pular, também é uma
+característica diferenciada do jogo, pois traz um modo de exploração em visão
+em múltiplos planos. A inspiração desse estilo de movimentação veio, principalmente,
+do jogos Capitão Comando, Little Fighter 2 e Double Dragon.
 
 \section{Público}
-Pessoas acima de 10 anos, com capacidade de ler, escrever e interpretar signos, e interesse por Puzzles/Enigmas, RPGs e jogos de exploração.
+Pessoas acima de 10 anos, com capacidade de ler, escrever e interpretar signos, e
+interesse por Puzzles/Enigmas, RPGs e jogos de exploração.
 
 \section{Plataformas alvo}
 As plataformas suportadas, inicialmente, serão Windows e Linux.
-O Linux possui um grande suporte de bibliotecas e ferramentas de desenvolvimento de software e o Windows possui uma grande base de usuários jogadores, fazendo com que ambas os sistemas operacionais se tornem alvos para o jogo.
+O Linux possui um grande suporte de bibliotecas e ferramentas de desenvolvimento
+de software e o Windows possui uma grande base de usuários jogadores, fazendo com
+que ambas os sistemas operacionais se tornem alvos para o jogo.
 
 
 \section{Logotipos}
 \subsection{Logotipo do jogo}
+Esta é a logotipo proposta para o jogo Terracota.
 \begin{figure}[!htp]
-\centering
-\includegraphics[scale=0.5]{logo-terracota.jpg}
-\caption{Conceito da logo do jogo TerraCota}
-\label{TerraCota logo}
+	\centering
+	\includegraphics[scale=0.5]{logo-terracota.jpg}
+	\caption{Conceito da logo do jogo TerraCota}
+	\label{TerraCota logo}
 \end{figure}
 
 \subsection{Logotipo das tecnologias envolvidas}
-
 \begin{figure}[!htb]
 	\centering
 	\begin{minipage}{0.5\textwidth}
@@ -67,13 +99,14 @@ O Linux possui um grande suporte de bibliotecas e ferramentas de desenvolvimento
 \begin{figure}[!htb]
 	\centering
 		\begin{minipage}{0.5\textwidth}
+		\centering
 		\includegraphics[scale=0.2]{logo-gnu-linux.png}
 		\caption{Sistema Operacional GNU/Linux}
 		\label{GNU/Linux logo}
 	\end{minipage}%
 	\begin{minipage}{0.5\textwidth}
 		\centering
-		\includegraphics[scale=0.2]{logo-sdl.png}
+		\includegraphics[scale=0.35]{logo-sdl.png}
 		\caption{Biblioteca para desenvolvimento Simple DirectMedia Layer}
 		\label{SDL logo}
 	\end{minipage}
@@ -81,10 +114,13 @@ O Linux possui um grande suporte de bibliotecas e ferramentas de desenvolvimento
 
 \section{Equipe}
 \subsection{Contato por e-mail}
-A equipe pode ser contatada através do email: \href{mailto:nullpointercorporation@gmail.com}{nullpointercorporation@gmail.com}
+A equipe pode ser contatada através do email: \href{mailto:nullpointercorporation@gmail.com}
+{nullpointercorporation@gmail.com}
 
 \subsection{Contato por repositório}
-Caso a intenção seja contatar a equipe para reportar algum \textit{bug} no jogo, o endereço é: \href{https://github.com/nullpointercorporation/terracota/issues/}{https://github.com/nullpointercorporation/terracota/issues/}
+Caso a intenção seja contatar a equipe para reportar algum \textit{bug} no jogo,
+o endereço é:\\ \href{https://github.com/nullpointercorporation/terracota/issues/}
+{https://github.com/nullpointercorporation/terracota/issues/}
 \newpage
 \end{document}
 
