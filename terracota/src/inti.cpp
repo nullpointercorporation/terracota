@@ -37,7 +37,7 @@ class Idle : public SpriteState
 public:
     Idle(Inti *inti)
         : m_inti(inti), m_animation(new Animation("res/images/characters/inti/idle_1.png",
-            0, 0, 127, 172, 24, 50, true)), m_left(0), m_right(0), m_up(0), m_down(0), m_attack(0)
+            0, 0, 127, 172, 24, 50, true)), m_left(0), m_right(0), m_up(0), m_down(0), m_attack(0), m_interacting(0)
     {
     }
 
@@ -46,7 +46,7 @@ public:
     void enter(int)
     {
         m_inti->set_dimensions(m_animation->w(), m_animation->h());
-        m_right = m_left = m_up = m_down = m_attack = 0;
+        m_right = m_left = m_up = m_down = m_attack = m_interacting = 0;
     }
 
     void leave(int)
@@ -93,6 +93,12 @@ public:
             m_inti->report_event(Inti::ATTACKED);
         }
 
+
+        if ( m_interacting > 0)
+        {
+            m_inti->report_event(Inti::INTERACTED);
+        }
+
         Inti::Direction dir = m_inti->direction();
         int row = dir == Inti::LEFT ? 1 : 0;
         m_animation->set_row(row);
@@ -125,6 +131,10 @@ public:
             case KeyboardEvent::SPACE:
                 m_attack = 1;
                 return true;
+            case KeyboardEvent::E:
+            case KeyboardEvent::M:
+                m_interacting = 1;
+                return true;
             default:
                 break;
             }
@@ -152,6 +162,9 @@ public:
             case KeyboardEvent::SPACE:
                 m_attack = 0;
                 return true;
+            case KeyboardEvent::E:
+            case KeyboardEvent::M:
+                m_interacting = 0;
             default:
                 break;
             }
@@ -183,6 +196,9 @@ public:
             case JoyStickEvent::SQUARE:
                 m_attack = 1;
                 return true;
+            case KeyboardEvent::E:
+            case KeyboardEvent::M:
+                m_interacting = 1;
             default:
                 break;
             }
@@ -206,6 +222,9 @@ public:
             case JoyStickEvent::SQUARE:
                 m_attack = 0;
                 return true;
+            case KeyboardEvent::E:
+            case KeyboardEvent::M:
+                m_interacting = 0;
             default:
                 break;
             }
@@ -220,7 +239,7 @@ private:
 
     unique_ptr<Animation> m_animation;
     int m_left, m_right, m_up, m_down;
-    int m_attack;
+    int m_attack,m_interacting;
 };
 
 class Attacking: public SpriteState
@@ -234,8 +253,6 @@ public:
     }
 
     ~Attacking() {}
-
-    const double speed = 160.0;
 
     void enter(int from)
     {
@@ -338,6 +355,126 @@ private:
     short m_left, m_right, m_down, m_up, m_attack;
     unsigned long m_last;
 };
+
+
+
+
+class Interacting: public SpriteState
+{
+public:
+    Interacting(Inti *inti)
+        : m_inti(inti), m_animation(
+              new Animation("res/images/characters/inti/end_interact.png", 0, 0, 127, 177, 18, 50, true)),
+          m_left(0), m_right(0), m_down(0), m_up(0), m_interacting(0), m_last(0)
+    {
+    }
+
+    ~Interacting() {}
+
+    void enter(int from)
+    {
+        m_inti->set_dimensions(m_animation->w(), m_animation->h());
+
+        Inti::Direction dir = m_inti->direction();
+
+        m_right = dir == Inti::RIGHT ? 1 : 0;
+        m_left = dir == Inti::LEFT ? 1 : 0;
+        m_up = dir == Inti::UP ? 1 : 0;
+        m_down = dir == Inti::DOWN ? 1 : 0;
+        m_interacting = 1;
+        m_last = 0;
+    }
+
+    void leave(int)
+    {
+    }
+
+    void draw()
+    {
+        m_animation->draw(m_inti->x(), m_inti->y());
+    }
+
+    bool on_event(const KeyboardEvent& event)
+    {
+        switch (event.state())
+        {
+        case KeyboardEvent::PRESSED:
+            switch (event.key())
+            {
+            case KeyboardEvent::E:
+            case KeyboardEvent::M:
+                m_interacting = 1;
+                return true;
+            default:
+                break;
+            }
+            break;
+
+        case KeyboardEvent::RELEASED:
+            switch (event.key())
+            {
+            case KeyboardEvent::E:
+            case KeyboardEvent::M:
+                m_interacting = 0;
+                return true;
+            default:
+                break;
+            }
+            break;
+        }
+
+        return false;
+    }
+
+    bool on_event(const JoyStickEvent& event)
+    {
+        switch (event.state())
+        {
+        case JoyStickEvent::PRESSED:
+            switch (event.button())
+            {
+            case JoyStickEvent::X:
+                m_interacting = 1;
+                return true;
+            default:
+                break;
+            }
+            break;
+
+        case JoyStickEvent::RELEASED:
+            switch (event.button())
+            {
+            case JoyStickEvent::X:
+                m_interacting = 0;
+                return true;
+            default:
+                break;
+            }
+            break;
+        }
+
+        return false;
+    }
+
+    void update(unsigned long elapsed)
+    {
+        if (not m_interacting )
+        {
+            m_inti->report_event(Inti::STOPPED);
+        }
+        Inti::Direction dir = m_inti->direction();
+        int row = dir == Inti::LEFT ? 1 : 0;
+        m_animation->set_row(row);
+        m_animation->update(elapsed);
+    }
+
+private:
+    Inti *m_inti;
+    unique_ptr<Animation> m_animation;
+    short m_left, m_right, m_down, m_up, m_interacting;
+    unsigned long m_last;
+};
+
 
 
 
@@ -543,13 +680,18 @@ Inti::Inti(Object *parent, const string& id)
     add_state(IDLE, new Idle(this));
     add_state(WALKING, new Walking(this));
     add_state(ATTACKING, new Attacking(this));
+    add_state(INTERACTING, new Interacting(this));
 
     /* to action*/
     add_transition(MOVED, IDLE, WALKING);
     add_transition(ATTACKED, IDLE, ATTACKING);
+    add_transition(INTERACTED, IDLE, INTERACTING);
+
     /* to stop*/
     add_transition(STOPPED, WALKING, IDLE);
     add_transition(STOPPED, ATTACKING, IDLE);
+    add_transition(STOPPED, INTERACTED, IDLE);
+
     change_state(IDLE, NONE);
 
     Environment *env = Environment::get_instance();
