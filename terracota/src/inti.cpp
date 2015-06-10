@@ -132,7 +132,7 @@ public:
                 m_attack = 1;
                 return true;
             case KeyboardEvent::E:
-            case KeyboardEvent::M:
+            case KeyboardEvent::N:
                 m_interacting = 1;
                 return true;
             default:
@@ -163,7 +163,7 @@ public:
                 m_attack = 0;
                 return true;
             case KeyboardEvent::E:
-            case KeyboardEvent::M:
+            case KeyboardEvent::N:
                 m_interacting = 0;
             default:
                 break;
@@ -196,8 +196,7 @@ public:
             case JoyStickEvent::SQUARE:
                 m_attack = 1;
                 return true;
-            case KeyboardEvent::E:
-            case KeyboardEvent::M:
+            case JoyStickEvent::X:
                 m_interacting = 1;
             default:
                 break;
@@ -222,8 +221,7 @@ public:
             case JoyStickEvent::SQUARE:
                 m_attack = 0;
                 return true;
-            case KeyboardEvent::E:
-            case KeyboardEvent::M:
+            case JoyStickEvent::X:
                 m_interacting = 0;
             default:
                 break;
@@ -402,7 +400,7 @@ public:
             switch (event.key())
             {
             case KeyboardEvent::E:
-            case KeyboardEvent::M:
+            case KeyboardEvent::N:
                 m_interacting = 1;
                 return true;
             default:
@@ -414,7 +412,7 @@ public:
             switch (event.key())
             {
             case KeyboardEvent::E:
-            case KeyboardEvent::M:
+            case KeyboardEvent::N:
                 m_interacting = 0;
                 return true;
             default:
