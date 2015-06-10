@@ -37,7 +37,7 @@ class Idle : public SpriteState
 public:
     Idle(Inti *inti)
         : m_inti(inti), m_animation(new Animation("res/images/characters/inti/idle_1.png",
-            0, 0, 127, 172, 24, 50, true)), m_left(0), m_right(0), m_up(0), m_down(0), m_attack(0), m_interacting(0)
+            0, 0, 128, 172, 24, 50, true)), m_left(0), m_right(0), m_up(0), m_down(0), m_attack(0), m_interacting(0)
     {
     }
 
