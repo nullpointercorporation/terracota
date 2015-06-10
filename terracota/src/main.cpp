@@ -10,7 +10,7 @@ main(int  , char** )
     try
     {
         Terracota terracota;
-        terracota.init("Terracota",800,600);
+        terracota.init("terracota",1067,600);
         terracota.run();
     }
     catch (Exception e)
