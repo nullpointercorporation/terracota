@@ -1,5 +1,5 @@
 #include "gameover.h"
-#include "button.h"
+#include <util/button.h>
 #include <core/object.h>
 
 

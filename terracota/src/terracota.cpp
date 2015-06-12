@@ -9,6 +9,10 @@
 #include "gameover.h"
 #include "map1.h"
 
+
+#include <iostream>
+using namespace std;
+
 Terracota::Terracota()
     : Game ("a")
 {
@@ -25,8 +29,10 @@ Terracota::load_level(const string& id)
     if (id == "c")
         return new FrontEnd("c","title", "res/images/logos/faixa_etaria.jpg");
     if (id == "title")
+	{
         return new TitleScreen();
-    if (id == "settings")
+	}
+    if (id == "options")
         return new Settings();
 	if (id == "map1")
 		return new Map1("map1");
