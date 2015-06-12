@@ -14,7 +14,7 @@ OBJ_DIR = obj
 
 
 #FLAGS
-CC=clang++
+CC=g++
 CFLAGS=  -Wall -W -pedantic -std=c++11 -g3
 LIBS = $(ENGINE_LIB) `sdl2-config --libs` -lSDL2_image -lSDL2_ttf -lSDL2_mixer
 

@@ -14,6 +14,7 @@ public:
         : m_inti(inti), m_direction(Inti::LEFT), m_moviment(make_pair(0.0, 0.0))
     {
     }
+
     Direction direction() const { return m_direction; }
     void set_direction(Direction direction) { m_direction = direction; }
 
@@ -30,23 +31,22 @@ private:
     pair<double, double> m_moviment;
 };
 
-
-
 class Idle : public SpriteState
 {
 public:
     Idle(Inti *inti)
-        : m_inti(inti), m_animation(new Animation("res/images/characters/inti/idle_1.png",
-            0, 0, 128, 172, 24, 50, true)), m_left(0), m_right(0), m_up(0), m_down(0), m_attack(0), m_interacting(0)
+        : m_inti(inti), m_animation(new Animation("res/images/characters/inti/idle.png",
+            0, 0, 120, 186, 24, 50, true)), m_left(0), m_right(0), m_up(0), m_down(0), m_attack(0), m_interacting(0)
     {
+        m_inti->set_dimensions(m_animation->w(), m_animation->h());
     }
 
     ~Idle() {}
 
     void enter(int)
     {
-        m_inti->set_dimensions(m_animation->w(), m_animation->h());
         m_right = m_left = m_up = m_down = m_attack = m_interacting = 0;
+        m_animation->reset();
     }
 
     void leave(int)
@@ -254,8 +254,6 @@ public:
 
     void enter(int from)
     {
-        m_inti->set_dimensions(m_animation->w(), m_animation->h());
-
         Inti::Direction dir = m_inti->direction();
 
         m_right = dir == Inti::RIGHT ? 1 : 0;
@@ -264,6 +262,7 @@ public:
         m_down = dir == Inti::DOWN ? 1 : 0;
         m_attack = 1;
         m_last = 0;
+        m_animation->reset();
     }
 
     void leave(int)
@@ -272,7 +271,7 @@ public:
 
     void draw()
     {
-        m_animation->draw(m_inti->x(), m_inti->y());
+        m_animation->draw(m_inti->x(), m_inti->y() - 48);
     }
 
     bool on_event(const KeyboardEvent& event)
@@ -371,8 +370,6 @@ public:
 
     void enter(int from)
     {
-        m_inti->set_dimensions(m_animation->w(), m_animation->h());
-
         Inti::Direction dir = m_inti->direction();
 
         m_right = dir == Inti::RIGHT ? 1 : 0;
@@ -381,6 +378,7 @@ public:
         m_down = dir == Inti::DOWN ? 1 : 0;
         m_interacting = 1;
         m_last = 0;
+        m_animation->reset();
     }
 
     void leave(int)
@@ -481,7 +479,7 @@ class Walking : public SpriteState
 public:
     Walking(Inti *inti)
         : m_inti(inti), m_animation(
-              new Animation("res/images/characters/inti/walking_1.png", 0, 0, 127, 177, 21, 50, true)),
+              new Animation("res/images/characters/inti/walking.png", 0, 0, 120, 186, 20, 50, true)),
           m_left(0), m_right(0), m_down(0), m_up(0), m_last(0)
     {
     }
@@ -492,8 +490,6 @@ public:
 
     void enter(int from)
     {
-        m_inti->set_dimensions(m_animation->w(), m_animation->h());
-
         Inti::Direction dir = m_inti->direction();
 
         m_right = dir == Inti::RIGHT ? 1 : 0;
@@ -501,6 +497,7 @@ public:
         m_up = dir == Inti::UP ? 1 : 0;
         m_down = dir == Inti::DOWN ? 1 : 0;
         m_last = 0;
+        m_animation->reset();
 
         if (from == Inti::IDLE)
         {
