@@ -245,7 +245,7 @@ class Attacking: public SpriteState
 public:
     Attacking(Inti *inti)
         : m_inti(inti), m_animation(
-              new Animation("res/images/characters/inti/attack_1.png", 0, 0, 174, 224, 12, 50, true)),
+              new Animation("res/images/characters/inti/attack.png", 0, 0, 207, 260, 12, 50, true)),
           m_left(0), m_right(0), m_down(0), m_up(0), m_attack(0), m_last(0)
     {
     }
@@ -271,7 +271,11 @@ public:
 
     void draw()
     {
-        m_animation->draw(m_inti->x(), m_inti->y() - 48);
+        Inti::Direction dir = m_inti->direction();
+        if (dir == Inti::LEFT)
+            m_animation->draw(m_inti->x()-70, m_inti->y()-65);
+        else
+            m_animation->draw(m_inti->x()-10, m_inti->y()-65);
     }
 
     bool on_event(const KeyboardEvent& event)

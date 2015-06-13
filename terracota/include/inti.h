@@ -16,6 +16,7 @@ public:
 	Inti(Object* parent,const string& id);
 	~Inti();
 
+
 	Direction direction() const;
 	void set_direction(Direction direction);
 	const pair<double,double>& moviment() const;
