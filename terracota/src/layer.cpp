@@ -31,9 +31,9 @@ Layer::draw()
 {
 	Environment* env = Environment::get_instance();
 	if (not m_clip.w() and not m_clip.h() )
-    	env->canvas->draw(m_texture.get());
+    	env->canvas->draw(m_texture.get(),x(),y());
 	else
-    	env->canvas->draw(m_texture.get(),m_clip);
+    	env->canvas->draw(m_texture.get(),m_clip,x(),y());
 }
 
 pair<double,double>
