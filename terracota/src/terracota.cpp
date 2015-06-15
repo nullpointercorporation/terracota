@@ -25,9 +25,9 @@ Terracota::load_level(const string& id)
     if (id == "a")
        return new FrontEnd("a","b","res/images/logos/logo-terracota.jpg");
     if (id == "b")
-        return new FrontEnd("b","c","res/images/logos/logo-sdl.png");
+        return new FrontEnd("b","c","res/images/logos/tec-logos.png");
     if (id == "c")
-        return new FrontEnd("c","title", "res/images/logos/faixa_etaria.jpg");
+        return new FrontEnd("c","title", "res/images/logos/faixa_etaria.png");
     if (id == "title")
 	{
         return new TitleScreen();
