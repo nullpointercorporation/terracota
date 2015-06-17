@@ -12,7 +12,7 @@
 \begin{document}
 \title{TerraCota\\Game Design Document}
 \author{NullPointer Corporation}
-\date{v0.3}
+\date{v0.4}
 \maketitle
 
 \newpage
@@ -29,6 +29,7 @@
     0.3 & 22/05/2015 & Carlos Oliveira & Front-end \\
     \rowcolor[gray]{0.9}
     0.4 & 30/05/2015 & Álvaro Fernando & Objetos Colecionáveis \\
+    0.5 & 17/05/2015 & Álvaro Fernando & Telas \\
     \bottomrule
   \end{tabular}
   \caption{Histórico de Revisões}
@@ -383,5 +384,179 @@ um baú de tesouro nesta torre. Possibilita ao jogador o movimento de ataque.
     \caption{Segunda Espada}
     \label{fig:segunda_espada}
 \end{figure}
+
+\newpage
+\section{Telas}
+Esta seção contempla a descrição das telas do Terracota.
+
+\subsection{Attract mode}
+Para atrair a atenção do jogador, antes de iniciar uma partida, na tela de
+abertura, caso tenha decorrido {\bf 10 minutos} sem nenhum input do jogador,
+será exibido {\bf concepts arts} do jogo, tais como:
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[scale=0.3]{concept_art_01.jpg}
+    \caption{Concept Art 01 - Inti e Killa}
+    \label{fig:concept_art_01}
+\end{figure}
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[scale=0.3]{concept_art_02.jpg}
+    \caption{Concept Art 02 - Família do Inti}
+    \label{fig:concept_art_02}
+\end{figure}
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[scale=0.4]{concept_art_03.jpg}
+    \caption{Concept Art 03 - Todos os personagens}
+    \label{fig:concept_art_03}
+\end{figure}
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[scale=0.4]{concept_art_04.png}
+    \caption{Concept Art 04 - Cenário 01 - Torre 1 - Andar do mercado}
+    \label{fig:concept_art_04}
+\end{figure}
+
+\begin{figure}[hp]
+    \centering
+    \includegraphics[scale=0.16]{concept_art_05.jpg}
+    \caption{Concept Art 05 - Símbolos}
+    \label{fig:concept_art_05}
+\end{figure}
+
+\newpage
+\subsection{Tela de Abertura}
+A tela de abertura do jogo Terracota compreenderá dois estados: o de início e
+continuação do jogo; e o estado das opções. Será utilizado uma imagem com a
+logo do jogo e para cada opção um símbolo correspondente à opção. Por exemplo,
+para o botão de início do jogo, será utlizado uma seta para direita, símbolo
+convencionado como de "Play". Estas imagens do fundo e dos botões ainda não
+estão elaboradas. Como alternativa, apenas para o desenvolvimento e provisoriamente,
+serão utilizadas as seguintes imagens.
+
+As opções de início serão (não necessariamente nesta ordem):
+
+\begin{itemize}
+    \item Start
+    \item Options
+    \item Quit
+    \item Continue
+\end{itemize}
+
+
+\begin{figure}[!htb]
+	\centering
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=1]{menu_buttom/start_idle.png}
+		\caption{Start Idle}
+		\label{start_idle}
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=1]{menu_buttom/start_active.png}
+		\caption{Start Active}
+		\label{start_active}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=1]{menu_buttom/options_idle.png}
+		\caption{Options Idle}
+		\label{options_idle}
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=1]{menu_buttom/options_active.png}
+		\caption{Options Active}
+		\label{options_active}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=1]{menu_buttom/quit_idle.png}
+		\caption{Quit Idle}
+		\label{quit_idle}
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=1]{menu_buttom/quit_active.png}
+		\caption{Quit Active}
+		\label{quit_active}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=1]{menu_buttom/continue_idle.png}
+		\caption{Continue Idle}
+		\label{continue_idle}
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=1]{menu_buttom/continue_active.png}
+		\caption{Continue Active}
+		\label{continue_active}
+	\end{minipage}
+\end{figure}
+
+\newpage
+As opções de configuração/options serão (não necessariamente nesta ordem):
+
+\begin{itemize}
+    \item Fullscreen
+    \item Window Mode
+    \item Back
+\end{itemize}
+
+\begin{figure}[!htb]
+	\centering
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.6]{menu_buttom/fullscreen_mode_button.png}
+		\caption{Fullscreen Mode}
+		\label{fullscreen_mode}
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.6]{menu_buttom/window_mode_button.png}
+		\caption{Window Mode}
+		\label{window_mode}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.6]{menu_buttom/back_button.png}
+    \caption{Back Button}
+    \label{fig:back_button}
+\end{figure}
+
+\newpage
+E a imagem de fundo temporarimente poderá ser esta:
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.4]{background_terracota.jpg}
+    \caption{Tela de Abertura - Backgroud}
+    \label{fig:background_terracota}
+\end{figure}
+
+\subsection{Outras telas}
+Não estarão presentes no Terracota outras telas como créditos e loading screen.
+
 
 \end{document}
