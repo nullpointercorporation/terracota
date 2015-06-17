@@ -12,7 +12,7 @@
 \begin{document}
 \title{TerraCota\\Game Design Document}
 \author{NullPointer Corporation}
-\date{v0.4}
+\date{v0.6}
 \maketitle
 
 \newpage
@@ -30,6 +30,8 @@
     \rowcolor[gray]{0.9}
     0.4 & 30/05/2015 & Álvaro Fernando & Objetos Colecionáveis \\
     0.5 & 17/05/2015 & Álvaro Fernando & Telas \\
+    \rowcolor[gray]{0.9}
+    0.6 & 17/05/2015 & Álvaro Fernando & Câmera e HUD \\
     \bottomrule
   \end{tabular}
   \caption{Histórico de Revisões}
@@ -434,7 +436,7 @@ será exibido {\bf concepts arts} do jogo, tais como:
 A tela de abertura do jogo Terracota compreenderá dois estados: o de início e
 continuação do jogo; e o estado das opções. Será utilizado uma imagem com a
 logo do jogo e para cada opção um símbolo correspondente à opção. Por exemplo,
-para o botão de início do jogo, será utlizado uma seta para direita, símbolo
+para o botão de início do jogo, será utilizado uma seta para direita, símbolo
 convencionado como de "Play". Estas imagens do fundo e dos botões ainda não
 estão elaboradas. Como alternativa, apenas para o desenvolvimento e provisoriamente,
 serão utilizadas as seguintes imagens.
@@ -546,7 +548,7 @@ As opções de configuração/options serão (não necessariamente nesta ordem):
 \end{figure}
 
 \newpage
-E a imagem de fundo temporarimente poderá ser esta:
+E a imagem de fundo temporariamente poderá ser esta:
 
 \begin{figure}[!htb]
     \centering
@@ -558,5 +560,43 @@ E a imagem de fundo temporarimente poderá ser esta:
 \subsection{Outras telas}
 Não estarão presentes no Terracota outras telas como créditos e loading screen.
 
+\newpage
+\section{Câmera e HUD}
+
+\subsection{Câmera}
+A câmera será na "posição" 2.5D. Para melhor visualização deste posicionamento
+veja a figura \ref{fig:camera_hud_01}. O será movimento automático, de
+acordo com o posicionamento da personagem principal.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.37]{camera_hud_01.png}
+    \caption{Demonstração da Câmera}
+    \label{fig:camera_hud_01}
+\end{figure}
+
+\subsection{HUD}
+O HUD (Heads-Up Display) do jogo conterá com uma imagem da barra de vida dos
+personagens principais que estarão sendo controlados pelo jogador no momento
+quando alternados: ora a barra de vida do Inti, ora da Killa. Os quadrados da
+cor verde irão representar a quantidade de vida nesta barra.
+
+Outro elemento exibido no HUB é o botão para alternar entre os personagens.
+
+As imagens a seguir exemplificam como será a HUD:
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.5]{camera_hud_02.png}
+    \caption{HUD - Elementos}
+    \label{fig:camera_hud_02}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.39]{camera_hud_03.png}
+    \caption{HUD - Disposição dos Elementos}
+    \label{fig:camera_hud_03}
+\end{figure}
 
 \end{document}
