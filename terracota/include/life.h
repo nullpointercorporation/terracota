@@ -4,12 +4,13 @@
 class Life
 {
 public:
-	Life(int life = 9, unsigned long life_regen=500);
+	Life(int life = 6, unsigned long life_regen=500);
 	~Life();
 	void update_life(unsigned long elapsed);
 
 	void set_life(int life);
 	void damage(int life);
+	int life();
 
 private:
 	int m_life;

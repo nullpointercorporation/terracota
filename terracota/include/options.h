@@ -10,11 +10,11 @@ using std::shared_ptr;
 
 class Image;
 
-class Settings : public Level
+class Options : public Level
 {
 public:
-	Settings();
-	virtual ~Settings();
+	Options();
+	virtual ~Options();
 	
 	bool on_message(Object* sender, MessageID id, Parameters parameters);
 

@@ -1,11 +1,11 @@
-#include "settings.h"
+#include "options.h"
 
 #include <core/environment.h>
 #include <util/button.h>
 #include "gameflow.h"
 
-Settings::Settings()
-	: Level("settings")
+Options::Options()
+	: Level("options")
 {
 	GameFlow::get_instance()->set_state(GameState::SETTINGS);
 
@@ -38,13 +38,13 @@ Settings::Settings()
     m_back->set_position((w-bx)/2,h/4+space*2+by*2);
 }
 
-Settings::~Settings()
+Options::~Options()
 {
 
 }
 
 void
-Settings::draw_self()
+Options::draw_self()
 {
 	Environment* env = Environment::get_instance();
 	env->canvas->clear(Color::WHITE);
@@ -52,7 +52,7 @@ Settings::draw_self()
 }
 
 bool
-Settings::on_message(Object* object, MessageID id, Parameters)
+Options::on_message(Object* object, MessageID id, Parameters)
 {
 	if (id != Button::clickedID)
 		return false;

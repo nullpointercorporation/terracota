@@ -3,6 +3,7 @@
 #include <core/keyboardevent.h>
 #include <core/joystickevent.h>
 #include <iostream>
+#include "life.h"
 
 using namespace std;
 
@@ -11,7 +12,7 @@ class Inti::Impl
 {
 public:
     Impl(Inti* inti)
-        : m_inti(inti), m_direction(Inti::LEFT), m_moviment(make_pair(0.0, 0.0))
+        : m_inti(inti), m_direction(Inti::LEFT), m_moviment(make_pair(0.0, 0.0)),m_life(new Life())
     {
     }
 
@@ -24,11 +25,16 @@ public:
     {
         m_moviment = make_pair(xaxis, yaxis);
     }
+    Life* life()
+    {
+        return m_life;
+    }
 
 private:
     Inti* m_inti;
     Direction m_direction;
     pair<double, double> m_moviment;
+    Life* m_life;
 };
 
 class Idle : public SpriteState
@@ -726,3 +732,12 @@ Inti::set_moviment(double xaxis, double yaxis)
 {
     m_impl->set_moviment(xaxis, yaxis);
 }
+
+Life*
+Inti::life()
+{
+    return m_impl->life();
+}
+
+
+

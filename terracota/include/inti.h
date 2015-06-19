@@ -6,6 +6,7 @@
 using std::unique_ptr;
 using std::pair;
 
+class Life;
 class Inti: public Sprite
 {
 public:
@@ -21,6 +22,7 @@ public:
 	void set_direction(Direction direction);
 	const pair<double,double>& moviment() const;
 	void set_moviment(double xaxis,double yaxis);
+	Life* life();
 private:
 	class Impl;
 	unique_ptr<Impl> m_impl;

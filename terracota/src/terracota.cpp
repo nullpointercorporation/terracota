@@ -3,7 +3,7 @@
 #include <util/frontend.h>
 
 #include "titlescreen.h"
-#include "settings.h"
+#include "options.h"
 #include "stage.h"
 #include "gameflow.h"
 #include "gameover.h"
@@ -33,7 +33,7 @@ Terracota::load_level(const string& id)
         return new TitleScreen();
 	}
     if (id == "options")
-        return new Settings();
+        return new Options();
 	if (id == "map1")
 		return new Map1("map1");
 	if (id == "gameover")

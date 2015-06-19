@@ -1,6 +1,7 @@
 #include "map1.h"
 #include "layer.h"
 #include "background.h"
+#include "ui.h"
 
 
 Map1::Map1(ObjectID id)
@@ -59,6 +60,7 @@ Map1::generate_map()
     m_stage->add_layer(casas);
     m_stage->add_layer(arvore);
     m_stage->add_layer(luz);
+
 }
 
 shared_ptr<Texture> 

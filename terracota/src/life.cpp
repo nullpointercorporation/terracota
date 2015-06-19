@@ -35,3 +35,9 @@ Life::update_life(unsigned long elapsed)
 			m_life = m_max_life;
 	}
 }
+
+int
+Life::life()
+{
+	return m_life;
+}
