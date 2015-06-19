@@ -4,6 +4,7 @@
 #include <core/sprite.h>
 #include <core/object.h>
 
+class Killa;
 class Inti;
 
 class GameControl: public Object
@@ -19,6 +20,8 @@ public:
 
 private:
     Inti* m_inti; 
+    Killa* m_killa;
+	Object* m_main_char;
 };
 
 #endif
