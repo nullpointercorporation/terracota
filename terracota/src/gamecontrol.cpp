@@ -99,5 +99,26 @@ GameControl::on_event(const KeyboardEvent& event)
 bool 
 GameControl::on_event(const JoyStickEvent& event)
 {
+	switch (event.state())
+	{
+	case JoyStickEvent::PRESSED:
+		switch (event.button())
+		{
+		default:
+			break;
+		}
+		break;
+
+	case JoyStickEvent::RELEASED:
+		switch (event.button())
+		{
+		case JoyStickEvent::TRIANGLE:
+			swap_char();
+			return true;
+		default:
+			break;
+		}
+		break;
+	}
 	return false;
 }
