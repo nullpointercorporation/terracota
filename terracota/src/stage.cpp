@@ -23,7 +23,7 @@ Stage::update_self(unsigned long elapsed)
 {
     Environment* env = Environment::get_instance();
     env->camera->set_mode(Camera::FOLLOWING);
-    Inti* main = gamecontrol->get_main_char();
+    Object* main = gamecontrol->get_main_char();
     env->camera->follow(main);
 }
 

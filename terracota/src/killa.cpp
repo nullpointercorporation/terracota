@@ -489,7 +489,7 @@ class Walking : public SpriteState
 public:
     Walking(Killa *killa)
         : m_killa(killa), m_animation(
-              new Animation("res/images/characters/killa/walking.png", 0, 0, 120, 186, 20, 50, true)),
+              new Animation("res/images/characters/killa/walking.png", 0, 0, 114, 208, 24, 50, true)),
           m_left(0), m_right(0), m_down(0), m_up(0), m_last(0)
     {
     }
@@ -683,17 +683,17 @@ Killa::Killa(Object *parent, const string& id)
     : Sprite(parent, id), m_impl(new Killa::Impl(this))
 {
     add_state(IDLE, new Idle(this));
-//    add_state(WALKING, new Walking(this));
+    add_state(WALKING, new Walking(this));
 //    add_state(ATTACKING, new Attacking(this));
 //    add_state(INTERACTING, new Interacting(this));
 
     /* to action*/
-//    add_transition(MOVED, IDLE, WALKING);
+    add_transition(MOVED, IDLE, WALKING);
 //    add_transition(ATTACKED, IDLE, ATTACKING);
 //    add_transition(INTERACTED, IDLE, INTERACTING);
 
     /* to stop*/
-//    add_transition(STOPPED, WALKING, IDLE);
+    add_transition(STOPPED, WALKING, IDLE);
 //    add_transition(STOPPED, ATTACKING, IDLE);
 //    add_transition(STOPPED, INTERACTED, IDLE);
 
