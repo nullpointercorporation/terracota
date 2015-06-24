@@ -7,6 +7,7 @@
 #include "ui.h"
 #include "inti.h"
 #include "killa.h"
+#include "bat.h"
 
 GameControl::GameControl(Object* parent, ObjectID id)
 	: Object(parent,id), m_inti(nullptr),m_killa(nullptr)
@@ -16,10 +17,15 @@ GameControl::GameControl(Object* parent, ObjectID id)
 
     m_killa->set_active(false);
 
-	m_inti->set_position(0,0);
-    m_killa->set_position(0,0);
+	m_inti->set_position(300,200);
+    m_killa->set_position(300,200);
 
     Interface *ui = new Interface(nullptr,"ui",this);
+	
+	Bat* bat = new Bat(this,"macartur");
+	bat->set_position(200,200);
+
+	add_child(bat);
 
     add_child(ui);
 	add_child(m_inti);

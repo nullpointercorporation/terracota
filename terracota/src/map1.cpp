@@ -2,6 +2,7 @@
 #include "layer.h"
 #include "background.h"
 #include "ui.h"
+#include "bat.h"
 
 
 Map1::Map1(ObjectID id)
