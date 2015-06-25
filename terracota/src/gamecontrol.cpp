@@ -9,6 +9,9 @@
 #include "killa.h"
 #include "bat.h"
 
+#include <iostream>
+using namespace std;
+
 GameControl::GameControl(Object* parent, ObjectID id)
 	: Object(parent,id), m_inti(nullptr),m_killa(nullptr)
 {
@@ -17,7 +20,7 @@ GameControl::GameControl(Object* parent, ObjectID id)
 
     m_killa->set_active(false);
 
-	m_inti->set_position(300,200);
+	m_inti->set_position(1000,460);
     m_killa->set_position(300,200);
 
     Interface *ui = new Interface(nullptr,"ui",this);
@@ -52,12 +55,12 @@ GameControl::get_main_char()
 
 void
 GameControl::swap_char(){
-    if (m_inti->active())
+    if (m_inti->active() and m_inti->can_change())
     {
         m_inti->set_active(false);  
         m_killa->set_active(true);
     }
-    else
+    else if (m_killa->active() and m_killa->can_change())
     {
         m_inti->set_active(true);  
         m_killa->set_active(false);

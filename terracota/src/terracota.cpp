@@ -8,6 +8,7 @@
 #include "gameflow.h"
 #include "gameover.h"
 #include "map1.h"
+#include "map2.h"
 
 
 #include <iostream>
@@ -36,6 +37,8 @@ Terracota::load_level(const string& id)
         return new Options();
 	if (id == "map1")
 		return new Map1("map1");
+	if (id == "map2")
+		return new Map2("map2");
 	if (id == "gameover")
 		return new GameOver(); 
     

@@ -29,6 +29,9 @@ public:
     {
         return m_life;
     }
+    bool can_change(){
+		return true;
+	}
 
 private:
     Inti* m_inti;
@@ -237,6 +240,9 @@ public:
 
         return false;
     }
+	bool can_change(){
+		return true; 
+	}
 
 private:
     Inti *m_inti;
@@ -355,6 +361,9 @@ public:
         m_animation->set_row(row);
         m_animation->update(elapsed);
     }
+	bool can_change(){
+		return false; 
+	}
 
 private:
     Inti *m_inti;
@@ -473,6 +482,9 @@ public:
         m_animation->set_row(row);
         m_animation->update(elapsed);
     }
+	bool can_change(){
+		return false; 
+	}
 
 private:
     Inti *m_inti;
@@ -515,6 +527,7 @@ public:
             double x = moviment.first * speed;
             double y = moviment.second * speed;
             m_inti->set_moviment(x, y);
+			cout << m_inti->x() << "-"<<m_inti->y() << endl;
         }
     }
 
@@ -671,6 +684,9 @@ public:
         m_last = elapsed;
         m_animation->update(elapsed);
     }
+	bool can_change(){
+		return false; 
+	}
 
 private:
     Inti *m_inti;
@@ -739,5 +755,10 @@ Inti::life()
     return m_impl->life();
 }
 
+
+bool 
+Inti::can_change(){
+	return m_impl->can_change(); 
+}
 
 

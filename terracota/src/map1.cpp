@@ -64,11 +64,10 @@ Map1::generate_map()
 
 }
 
+
 shared_ptr<Texture> 
 Map1::get_texture(const string& text)
 {
 	Environment* env = Environment::get_instance();
 	return env->resources_manager->get_texture(text);
 }
-
-

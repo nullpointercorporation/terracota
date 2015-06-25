@@ -23,6 +23,8 @@ public:
 	const pair<double,double>& moviment() const;
 	void set_moviment(double xaxis,double yaxis);
 	Life* life();
+    bool can_change();
+
 private:
 	class Impl;
 	unique_ptr<Impl> m_impl;

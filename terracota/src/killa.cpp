@@ -29,6 +29,10 @@ public:
     {
         return m_life;
     }
+	bool can_change()
+	{
+		return true;
+	}
 
 private:
     Killa* m_killa;
@@ -237,6 +241,10 @@ public:
 
         return false;
     }
+	bool can_change()
+	{
+		return true;
+	}
 
 private:
     Killa *m_killa;
@@ -355,6 +363,10 @@ public:
         m_animation->set_row(row);
         m_animation->update(elapsed);
     }
+	bool can_change()
+	{
+		return false;
+	}
 
 private:
     Killa *m_killa;
@@ -474,6 +486,10 @@ public:
         m_animation->update(elapsed);
     }
 
+	bool can_change()
+	{
+		return false;
+	}
 private:
     Killa *m_killa;
     unique_ptr<Animation> m_animation;
@@ -671,6 +687,10 @@ public:
         m_last = elapsed;
         m_animation->update(elapsed);
     }
+	bool can_change()
+	{
+		return false;
+	}
 
 private:
     Killa *m_killa;
@@ -739,5 +759,10 @@ Killa::life()
     return m_impl->life();
 }
 
+bool 
+Killa::can_change()
+{
+	return m_impl->can_change();
+}
 
 
