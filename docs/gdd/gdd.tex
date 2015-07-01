@@ -12,7 +12,7 @@
 \begin{document}
 \title{TerraCota\\Game Design Document}
 \author{NullPointer Corporation}
-\date{v0.6}
+\date{v0.7}
 \maketitle
 
 \newpage
@@ -29,9 +29,10 @@
     0.3 & 22/05/2015 & Carlos Oliveira & Front-end \\
     \rowcolor[gray]{0.9}
     0.4 & 30/05/2015 & Álvaro Fernando & Objetos Colecionáveis \\
-    0.5 & 17/05/2015 & Álvaro Fernando & Telas \\
+    0.5 & 17/06/2015 & Álvaro Fernando & Telas \\
     \rowcolor[gray]{0.9}
-    0.6 & 17/05/2015 & Álvaro Fernando & Câmera e HUD \\
+    0.6 & 17/06/2015 & Álvaro Fernando & Câmera e HUD \\
+    0.7 & 26/06/2015 & Álvaro Fernando & Personagem principal \\
     \bottomrule
   \end{tabular}
   \caption{Histórico de Revisões}
@@ -222,7 +223,7 @@ Cada personagem (Inti e Killa) terá sua própria barra de vida. Elas serão
 exibidas no canto superior esquerdo da tela.
 
 
-A barra de vida/saúde terá 9 espaços {\bf sem} divisões visíveis entre eles.
+A barra de vida/saúde terá 6 espaços {\bf com} divisões visíveis entre eles.
 Se um dos personagens tiver a vida esgotada, ele ficará incapacitado (por exemplo,
 não poderá atacar).
 
@@ -585,18 +586,142 @@ Outro elemento exibido no HUB é o botão para alternar entre os personagens.
 
 As imagens a seguir exemplificam como será a HUD:
 
+\newpage
+
 \begin{figure}[!htb]
     \centering
-    \includegraphics[scale=0.5]{camera_hud_02.png}
+    \includegraphics[scale=0.45]{camera_hud_02.png}
     \caption{HUD - Elementos}
     \label{fig:camera_hud_02}
 \end{figure}
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[scale=0.39]{camera_hud_03.png}
+    \includegraphics[scale=0.38]{camera_hud_03.png}
     \caption{HUD - Disposição dos Elementos}
     \label{fig:camera_hud_03}
+\end{figure}
+
+\newpage
+
+\section{Personagens Principais}
+\subsection{Descrição}
+\subsubsection{Descrição - Inti}
+A escolha do nome Inti é referência ao deus da metologia Inca representado pelo
+sol. O garoto Inti Vive na primeira torre do jogo. Seu relacionamento com todos
+habitantes desta torre é bastante amigável. Um dia, por algum motivo, ele acaba
+encontrando a saída da torre, e ao descobrir que existe algo além da torre,
+decide explorar.
+
+A seguir é exibido uma arte conceitual que serviu de inspiração para a identidade
+deste personagem e a arte final do mesmo.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.15]{inti_conceitual.jpg}
+    \caption{Inti - Arte Conceitual}
+    \label{fig:inti_conceitual}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.71]{inti_final.png}
+    \caption{Inti - Arte Final}
+    \label{fig:inti_final}
+\end{figure}
+
+\newpage
+
+\subsubsection{Descrição - Killa}
+Killa é uma referência à deusa Mama Killa, irmã e esposa do deus Inti da
+mitologia, representada pela lua. Aventureira e querida pela tribo. Vive fora de
+qualquer torre: na floresta vizinha à torre de Inti. Suas motivações no jogo
+iniciam ao interagir com Inti assim que este abandona sua torre natal.
+
+A seguir é exibido uma arte conceitual que serviu de inspiração para a identidade
+desta personagem e a arte final do mesmo.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.2]{killa_conceitual.jpg}
+    \caption{Killa - Arte Conceitual}
+    \label{fig:kilaa_conceitual}
+\end{figure}
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.7]{killa_final.png}
+    \caption{Killa - Arte Final}
+    \label{fig:killa_final}
+\end{figure}
+
+\newpage
+
+\subsection{Atributos}
+\subsubsection{Inti e Killa}
+A proporção do tamanho do Inti e da Killa em relação à tela será XXXXX vezes
+menor. A movimentação será na forma de uma caminhada, com a "velocidade" de 160
+pixels/segundos. Outros tipos de navegação (nada, voo, pulo) não estarão
+presentes no jogo.
+
+Como movimento sensível ao contexto, haverá o movimento/animação de interação,
+que consiste em um simples levantar de mão. Essa interação ocorrerá com os NPCs
+e com outros elementos do cenário (por exemplo portas fechadas).
+
+O {\bf dano} causado pelo inimigo Morcego irá retirar um dos 6 espaços de vida de
+Inti. E o dano causada por qualquer um dos chefões (Robô ou Camaleão) irá
+retirar 2 espaços da barra de vida. A {\bf reação ao dano} será com uma animação
+que deixa o personagem transparente por {\bf 3 segundos} e o deixará imune à
+qualquer outro dano.
+
+\subsection{Habilidades}
+Não haverá habilidades especiais para nenhum dos personagens principais, apenas
+um ataque simples descrito na subseção {\bf Combate} a seguir.
+
+\subsection{Inventário}
+Os personagens principais não terão o inventário em si. Ambos (Inti e Killa)
+possuirão uma ferramenta única de combate: a espada para o Inti e o arco para a
+Killa.
+
+\subsection{Combate}
+\subsubsection{Combate - Inti}
+O ataque do Inti será corpo-a-corpo com uma espada. A movimento será vertical,
+de cima pra baixo. A velocidade será aproximadamente XXXXX pixels/segundo. Quando
+acionada pela tecla/botão de atacar, irá realizar toda a animação com um único
+toque, e caso a tecla continue sendo pressionada a animação  não será repetida,
+necessitando assim que o jogador toque várias vezes a tecla/botão para repetidos
+ataques. Não haverá uma barra com estamina ou qualquer outro elemento que limite
+a quantidade de ataques. Mesmo que o jogo tenha uma temática baseada em jogos
+Beat 'em up, o jogador não poderá realizar combos com o ataque. Cada ataque tira
+{\bf um espaço} de vida dos inimigos.
+
+A imagem a seguir mostra o Inti em um dos quadros da animação de ataque.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.8]{attack_00.png}
+    \caption{Inti - Primeiro Quadro da Animação de Ataque}
+    \label{fig:inti_attack}
+\end{figure}
+
+\subsubsection{Combate - Killa}
+O ataque da Killa será à distância utilizando arco e flecha. O alcance da flecha
+será fixo, mas ainda não está definido. A velocidade da flecha será aproximadamente
+de XXXXX pixels/segundo. Quando acionada a tecla/botão de ataque, a animação será
+toda a animação de ataque uma única vez para cada toque, ou seja, uma flecha
+lançada por toque. Quando a tecla for pressionada, não será lançado flechas
+indiscriminadamente. Não haverá uma barra com estamina ou qualquer outro
+elemento que limite a quantidade de ataques. Mesmo que o jogo tenha uma temática
+baseada em jogos Beat 'em up, o jogador não poderá realizar combos com o ataque.
+Cada ataque tira {\bf um espaço} de vida dos inimigos.
+
+A imagem a seguir mostra a Killa em um dos quadros da animação de ataque.
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[scale=0.2]{killa_attack.png}
+    \label{fig:killa_attack}
+    \caption{Killa - Quadro da Animação de Ataque}
 \end{figure}
 
 \end{document}
