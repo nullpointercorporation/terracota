@@ -11,8 +11,7 @@ class Inti;
 class GameControl: public Object, Listener
 {
 public:
-    GameControl(Object *parent, ObjectID id);
-    ~GameControl();
+	static GameControl* get_instance();
 
 	Object* get_main_char();
 
@@ -21,8 +20,9 @@ public:
 	void swap_char();
     bool on_event(const KeyboardEvent& event);
     bool on_event(const JoyStickEvent& event);
-
 private:
+    GameControl(Object *parent, ObjectID id);
+    ~GameControl();
     Inti* m_inti; 
     Killa* m_killa;
 };

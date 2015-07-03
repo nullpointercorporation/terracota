@@ -14,7 +14,7 @@ Stage::Stage(Object* parent,ObjectID id)
 	:Object(parent,id),gamecontrol(nullptr)
 {
 	GameFlow::get_instance()->set_state(GameState::PLAYING);
-    gamecontrol = gc;
+    gamecontrol = GameControl::get_instance(); 
 	add_child(gamecontrol);
 }
 

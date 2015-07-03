@@ -12,7 +12,6 @@ public:
 	~Map2();
 	void generate_map();
 	shared_ptr<Texture> get_texture(const string& text);
-
     void run_physics(unsigned long elapsed);
 
 private:
