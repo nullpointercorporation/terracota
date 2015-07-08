@@ -1,0 +1,40 @@
+SRC_DIR = src
+OBJ_DIR = obj
+LIB_DIR = lib
+BIN_DIR = bin
+RES_DIR = res
+DLL_DIR = res/dll
+
+CC = x86_64-w64-mingw32-g++
+SDL_MINGW_ROOT = /usr/x86_64-w64-mingw32
+
+CFLAGS = -W -Wall -pedantic -ansi -std=c++11 -MMD -g3
+INCLUDES = -Iinclude -I /usr/x86_64-w64-mingw32/include/ijengine/ `$(SDL_MINGW_ROOT)/bin/sdl2-config --cflags`
+LIBS = -L /usr/x86_64-w64-mingw32/lib/ -lijengine `$(SDL_MINGW_ROOT)/bin/sdl2-config --libs` -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+
+GAME = $(BIN_DIR)/terracota
+
+SRC = ${wildcard $(SRC_DIR)/*.cpp}
+OBJ = ${addprefix $(OBJ_DIR)/, ${notdir ${SRC:.cpp=.o}}}
+
+.PHONY: clean depend
+
+all: $(GAME)
+	@cp -r $(RES_DIR) $(BIN_DIR)
+	@unzip -j $(DLL_DIR)/windows.zip -d $(BIN_DIR)
+	@echo --- Done
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@echo Building $@
+	@mkdir -p $(OBJ_DIR) $(LIB_DIR) $(BIN_DIR)
+	@$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
+
+$(GAME): $(OBJ)
+	@echo Building executable...
+	@$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) -o $@.exe $(LIBS)
+
+clean:
+	@echo Cleaning...
+	@rm -rf obj/ bin/ *~
+
+-include $(OBJ:.o=.d)
