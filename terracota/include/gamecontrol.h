@@ -16,6 +16,9 @@ public:
 	Object* get_main_char();
 
 	void draw_self();
+
+	Inti* get_inti();
+	Killa* get_killa();
 	void update_self(unsigned long elapsed);
 	void swap_char();
     bool on_event(const KeyboardEvent& event);

@@ -27,7 +27,7 @@ Layer::xmin()
 }
 
 void
-Layer::draw()
+Layer::draw_self()
 {
 	Environment* env = Environment::get_instance();
 	if (not m_clip.w() and not m_clip.h() )

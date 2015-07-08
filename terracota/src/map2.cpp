@@ -4,20 +4,23 @@
 #include "gamecontrol.h"
 #include "ui.h"
 #include "bat.h"
+#include <core/object.h>
+#include "list"
+#include "gameflow.h"
+#include "gamecontrol.h"
+#include "inti.h"
+#include "background.h"
 
 
 Map2::Map2(ObjectID id)
-	: Level(id), m_stage(nullptr)
+	: Level(id)
 {
-//	m_stage = new Stage(this,"map2"); 
-//	add_child(m_stage);
+	GameFlow::get_instance()->set_state(GameState::PLAYING);
 	generate_map();
-
 }
 
 Map2::~Map2()
 {
-    remove_child(gc);
 }
 
 void 
@@ -35,7 +38,6 @@ Map2::generate_map()
     wall->set_visible(false);
     add_child(wall);
 
-	env->camera->set_limits(Rect(0, 0, 3011, 1440));
 
     //**** ADICIONANDO OBJETOS NO CENARIO   ***////
     handle = get_texture("res/images/stages/second_map/1.png"); 
@@ -109,10 +111,12 @@ Map2::generate_map()
     m_stage->add_layer(casa2);
     */
 
-    add_child(gc);
-
+    GameControl* gamecontrol = GameControl::get_instance(); 
     env->camera->set_mode(Camera::FOLLOWING);
-    env->camera->follow(gc->get_main_char());
+    Inti* inti = gamecontrol->get_inti();
+	add_child(gamecontrol);
+    env->camera->follow(inti);
+	env->camera->set_limits(Rect(0, 0, 3011, 1440));
 }
 
 
@@ -126,7 +130,6 @@ Map2::get_texture(const string& text)
 void
 Map2::run_physics(unsigned long elapsed)
 {
-    Object *pc = gc->get_main_char();
-
-    collision_one_to_all(pc, children());    
+    GameControl* gamecontrol = GameControl::get_instance(); 
+    collision_one_to_all(gamecontrol->get_main_char(), children());    
 }

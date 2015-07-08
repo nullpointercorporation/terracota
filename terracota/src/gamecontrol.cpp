@@ -51,6 +51,17 @@ GameControl::~GameControl()
     env->events_manager->unregister_listener(this);
 }
 
+
+Inti* 
+GameControl::get_inti(){
+	return m_inti;
+}
+
+Killa*
+GameControl::get_killa(){
+	return m_killa;
+}
+
 Object*
 GameControl::get_main_char()
 {

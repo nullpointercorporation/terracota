@@ -25,7 +25,6 @@ public:
     void draw_self();
 	void update_self(unsigned long elapsed);
 private:
-	GameControl* gamecontrol;
 	vector < Layer* > m_layers;
 };
 
