@@ -24,9 +24,9 @@ Terracota::load_level(const string& id)
 {
 	GameFlow::get_instance()->set_state(GameState::FRONT_END);
     if (id == "a")
-       return new FrontEnd("a","b","res/images/logos/logo-terracota.jpg");
+       return new FrontEnd("a","b","res/images/logos/logo.png", 3000, Color(137, 137, 137));
     if (id == "b")
-        return new FrontEnd("b","c","res/images/logos/tec-logos.png");
+        return new FrontEnd("b","c","res/images/logos/logo-sdl.png");
     if (id == "c")
         return new FrontEnd("c","title", "res/images/logos/faixa_etaria.png");
     if (id == "title")
