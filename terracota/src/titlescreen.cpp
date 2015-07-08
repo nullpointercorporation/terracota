@@ -14,24 +14,23 @@ TitleScreen::TitleScreen()
 	GameFlow::get_instance()->set_state(GameState::MENU);
 
 	Environment* env = Environment::get_instance();
-	m_background = env->resources_manager->get_texture("res/images/titlescreen/background_terracota.jpg");
+	m_background = env->resources_manager->get_texture("res/images/titlescreen/background.png");
 
     double w  = env->canvas->w();
     double h  = env->canvas->h();
     double bx=263,by=76,space=20;
  
-    Button* m_continue = new Button(this,"continue", "res/images/buttons/menu_buttom/continue_idle.png",
-                                                     "res/images/buttons/menu_buttom/continue_active.png");
+    Button* m_start = new Button(this,"start", "res/images/titlescreen/play.png",
+                                               "res/images/titlescreen/play.png");
 
-    Button* m_start = new Button(this,"start", "res/images/buttons/menu_buttom/start_idle.png",
-                                               "res/images/buttons/menu_buttom/start_active.png");
+    Button* m_continue = new Button(this,"continue", "res/images/titlescreen/continue.png",
+                                                     "res/images/titlescreen/continue.png");
 
-	Button* m_options = new Button(this,"options","res/images/buttons/menu_buttom/options_idle.png",
-                                                  "res/images/buttons/menu_buttom/options_active.png");
+	Button* m_options = new Button(this,"options","res/images/titlescreen/options.png",
+                                                  "res/images/titlescreen/options.png");
 
-    Button* m_quit = new Button(this,"quit","res/images/buttons/menu_buttom/quit_idle.png",
-                                            "res/images/buttons/menu_buttom/quit_active.png");
-
+    Button* m_quit = new Button(this,"quit","res/images/titlescreen/quit.png",
+                                            "res/images/titlescreen/quit.png");
 
     m_continue->add_observer(this);
     m_start->add_observer(this);
@@ -43,11 +42,13 @@ TitleScreen::TitleScreen()
     add_child(m_options);
     add_child(m_quit);
 
-    m_continue->set_position((w-bx)/2,h/4+space*0+by*0);
-    m_start->set_position((w-bx)/2,h/4+space*1+by*1);
-    m_options->set_position((w-bx)/2,h/4+space*2+by*2);
-    m_quit->set_position((w-bx)/2,h/4+space*3+by*3);
+    double dx = -65;
+    double dy = -80;
 
+    m_start->set_position(189 + dx, 492 + dy);
+    m_continue->set_position(425 + dx, 498 + dy);
+    m_options->set_position(661 + dx, 492 + dy);
+    m_quit->set_position(898 + dx, 504 + dy);
 }
 
 TitleScreen::~TitleScreen()
