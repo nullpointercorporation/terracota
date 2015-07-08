@@ -4,8 +4,8 @@
 using namespace std;
 Background::Background(
 	ObjectID id,shared_ptr<Texture> texture,
-	double x, double y, double w, double h)
-	: Layer(id,texture,x,y,w,h)
+	double x, double y, double w, double h,double pos_x,double pos_y)
+	: Layer(nullptr,id,texture,x,y,w,h,pos_x,pos_y)
 {
 	set_camera(400,300);
 }

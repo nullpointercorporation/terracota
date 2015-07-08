@@ -10,7 +10,7 @@ main(int, char** )
     try
     {
         Terracota terracota;
-        terracota.init("res/settings.conf");
+        terracota.init("res/conf/settings.conf");
         terracota.run();
     }
     catch (Exception e)

@@ -23,12 +23,11 @@ Map1::generate_map()
 	Environment* env = Environment::get_instance();
 	shared_ptr<Texture> handle;
 	handle = get_texture("res/images/stages/first_map/map.png");
-
+/*
 	Background* background = new Background("background",handle);
 
 	env->camera->set_limits(Rect(0, 0, 3423, 1552));
 
-    //**** ADICIONANDO OBJETOS NO CENARIO   ***////
     handle = get_texture("res/images/stages/first_map/fonte.png"); 
     Layer* fonte = new Layer("fonte",handle,0,0,470,325);
     fonte->set_position(1490,875);
@@ -53,7 +52,6 @@ Map1::generate_map()
     calcada1->set_position(525,700);
 
 
-    /** colocando objetos em ordem **/
 
     m_stage->add_layer(background);
     m_stage->add_layer(calcada1);
@@ -61,6 +59,7 @@ Map1::generate_map()
     m_stage->add_layer(casas);
     m_stage->add_layer(arvore);
     m_stage->add_layer(luz);
+*/
 
 }
 

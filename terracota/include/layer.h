@@ -12,14 +12,13 @@ using std::pair;
 class Layer : public Object
 {
 public:
-	Layer(ObjectID id,
+	Layer(Object* parent,ObjectID id,
 		  shared_ptr<Texture> texture,
-		  double x=0, double y=0, double w=0, double h=0);
+		  double x=0, double y=0, double w=0, double h=0,
+		  double pos_x =0, double pos_y = 0);
 	~Layer();
-
 	double ymin();
 	double xmin();
-	void draw();
 
 	pair<double,double> position_clip();
 	pair<double,double> dimension_clip();

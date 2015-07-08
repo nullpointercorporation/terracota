@@ -12,7 +12,8 @@ class Background: public Layer
 public:
 	Background(ObjectID id,
 			   shared_ptr<Texture> texture,
-			   double x=0, double y=0, double w=0, double h=0);
+			   double x=0, double y=0, double w=0, double h=0,
+			   double pos_x=0,double pos_y = 0);
 	~Background();
 	void move_camera(double x,double y);
 	void set_camera(double x, double y);

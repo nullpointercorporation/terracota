@@ -3,12 +3,14 @@
  
 #include <iostream>
 using namespace std;
-Layer::Layer(ObjectID id,
+Layer::Layer(Object* parent,ObjectID id,
 	  shared_ptr<Texture> texture,
-	  double x, double y, double w, double h)
-	: Object(nullptr,id),m_texture(texture),m_clip(Rect(x,y,w,h)) 
+	  double x, double y, double w, double h,double pos_x,
+	  double pos_y)
+	: Object(parent,id),m_texture(texture),m_clip(Rect(x,y,w,h)) 
 {
 	set_dimensions(w,h);
+	set_position(pos_x,pos_y);
 }
 
 Layer::~Layer()
