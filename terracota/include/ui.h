@@ -16,6 +16,7 @@ public:
     Interface(Object * parent,ObjectID id,GameControl* gc);
     void draw_self();
     void update_self(unsigned long elepsed);
+
 private:
     shared_ptr<Texture> ui_elements;
 	Rect m_killa,m_inti,m_button,m_life_bar;

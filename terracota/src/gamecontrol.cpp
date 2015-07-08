@@ -23,16 +23,16 @@ GameControl::GameControl(Object* parent, ObjectID id)
 	m_inti->set_position(1000,460);
     m_killa->set_position(300,200);
 
-    Interface *ui = new Interface(nullptr,"ui",this);
+    Interface *ui = new Interface(this, "ui", this);
 	
 	Bat* bat = new Bat(this,"macartur");
 	bat->set_position(200,200);
-
 	add_child(bat);
 
     add_child(ui);
 	add_child(m_inti);
 	add_child(m_killa);
+
     Environment *env = Environment::get_instance();
     env->events_manager->register_listener(this);
 }
