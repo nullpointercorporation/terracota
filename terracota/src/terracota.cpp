@@ -15,7 +15,7 @@
 using namespace std;
 
 Terracota::Terracota()
-    : Game ("map2")
+    : Game ("map1")
 {
 }
 

@@ -11,9 +11,7 @@ public:
 	Map1(ObjectID id);
 	~Map1();
 	void generate_map();
-	shared_ptr<Texture> get_texture(const string& text);
-private:
-	Stage* m_stage;
+    void run_physics(unsigned long elapsed);
 };
 
 #endif

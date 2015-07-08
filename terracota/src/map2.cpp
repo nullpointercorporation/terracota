@@ -4,7 +4,6 @@
 #include "gamecontrol.h"
 #include "ui.h"
 #include "bat.h"
-#include <list>
 #include "gameflow.h"
 #include "gamecontrol.h"
 #include "inti.h"
@@ -12,11 +11,11 @@
 #include "map_manager.h"
 
 #include <core/object.h>
+#include <list>
 
 Map2::Map2(ObjectID id)
 	: Level(id)
 {
-	GameFlow::get_instance()->set_state(GameState::PLAYING);
 	generate_map();
 }
 
@@ -35,6 +34,7 @@ Map2::generate_map()
 
     MapManager* map_manager = new MapManager(this,"res/conf/map2.conf");
     map_manager->add_objects(objects);
+    map_manager->add_gamecontrol(0, 0, 3011, 1440);
 
 
     Object *wall = new Object(this, "top_wall", 0, 0, 3011, 610);
@@ -44,12 +44,6 @@ Map2::generate_map()
 
 
 
-    GameControl* gamecontrol = GameControl::get_instance(); 
-    env->camera->set_mode(Camera::FOLLOWING);
-    Inti* inti = gamecontrol->get_inti();
-	add_child(gamecontrol);
-    env->camera->follow(inti);
-	env->camera->set_limits(Rect(0, 0, 3011, 1440));
 }
 
 void
