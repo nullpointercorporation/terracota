@@ -25,6 +25,8 @@ public:
 	Life* life();
     bool can_change();
 
+    bool on_message(Object *sender, MessageID id, Parameters p);
+
 private:
 	class Impl;
 	unique_ptr<Impl> m_impl;

@@ -12,6 +12,8 @@
 #include <iostream>
 using namespace std;
 
+GameControl *gc = new GameControl(nullptr, "gc");
+
 GameControl::GameControl(Object* parent, ObjectID id)
 	: Object(parent,id), m_inti(nullptr),m_killa(nullptr)
 {

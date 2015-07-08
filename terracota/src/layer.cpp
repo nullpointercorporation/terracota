@@ -1,6 +1,6 @@
 #include "layer.h"
 #include <core/environment.h>
-
+ 
 #include <iostream>
 using namespace std;
 Layer::Layer(ObjectID id,

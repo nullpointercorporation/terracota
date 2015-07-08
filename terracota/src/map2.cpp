@@ -1,6 +1,7 @@
 #include "map2.h"
 #include "layer.h"
 #include "background.h"
+#include "gamecontrol.h"
 #include "ui.h"
 #include "bat.h"
 
@@ -8,13 +9,15 @@
 Map2::Map2(ObjectID id)
 	: Level(id), m_stage(nullptr)
 {
-	m_stage = new Stage(this,"map2"); 
-	add_child(m_stage);
+//	m_stage = new Stage(this,"map2"); 
+//	add_child(m_stage);
 	generate_map();
+
 }
 
 Map2::~Map2()
 {
+    remove_child(gc);
 }
 
 void 
@@ -22,9 +25,15 @@ Map2::generate_map()
 {
 	Environment* env = Environment::get_instance();
 	shared_ptr<Texture> handle;
-	handle = get_texture("res/images/stages/second_map/0.png");
 
-	Background* background = new Background("background",handle);
+    // Cenario de fundo
+    Image *background = new Image(this, "res/images/stages/second_map/0.png");
+    add_child(background);
+
+    Object *wall = new Object(this, "top_wall", 0, 0, 3011, 600);
+    wall->set_walkable(false);
+    wall->set_visible(false);
+    add_child(wall);
 
 	env->camera->set_limits(Rect(0, 0, 3011, 1440));
 
@@ -32,6 +41,8 @@ Map2::generate_map()
     handle = get_texture("res/images/stages/second_map/1.png"); 
     Layer* agua = new Layer("agua",handle,0,0,701,360);
     agua->set_position(1850,760);
+    agua->set_walkable(false);
+    add_child(agua);
 	
     handle = get_texture("res/images/stages/second_map/10.png"); 
     Layer* casa = new Layer("casa",handle,0,0,439,496);
@@ -44,6 +55,7 @@ Map2::generate_map()
     handle = get_texture("res/images/stages/second_map/7.png"); 
     Layer* madeira = new Layer("madeira",handle,0,0,211,102);
     madeira->set_position(1315,630);
+    madeira->set_walkable(false);
 
     handle = get_texture("res/images/stages/second_map/11.png");
     Layer* arvore =  new Layer("arvore",handle,0,0,514,370);
@@ -81,7 +93,7 @@ Map2::generate_map()
     Layer* casa2 =  new Layer("casa2",handle,0,0,463,791);
     casa2->set_position(6,550);
 
-    m_stage->add_layer(background);
+   /* m_stage->add_layer(background);
     m_stage->add_layer(agua);
     m_stage->add_layer(casa);
     m_stage->add_layer(door);
@@ -95,6 +107,12 @@ Map2::generate_map()
     m_stage->add_layer(arvore);
     m_stage->add_layer(galho);
     m_stage->add_layer(casa2);
+    */
+
+    add_child(gc);
+
+    env->camera->set_mode(Camera::FOLLOWING);
+    env->camera->follow(gc->get_main_char());
 }
 
 
@@ -103,4 +121,12 @@ Map2::get_texture(const string& text)
 {
 	Environment* env = Environment::get_instance();
 	return env->resources_manager->get_texture(text);
+}
+
+void
+Map2::run_physics(unsigned long elapsed)
+{
+    Object *pc = gc->get_main_char();
+
+    collision_one_to_all(pc, children());    
 }

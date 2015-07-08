@@ -27,4 +27,6 @@ private:
     Killa* m_killa;
 };
 
+extern GameControl *gc;
+
 #endif

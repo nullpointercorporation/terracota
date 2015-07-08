@@ -1,4 +1,5 @@
 #include "inti.h"
+#include <core/rect.h>
 #include <core/environment.h>
 #include <core/keyboardevent.h>
 #include <core/joystickevent.h>
@@ -32,6 +33,27 @@ public:
     bool can_change(){
 		return true;
 	}
+
+    bool on_message(Object *sender, MessageID id, Parameters p)
+    {
+        if (id == Object::hitID)
+        {
+            if (sender->id() == "top_wall")
+            {
+                Rect r = Rect::from_parameters(p);
+
+                if (m_inti->y() + m_inti->h() < r.y() + r.h())
+                {
+                    printf("Pe: %f\n", m_inti->y() + m_inti->h());
+                    printf("Parede: %f\n", r.y() + r.h());
+                    printf("Sugestao: %f\n", r.y() + r.h() - m_inti->h());
+                    m_inti->set_y(sender->y() + sender->h() - m_inti->h());
+                }
+            }
+        }
+
+        return false;
+    }
 
 private:
     Inti* m_inti;
@@ -761,4 +783,10 @@ Inti::can_change(){
 	return m_impl->can_change(); 
 }
 
+
+bool
+Inti::on_message(Object *sender, MessageID id, Parameters p)
+{
+    return m_impl->on_message(sender, id, p);
+}
 
