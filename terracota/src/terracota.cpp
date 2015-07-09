@@ -7,8 +7,7 @@
 #include "stage.h"
 #include "gameflow.h"
 #include "gameover.h"
-#include "map1.h"
-#include "map2.h"
+#include "map.h"
 
 
 #include <iostream>
@@ -35,10 +34,25 @@ Terracota::load_level(const string& id)
 	}
     if (id == "options")
         return new Options();
+
 	if (id == "map1")
-		return new Map1("map1");
+	{
+    	list<string> objects ={"background", "water_fountain", "home",	"tree", "light", "sidewalk","door"};
+		return new Map("map1","res/conf/map1.conf",objects);
+	}
+
+
 	if (id == "map2")
-		return new Map2("map2");
+	{	
+        list<string> objects ={
+            "background", "water", "home",  "door",
+            "lamber1", "lamber2", "grass1", "grass2",
+            "grass3",  "grass4","tree",   "branch", "rock","home2"};
+		return new Map("map2","res/conf/map2.conf",objects);
+	}
+
+
+
 	if (id == "gameover")
 		return new GameOver(); 
     
