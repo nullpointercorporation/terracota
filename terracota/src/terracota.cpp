@@ -14,7 +14,7 @@
 using namespace std;
 
 Terracota::Terracota()
-    : Game ("map3")
+    : Game ("map4")
 {
 }
 
@@ -46,7 +46,7 @@ Terracota::load_level(const string& id)
 	{	
         list<string> objects ={
             "background", "water", "home",  "door",
-            "lamber1", "lamber2", "grass1", "grass2",
+            "trunk1", "trunk2", "grass1", "grass2",
             "grass3",  "grass4","tree",   "branch", "rock","home2"};
 		return new Map("map2","res/conf/map2.conf",objects);
 	}
@@ -54,8 +54,15 @@ Terracota::load_level(const string& id)
 	if (id == "map3")
 	{
         list<string> objects ={"background", "table", "stand"};
-		return new Map("map2","res/conf/map3.conf",objects);
+		return new Map("map3","res/conf/map3.conf",objects);
 	}
+
+	if (id == "map4")
+	{
+        list<string> objects ={"background","steel","shadow", "wood_floor","steel_floor2","steel_floor","opened_door","face_door" };
+		return new Map("map4","res/conf/map4.conf",objects);
+	}
+
 
 	if (id == "gameover")
 		return new GameOver(); 
