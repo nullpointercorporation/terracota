@@ -31,8 +31,8 @@ GameControl::GameControl(Object* parent, ObjectID id)
 
     m_killa->set_active(false);
 
-	m_inti->set_position(1000,460);
-    m_killa->set_position(300,200);
+	m_inti->set_position(0,0);
+    m_killa->set_position(0,0);
 
     Interface *ui = new Interface(this, "ui", this);
 

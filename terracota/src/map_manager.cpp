@@ -23,6 +23,7 @@ MapManager::add_objects(list<string> objects)
 {
 	for( auto obj: objects)
 		add_object(obj);
+	add_gamecontrol();
 }
 
 
@@ -79,16 +80,37 @@ MapManager::get_texture(const string& text)
 }
 
 void 
-MapManager::add_gamecontrol(double x,double y,double w,double h)
+MapManager::add_gamecontrol()
 {
     GameControl* gamecontrol = GameControl::get_instance(); 
-    env->camera->set_mode(Camera::FOLLOWING);
-    Object* inti = gamecontrol->get_inti();
+	// set camera
+	string type = m_settings->read<string>("camera","type","null");
+	double pos_x,pos_y; 
+	pos_x = m_settings->read<double>("camera","pos_x",0);
+    pos_y = m_settings->read<double>("limits","pos_x",0);
+	if (type == "following")
+	{
+    	env->camera->set_mode(Camera::FOLLOWING);
+    	Object* inti = gamecontrol->get_inti();
+    	env->camera->follow(inti);
+	}
+	if (type == "static")
+	{
+		env->camera->set_mode(Camera::STATIC);
+		env->camera->set_position(pos_x,pos_y);
+	}
+
+	// limits box
+    string limits = m_settings->read<string>("limits","has_limit","null");
+
+	if ( limits != "null")
+	{
+		double box_x,box_y,box_w,box_h;	
+		box_x = m_settings->read<double>("limits","box_x",0);
+		box_y = m_settings->read<double>("limits","box_y",0);
+		box_w = m_settings->read<double>("limits","box_w",0);
+		box_h = m_settings->read<double>("limits","box_h",0);
+     	env->camera->set_limits(Rect(box_x, box_y, box_w, box_h));
+	}
 	m_target->add_child(gamecontrol);
-    env->camera->follow(inti);
-	env->camera->set_limits(Rect(x, y, w, h));
 }
-
-
-
-

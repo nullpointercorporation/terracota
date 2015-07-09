@@ -13,7 +13,7 @@ public:
 	void add_objects(list<string> objects);
 	void add_object(const string& element);
 	shared_ptr<Texture> get_texture(const string& text);
-	void add_gamecontrol(double x,double y,double w,double h);
+	void add_gamecontrol();
 private:
 	shared_ptr<Settings> m_settings;
 	Environment* env;
