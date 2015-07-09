@@ -16,6 +16,8 @@
 Map2::Map2(ObjectID id)
 	: Level(id)
 {
+    GameControl* gamecontrol = GameControl::get_instance(); 
+	gamecontrol->set_level(this);
 	generate_map();
 }
 
@@ -41,9 +43,6 @@ Map2::generate_map()
     wall->set_walkable(false);
     wall->set_visible(false);
     add_child(wall);
-
-
-
 }
 
 void

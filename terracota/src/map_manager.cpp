@@ -59,6 +59,14 @@ MapManager::add_object(const string& element)
 		layer->set_visible(visible);
 		m_target->add_child(layer);
 	}
+	else if (type == "Object")
+	{
+		cout << "OK"<<endl;
+		Object* obj = new Object(m_target,element,box_x,box_y,box_w,box_h);
+		obj->set_position(pos_x,pos_y);
+		obj->set_walkable(false);
+		m_target->add_child(obj);
+	}
 
 
 }

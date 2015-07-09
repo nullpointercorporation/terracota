@@ -7,17 +7,21 @@
 Map1::Map1(ObjectID id)
 	: Level(id)
 {
+    GameControl* gamecontrol = GameControl::get_instance(); 
+	gamecontrol->set_level(this);
 	generate_map();
 }
 
 Map1::~Map1()
 {
+    GameControl* gamecontrol = GameControl::get_instance(); 
+    remove_child(gamecontrol);
 }
 
 void 
 Map1::generate_map()
 {
-    list<string> objects ={"background", "water_fountain", "home",	"tree", "light", "sidewalk"};
+    list<string> objects ={"background", "water_fountain", "home",	"tree", "light", "sidewalk","door"};
 
     MapManager* map_manager = new MapManager(this,"res/conf/map1.conf");
     map_manager->add_objects(objects);

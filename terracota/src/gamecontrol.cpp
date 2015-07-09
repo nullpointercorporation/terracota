@@ -3,6 +3,7 @@
 #include <core/eventsmanager.h>
 #include <core/joystickevent.h>
 #include <core/keyboardevent.h>
+#include <core/level.h>
 
 #include "ui.h"
 #include "inti.h"
@@ -23,7 +24,7 @@ GameControl::get_instance(){
 }
 
 GameControl::GameControl(Object* parent, ObjectID id)
-	: Object(parent,id), m_inti(nullptr),m_killa(nullptr)
+	: Object(parent,id), m_inti(nullptr),m_killa(nullptr), m_level(nullptr)
 {
 	m_inti = new Inti(this,"inti");
     m_killa = new Killa(this,"killa");
@@ -43,6 +44,18 @@ GameControl::GameControl(Object* parent, ObjectID id)
     env->events_manager->register_listener(this);
 }
 
+Level*
+GameControl::level()
+{
+	return m_level;
+}
+
+void
+GameControl::set_level(Level* level)
+{
+	m_level = level;
+}
+
 GameControl::~GameControl()
 {
     delete m_inti;
@@ -50,7 +63,6 @@ GameControl::~GameControl()
     Environment *env = Environment::get_instance();
     env->events_manager->unregister_listener(this);
 }
-
 
 Inti* 
 GameControl::get_inti(){

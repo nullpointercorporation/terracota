@@ -5,6 +5,8 @@
 #include <core/joystickevent.h>
 #include <iostream>
 #include "life.h"
+#include <core/level.h>
+#include "gamecontrol.h"
 
 using namespace std;
 
@@ -26,10 +28,12 @@ public:
     {
         m_moviment = make_pair(xaxis, yaxis);
     }
+
     Life* life()
     {
         return m_life;
     }
+
     bool can_change(){
 		return true;
 	}
@@ -38,6 +42,7 @@ public:
     {
         if (id == Object::hitID)
         {
+            cout << "hit "<< sender->id() << endl;
             if (sender->id() == "top_wall")
             {
                 Rect r = Rect::from_parameters(p);
@@ -49,6 +54,13 @@ public:
                     printf("Sugestao: %f\n", r.y() + r.h() - m_inti->h());
                     m_inti->set_y(sender->y() + sender->h() - m_inti->h());
                 }
+            }
+
+            if (sender->id() == "door" && Inti::INTERACTING == m_inti->state_id())
+            {
+                GameControl* gamecontrol = GameControl::get_instance(); 
+                gamecontrol->level()->set_next("map2");
+                gamecontrol->level()->finish();
             }
         }
 

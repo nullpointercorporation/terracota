@@ -76,7 +76,7 @@ TitleScreen::on_message(Object* object, MessageID id, Parameters)
     if (not button)
         return false;
     if(button->id() == "start")
-        set_next("map2");
+        set_next("map1");
 	if (button->id() == "options")
 		set_next("options");
 

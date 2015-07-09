@@ -4,6 +4,7 @@
 #include <core/sprite.h>
 #include <core/object.h>
 #include <core/listener.h>
+#include <core/level.h>
 
 class Killa;
 class Inti;
@@ -23,11 +24,14 @@ public:
 	void swap_char();
     bool on_event(const KeyboardEvent& event);
     bool on_event(const JoyStickEvent& event);
+	Level* level();
+	void set_level(Level* level);
 private:
     GameControl(Object *parent, ObjectID id);
     ~GameControl();
     Inti* m_inti; 
     Killa* m_killa;
+	Level* m_level;
 };
 
 extern GameControl *gc;
