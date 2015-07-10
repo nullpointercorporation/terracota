@@ -1,7 +1,10 @@
 #include "map_manager.h"
 #include <core/image.h>
 #include <iostream>
+#include <sstream>
 #include <string.h>
+#include <stdio.h>
+#include "map.h"
 #include "layer.h"
 #include "gameflow.h"
 #include "gamecontrol.h"
@@ -17,15 +20,70 @@ MapManager::MapManager(Object* target, const string& file)
 	m_settings = env->resources_manager->get_settings(file);
 }
 
-
-void 
-MapManager::add_objects(list<string> objects)
+void
+MapManager::add_colisions()
 {
-	for( auto obj: objects)
-		add_object(obj);
-	add_gamecontrol();
+    list<string> objects;
+	string text = m_settings->read<string>("list","colisions","null");
+
+    if (text != "null"){
+        objects = make_list(text);
+    	for( auto obj: objects)
+	    	add_object(obj);
+    }
 }
 
+void
+MapManager::next_map(const string& object)
+{
+	string next_level = m_settings->read<string>(object,"next_level","null");
+	string next_pos = m_settings->read<string>(object,"pos","0x0");
+    double x,y;
+    sscanf(next_pos.c_str(),"%lfx%lf",&x,&y);
+
+
+    GameControl* gamecontrol = GameControl::get_instance(); 
+    Inti* inti = gamecontrol->get_inti();
+    inti->set_position(x,y);
+
+    Map* mapa = (Map*)m_target; 
+    mapa->set_next(next_level);
+    mapa->finish();
+}
+
+void 
+MapManager::add_objects()
+{
+    list<string> objects;
+	string text = m_settings->read<string>("list","objects","null");
+    if (text != "null"){
+        objects = make_list(text);
+    	for( auto obj: objects)
+	    	add_object(obj);
+        add_gamecontrol();
+    }
+}
+
+list<string> 
+MapManager::make_list(const string& text)
+{
+    list<string> objects;
+    string name;
+    for (unsigned int i=0;i<text.size();i++)
+    {
+        if ( ',' != text[i]){
+            name += text[i];
+        }
+        else
+        {
+            objects.push_back(name);
+            name = "";
+        }
+    }
+    if (text.size() > 1)
+        objects.push_back(name);
+    return objects;
+}
 
 void
 MapManager::add_object(const string& element)
@@ -37,8 +95,6 @@ MapManager::add_object(const string& element)
 
 	// add background
 	type = m_settings->read<string>(element,"type","null");
-	file = m_settings->read<string>(element,"file","null");
-	handle = get_texture(file);
 	box_x = m_settings->read<double>(element,"box_x",0);
 	box_y = m_settings->read<double>(element,"box_y",0);
 	box_w = m_settings->read<double>(element,"box_w",0);
@@ -54,6 +110,8 @@ MapManager::add_object(const string& element)
 	}
 	if (type == "Layer")
 	{
+	    file = m_settings->read<string>(element,"file","null");
+	    handle = get_texture(file);
 		Layer * layer = new Layer(m_target, element, handle, 
 					box_x, box_y, box_w, box_h, pos_x, pos_y);
 		layer->set_walkable(walkable);
@@ -62,14 +120,12 @@ MapManager::add_object(const string& element)
 	}
 	else if (type == "Object")
 	{
-		cout << "OK"<<endl;
 		Object* obj = new Object(m_target,element,box_x,box_y,box_w,box_h);
 		obj->set_position(pos_x,pos_y);
-		obj->set_walkable(false);
+		obj->set_walkable(walkable);
+        obj->set_visible(visible);
 		m_target->add_child(obj);
 	}
-
-
 }
 
 shared_ptr<Texture> 
@@ -83,11 +139,13 @@ void
 MapManager::add_gamecontrol()
 {
     GameControl* gamecontrol = GameControl::get_instance(); 
+
 	// set camera
 	string type = m_settings->read<string>("camera","type","null");
 	double pos_x,pos_y; 
 	pos_x = m_settings->read<double>("camera","pos_x",0);
-    pos_y = m_settings->read<double>("limits","pos_x",0);
+    pos_y = m_settings->read<double>("limits","pos_y",0);
+
 	if (type == "following")
 	{
     	env->camera->set_mode(Camera::FOLLOWING);

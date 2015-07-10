@@ -5,6 +5,7 @@
 #include <core/joystickevent.h>
 #include <iostream>
 #include "life.h"
+#include "map.h"
 #include <core/level.h>
 #include "gamecontrol.h"
 
@@ -42,25 +43,59 @@ public:
     {
         if (id == Object::hitID)
         {
-            cout << "hit "<< sender->id() << endl;
-            if (sender->id() == "top_wall")
+        	GameControl* gamecontrol = GameControl::get_instance(); 
+        	Rect r = Rect::from_parameters(p);
+            if (sender->id()[0] == 'd')
             {
-                Rect r = Rect::from_parameters(p);
-
-                if (m_inti->y() + m_inti->h() < r.y() + r.h())
-                {
-                    printf("Pe: %f\n", m_inti->y() + m_inti->h());
-                    printf("Parede: %f\n", r.y() + r.h());
-                    printf("Sugestao: %f\n", r.y() + r.h() - m_inti->h());
-                    m_inti->set_y(sender->y() + sender->h() - m_inti->h());
-                }
+				if (m_inti->y()+m_inti->h() < sender->y()+sender->h() )
+				{
+					cout << "Door"<<sender->id()<<endl;
+					Map* mapa = (Map*)gamecontrol->level();
+					mapa->next_map(sender->id());
+				}
             }
 
-            if (sender->id() == "door" && Inti::INTERACTING == m_inti->state_id())
+
+			if (sender->id()[0] == 't')
+			{
+				m_inti->set_y(sender->y()+sender->h());
+			}
+
+            if (sender->id()[0] == 'c' )
             {
-                GameControl* gamecontrol = GameControl::get_instance(); 
-                gamecontrol->level()->set_next("map2");
-                gamecontrol->level()->finish();
+					if ( r.w() <= r.h() )
+					{
+						if ( sender->x() < m_inti->x() )	
+						{
+							m_inti->set_x(sender->x() + sender->w());
+						}
+						else
+						{
+							m_inti->set_x(sender->x() - m_inti->w());
+						}
+					}
+					else
+					{
+						double delta1;
+						delta1=  m_inti->y()+m_inti->h() - sender->y(); 
+
+						if ( delta1  > sender->h()/2  )
+						{	
+							if (m_inti->y()+m_inti->h() < sender->y()+sender->h())
+							{
+									m_inti->set_y(sender->y()+sender->h() - m_inti->h());
+							}
+						}else{
+							if (m_inti->y()+m_inti->h() > sender->y())
+							{
+									m_inti->set_y(sender->y() - m_inti->h());
+							}
+						}
+					}
+			}
+            if (sender->id()[0] == 'n' )
+            {
+				cout << "NPC"<<sender->id() <<endl;
             }
         }
 

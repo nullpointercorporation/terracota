@@ -7,7 +7,7 @@ Layer::Layer(Object* parent,ObjectID id,
 	  shared_ptr<Texture> texture,
 	  double x, double y, double w, double h,double pos_x,
 	  double pos_y)
-	: Object(parent,id),m_texture(texture),m_clip(Rect(x,y,w,h)) 
+	: Object(parent,id),m_texture(texture),m_clip(Rect(x,y,w,h)),m_hide(false) 
 {
 	set_dimensions(w,h);
 	set_position(pos_x,pos_y);
@@ -62,3 +62,14 @@ Layer::set_clip_dimension(double w,double h)
 	m_clip.set_dimensions(w,h);
 }
 
+void
+Layer::set_can_hide(bool can_hide)
+{
+	can_hide = can_hide;
+}
+
+bool 
+Layer::can_hide()
+{
+	return m_hide;
+}
