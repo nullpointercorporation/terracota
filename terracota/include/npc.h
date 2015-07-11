@@ -11,7 +11,7 @@ using std::shared_ptr;
 class NPC: public Object
 {
 public:
-    NPC(Object* parent=nullptr,ObjectID id="npc",const string& file="",int dialogue=0);
+    NPC(Object* parent,ObjectID id,const string& file,int dialogue);
     ~NPC();
     void draw_self();
     void update_self(unsigned long elapsed);

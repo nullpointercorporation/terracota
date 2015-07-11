@@ -2,18 +2,27 @@
 #define DIALOGUE_MANAGER_H
 
 #include "dialogue.h"
-#include <list>
+#include "map.h"
+#include <core/settings.h>
+#include <core/environment.h>
+#include <map>
+
+using std::shared_ptr;
 
 class DialogueManager
 {
 public:
 	static DialogueManager* get_instance();
-	void start_dialogue();
-	void change_dialogue();
+    void next_dialogue(const string& id);
+	void set_map(Map* map);
+	void generate_dialogue();
+	void add_dialogue(const string& id);
+	list<string> make_list(const string& text);
 	DialogueManager();
 	~DialogueManager();
 private:
-	int m_current_dialogue;	
-	Dialogue* m_dialogue;	
+	shared_ptr<Settings> m_settings;
+	std::map <string , Dialogue* > m_dialogues;	
+	Map* m_map;
 };
 #endif

@@ -1,11 +1,13 @@
 #include "map.h"
 #include "layer.h"
 #include "gamecontrol.h"
+#include "dialogue_manager.h"
 
 Map::Map(ObjectID id,const string& conf_file)
 	: Level(id)
 {
     GameControl* gamecontrol = GameControl::get_instance(); 
+	DialogueManager::get_instance()->set_map(this);
 	gamecontrol->set_level(this);
     m_map_manager = new MapManager(this,conf_file);
     m_map_manager->add_objects();

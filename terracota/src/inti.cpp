@@ -8,6 +8,7 @@
 #include "map.h"
 #include <core/level.h>
 #include "gamecontrol.h"
+#include "dialogue_manager.h"
 
 using namespace std;
 
@@ -89,9 +90,9 @@ public:
 						}
 					}
 			}
-            if (sender->id()[0] == 'n' )
+            if (sender->id()[0] == 'n' && m_inti->state_id() == INTERACTING )
             {
-				cout << "NPC"<<sender->id() <<endl;
+		            DialogueManager::get_instance()->next_dialogue(sender->id());			
             }
         }
 
