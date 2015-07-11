@@ -41,7 +41,6 @@ MapManager::next_map(const string& object)
     double x,y;
     sscanf(next_pos.c_str(),"%lfx%lf",&x,&y);
 
-
     GameControl* gamecontrol = GameControl::get_instance(); 
     Inti* inti = gamecontrol->get_inti();
     inti->set_position(x,y);
@@ -152,6 +151,7 @@ MapManager::add_gamecontrol()
     	Object* inti = gamecontrol->get_inti();
     	env->camera->follow(inti);
 	}
+
 	if (type == "static")
 	{
 		env->camera->set_mode(Camera::STATIC);

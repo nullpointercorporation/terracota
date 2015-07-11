@@ -47,12 +47,8 @@ public:
         	Rect r = Rect::from_parameters(p);
             if (sender->id()[0] == 'd')
             {
-				if (m_inti->y()+m_inti->h() < sender->y()+sender->h() )
-				{
-					cout << "Door"<<sender->id()<<endl;
 					Map* mapa = (Map*)gamecontrol->level();
 					mapa->next_map(sender->id());
-				}
             }
 
 
