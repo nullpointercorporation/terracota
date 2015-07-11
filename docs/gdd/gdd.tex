@@ -12,7 +12,7 @@
 \begin{document}
 \title{TerraCota\\Game Design Document}
 \author{NullPointer Corporation}
-\date{v0.8}
+\date{v0.9}
 \maketitle
 
 \newpage
@@ -35,7 +35,9 @@
     0.7 & 26/06/2015 & Álvaro Fernando & Personagem principal \\
     \rowcolor[gray]{0.9}
     0.7 & 05/07/2015 & Álvaro Fernando & Power Ups e Sistema de Pontuação \\
-    0.8 & 05/07/2015 & Álvaro Fernando & Pricipais Personagens do Mundo \\
+    0.8 & 07/07/2015 & Álvaro Fernando & Pricipais Personagens do Mundo \\
+    \rowcolor[gray]{0.9}
+    0.9 & 07/07/2015 & Álvaro Fernando & Progresso do Jogo \\
     \bottomrule
   \end{tabular}
   \caption{Histórico de Revisões}
@@ -279,7 +281,7 @@ primeira torre;
 colisão;
 \subitem {\bf Recompensas:} diz palavras/símbolos de força ao Inti.
 
-\item Pessoa que dá a quest/missão de matar os morcegos:
+\item Sogra:
 \subitem {\bf Nome:} desconhecido;
 \subitem {\bf Sexo:} (não definido);
 \subitem {\bf Idade:} +20;
@@ -775,6 +777,122 @@ do Cacique é o proposto na imagem a seguir.
     \includegraphics[scale=0.9]{cacique_pai_da_killa.jpg}
     \label{fig:cacique_pai_da_killa}
     \caption{Cacique e Pai da Killa}
+\end{figure}
+
+\newpage
+
+\section{Progresso do Jogo}
+
+\subsection{Cenário 1 - Torre 1 - Andar do Mercado}
+O primeiro cenário jogável encontra-se na Torre 1, e possui o nome de (apenas
+para controle interno) Andar do Mercado. O objetivo principal do jogador no
+nível é:
+
+\begin{itemize}
+    \item Conversar com a Mãe do Inti - Missão de levar comida para o Pai;
+    \item Conversar com a Sogra - Missão dos Morcegos;
+    \item Conversar com o Ferreiro para receber a Primeira Espada.
+\end{itemize}
+
+Neste nível está localizada a casa de Inti e a de outros habitantes da Primeira
+Torre. Além de outros elementos, como a barraca do Ferreiro e uma barraca para
+referenciar um mercado. A característica principal desse nível/cenário é a de uma
+fonte ou poço no centro. Não haverá inimigos neste nível. É neste nível que é
+obtido o primeiro Objeto Colecionável: a Primeira Espada. O tempo estará sempre
+claro, de dia. As cores predominantes serão o verde e o marrom das paredes da torre
+e das casas. A imagem a seguir mostra este primeiro cenário.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=0.45]{cenario_01.png}
+	\label{fig:cenario_01}
+	\caption{Cenário 1 - Torre 1 - Andar do Mercado}
+\end{figure}
+
+\newpage
+
+\subsection{Cenário 2 - Torre 1 - Andar das Lhamas}
+O segundo cenário jogável encontra-se na Torre 1, e possui o nome de (apenas
+para controle interno) Andar das Lhamas. O objetivo principal do jogador no
+nível é:
+
+\begin{itemize}
+    \item Conversar com o Pai do Inti - Completar Missão de levar comida para o
+    Pai;
+\end{itemize}
+
+Neste nível está localizado pasto das Lhamas, um celeiro e uma pequena moradia.
+A característica principal desse nível/cenário é a presença de várias Lhamas.
+O Pai do Inti também está neste cenário e o jogador deve entregar a comida para
+completar a primeira missão. Não haverá inimigos neste nível, nem objetos
+colecionáveis. O tempo estará sempre claro, de dia. As cores predominantes serão
+as mesmas do Cenário 1, além das cores diversas das Lhamas. As imagens a seguir
+mostram este segundo cenário e as Lhamas.
+
+\begin{figure}[!htb]
+	\centering
+    \includegraphics[scale=0.4]{cenario_02.png}
+    \label{fig:cenario_02}
+    \caption{Cenário 2 - Torre 1 - Andar das Lhamas}
+\end{figure}
+
+\begin{figure}[!htb]
+	\centering
+    \includegraphics[scale=0.4]{lhamas.png}
+    \label{fig:lhamas}
+    \caption{Lhamas do Cenário 4}
+\end{figure}
+
+\newpage
+
+\subsection{Cenário 4 - Torre 1 - Andar do Boss}
+
+O terceiro cenário jogável encontra-se na Torre 1, e possui o nome de (apenas
+para controle interno) Casa do Inti. O objetivo principal do jogador no
+nível é:
+
+\begin{itemize}
+    \item (sem objetivo específico - somente para visitar)
+\end{itemize}
+
+Neste nível está localizado apenas elementos da casa do Inti, como uma mesa,
+um balcão e um armário. Não haverá NPCs. Não haverá inimigos neste nível, nem
+objetos colecionáveis. Como a Casa é fechada, não é possível saber sobre o tempo
+As cores predominantes são marrom e cinza. A imagem a seguir mostra este
+terceiro cenário.
+
+\begin{figure}[!htb]
+	\centering
+    \includegraphics[scale=0.35]{cenario_03.png}
+    \label{fig:cenario_03}
+    \caption{Cenário 3 - Torre 1 - Casa do Inti}
+\end{figure}
+
+\newpage
+
+\subsection{Cenário 4 - Torre 1 - Andar do Boss}
+
+O quarto cenário jogável encontra-se na Torre 1, e possui o nome de (apenas
+para controle interno) Casa do Inti. O objetivo principal do jogador no
+nível é:
+
+\begin{itemize}
+    \item Derrotar todos os Morcegos - Missão entregue pela Sogra
+    \item Derrotar o boss Robô - Necessário para sair da Torre 1
+\end{itemize}
+
+Neste nível estão localizados os dois inimigos do jogo: o Morcego e o Robô.
+Conterá um círculo no centro, remendos de metal nas paredes e um portal de saída
+da Torre 1. Não haverá NPCs neste cenário. Para cumprir os objetivos, o jogador
+terá que derrotar os dois inimigos. Não haverá objetos colecionáveis. O tempo
+estará sempre claro, de dia. As cores predominantes serão marrom e o amarelo
+do portal. A imagem a seguir mostra este quarto cenário.
+
+\begin{figure}[!htb]
+	\centering
+    \includegraphics[scale=0.4]{cenario_04.png}
+    \label{fig:cenario_04}
+    \caption{Cenário 4 - Torre 1 - Andar do Boss}
 \end{figure}
 
 \end{document}
