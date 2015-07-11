@@ -12,7 +12,7 @@
 \begin{document}
 \title{TerraCota\\Game Design Document}
 \author{NullPointer Corporation}
-\date{v0.9}
+\date{v1.0}
 \maketitle
 
 \newpage
@@ -38,6 +38,7 @@
     0.8 & 07/07/2015 & Álvaro Fernando & Pricipais Personagens do Mundo \\
     \rowcolor[gray]{0.9}
     0.9 & 07/07/2015 & Álvaro Fernando & Progresso do Jogo \\
+    1.0 & 07/07/2015 & Álvaro Fernando & Inimigos \\
     \bottomrule
   \end{tabular}
   \caption{Histórico de Revisões}
@@ -808,7 +809,7 @@ e das casas. A imagem a seguir mostra este primeiro cenário.
 	\label{fig:cenario_01}
 	\caption{Cenário 1 - Torre 1 - Andar do Mercado}
 \end{figure}
-
+q
 \newpage
 
 \subsection{Cenário 2 - Torre 1 - Andar das Lhamas}
@@ -894,5 +895,69 @@ do portal. A imagem a seguir mostra este quarto cenário.
     \label{fig:cenario_04}
     \caption{Cenário 4 - Torre 1 - Andar do Boss}
 \end{figure}
+
+\newpage
+
+\section{Inimigos}
+
+A movimentação dos inimigos é na forma de voo em patrulha (para a esquerda e
+para a direita) e o ataque do morcego ao jogador é mediante a colisão. A visão
+dos inimigos é de 200 pixels à frente e não possuem audição. Os inimigos
+aparecem no cenário 4 (torre 1, andar do Boss), são em número limitado (ainda
+não definido) e não são recriados.  Os inimigos são têm um espaço de vida e são
+derrotados com um ataque do jogador. Não existem recompensas (itens, dinheiro,
+experiência, etc) associadas à derrota dos inimigos. O jogador precisa derrotar
+todos os inimigos para concluir a missão apresentada pela Sogra.
+
+\subsection{Inimigos Específicos de Cada Nível}
+
+\subsubsection{Morcego - Cenário 04}
+A imagem do morcego é de perfil, a cor predominante de seu tronco é preta, a de
+suas asas é rosa e seu rabo é preto com lilás. O morcego aparece apenas no
+cenário 4, se movimenta em forma de voo e patrulha (para a esquerda e para a
+direita) e ataca quando há colisão com o jogador. O ataque ou colisão do morcego
+tira um espaço de vida do jogador e sua derrota é mediante apenas um ataque do
+jogador. Assim que o morcego é atacado, ele se transforma em uma nuvem de fumaça
+e em seguida desaparece do cenário. Não há recompensas associadas a sua derrota.
+
+\begin{figure}[!htb]
+	\centering
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.15]{morcego.png}
+		\caption{Morcego}
+		\label{morcego}
+	\end{minipage}%
+	\begin{minipage}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.17]{morcego_derrotado.png}
+		\caption{Morcego Derrotado}
+		\label{morcego_derrotado}
+	\end{minipage}
+\end{figure}
+
+\newpage
+
+\subsubsection{Boss - Robô - Cenário 04}
+A imagem do Boss é composta por três elementos (duas mãos e uma cabeça), com
+articulações ligadas a cabeça, porém, independentes. Existem esferas de cor azul
+no centro das mãos e da cabeça. Sua cor predominante é bege e ele aparece no
+cenário 4 (descrição do cenário: subseção 13.4). A movimentação das mãos é de 50
+pixels em todas as direções e a cabeça não se movimenta. O Boss persegue o
+jogador com as mãos e cada colisão tira 2 espaços de vida do jogador. Cada mão
+do Boss tem 3 espaços de vida, somando um total de 6 espaços de vida. Ele pode
+ser vencido com 6 ataques do jogador, 3 ataques em cada mão. Quando a primeira
+mão sofre os 3 ataques, ela desaparece e a movimentação da outra mão fica mais
+rápida. Quando a última mão sofre 3 ataques, ela desaparece e o Boss é
+derrotado.  Não existem itens colecionáveis nesse ambiente. A recompensa pela
+derrota do Boss é a liberação da saída da torre 1.
+
+\begin{figure}[!htb]
+	\centering
+    \includegraphics[scale=1]{boss_robo.png}
+    \label{fig:boss_robo}
+    \caption{Boss - Robô}
+\end{figure}
+
 
 \end{document}
