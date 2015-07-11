@@ -8,6 +8,7 @@
 #include "layer.h"
 #include "gameflow.h"
 #include "gamecontrol.h"
+#include "npc.h"
 #include "inti.h"
 
 using namespace std;
@@ -125,6 +126,14 @@ MapManager::add_object(const string& element)
         obj->set_visible(visible);
 		m_target->add_child(obj);
 	}
+    else if (type == "NPC")
+    {
+	    file = m_settings->read<string>(element,"file","null");
+        NPC* npc = new NPC(m_target,element,file);
+        npc->set_dimensions(box_w,box_h);
+		npc->set_position(pos_x,pos_y);
+        m_target->add_child(npc);
+    }
 }
 
 shared_ptr<Texture> 
