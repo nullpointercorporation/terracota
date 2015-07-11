@@ -3,18 +3,21 @@
 
 #include <core/object.h>
 #include <core/texture.h>
+#include <memory>
+
+using std::shared_ptr;
 
 class Dialogue : public Object
 {
 public:
-	Dialogue(Object* parent,ObjectID id,const string& file,double x,double y,double w,double h, int size);
-
+	Dialogue(Object* parent,ObjectID id,const string& file);
+    ~Dialogue();
+    void show_quest();
 	void draw_self();
 	void update_self(unsigned long elapsed);
 private:
-	shared_ptr<Texture> m_image;
-	Rect m_rect;
-	int m_size;
+	shared_ptr<Texture> m_texture;
+    bool hide;
 };
 
 #endif

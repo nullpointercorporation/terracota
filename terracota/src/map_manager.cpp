@@ -10,6 +10,7 @@
 #include "gamecontrol.h"
 #include "npc.h"
 #include "inti.h"
+#include "dialogue.h"
 
 using namespace std;
 
@@ -128,8 +129,9 @@ MapManager::add_object(const string& element)
 	}
     else if (type == "NPC")
     {
+	    int dialogue = m_settings->read<int>(element,"dialogue",0);
 	    file = m_settings->read<string>(element,"file","null");
-        NPC* npc = new NPC(m_target,element,file);
+        NPC* npc = new NPC(m_target,element,file,dialogue);
         npc->set_dimensions(box_w,box_h);
 		npc->set_position(pos_x,pos_y);
         m_target->add_child(npc);
