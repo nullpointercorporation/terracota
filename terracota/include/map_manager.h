@@ -5,9 +5,9 @@
 #include <core/settings.h>
 #include <core/environment.h>
 #include <list>
-class Map;
 #include "map.h"
 
+class Map;
 class MapManager
 {
 public:

@@ -598,7 +598,6 @@ public:
             double x = moviment.first * speed;
             double y = moviment.second * speed;
             m_inti->set_moviment(x, y);
-			cout << m_inti->x() << "-"<<m_inti->y() << endl;
         }
     }
 

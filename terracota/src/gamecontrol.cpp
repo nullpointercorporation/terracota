@@ -93,7 +93,6 @@ void
 GameControl::swap_char(){
     if (m_inti->active() and m_inti->state_id() == Inti::IDLE)
     {
-        cout << "swap"<<endl;
         m_inti->set_active(false);  
         m_inti->set_visible(false);
         m_killa->set_active(true);

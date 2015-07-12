@@ -5,7 +5,7 @@
 #include <cmath>
 
 Enime::Enime(Object* parent,ObjectID id,int time,int radius,int speed)
-	: Object(parent,id),m_life(new Life(1,0)),m_animation(nullptr),m_start(0),m_time(time),m_radius(radius),m_speed(speed)
+	: Object(parent,id),m_life(new Life(1,0)),m_animation(nullptr),m_start(0),m_time(time),m_radius(radius),m_speed(speed),m_allow_attack(true),m_rows(0),m_die_animation(nullptr)
 {
 }
 
@@ -17,11 +17,36 @@ Enime::~Enime()
 void
 Enime::set_animation(const string& file,double x,double y,
 			   double w,double h, double n_frame, 
-			   double frame_rate,bool animate)
+			   double frame_rate,bool animate,int rows)
 {
 	m_animation = new Animation(file,x,y,w,h,n_frame,frame_rate,animate);
 	set_dimensions(w,h);
+	m_rows = rows;
 }
+
+
+void
+Enime::set_die_animation(const string& file,double x,double y,
+			   double w,double h, double n_frame, 
+			   double frame_rate,bool animate,int rows)
+{
+	m_die_animation = new Animation(file,x,y,w,h,n_frame,frame_rate,animate);
+	set_dimensions(w,h);
+	m_rows = rows;
+}
+
+bool
+Enime::can_attack()
+{
+   return	m_allow_attack;
+}
+
+void 
+Enime::set_can_attack(bool can)
+{
+	m_allow_attack = can;
+}
+
 
 Life*
 Enime::get_life()
@@ -31,7 +56,6 @@ Enime::get_life()
 
 #include <iostream>
 using namespace std;
-
 
 void 
 Enime::follow_main_char()
@@ -49,12 +73,14 @@ Enime::follow_main_char()
 		if (dx>0 )
 		{
 			set_x(x()+m_speed);
-			m_animation->set_row(1);
+			if (m_rows > 0 )
+				m_animation->set_row(1);
 		}
 		else
 		{
 			set_x(x()-m_speed);
-			m_animation->set_row(0);
+			if (m_rows > 0)
+				m_animation->set_row(0);
 		}
 	}
 	if ( abs(dy) <= m_radius )
@@ -71,14 +97,17 @@ Enime::update_self(unsigned long elapsed)
 {
 	if ( m_start == 0) m_start = elapsed;
 
-	if (elapsed-m_start > m_time)
+	if (m_life->life() <= 0   && elapsed-m_start > m_time  )
+	{
+		die();
+		m_start = 0;
+	}
+
+	if (elapsed-m_start > m_time  && m_allow_attack)
 	{
 		follow_main_char();
 		m_start=0;
 	}
-
-	if (m_life->life() <= 0  ) die();
-
 	m_animation->update(elapsed);
 }
 
@@ -94,7 +123,10 @@ Enime::die()
 void
 Enime::draw_self()
 {
-	m_animation->draw(x(),y());
+	if ( m_life->life() <= 0  )
+		m_die_animation->draw(x(),y());
+	else
+		m_animation->draw(x(),y());
 }
 
 void 
