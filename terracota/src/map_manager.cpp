@@ -22,6 +22,7 @@ MapManager::MapManager(Object* target, const string& file)
 	m_settings = env->resources_manager->get_settings(file);
 }
 
+#include "enime.h"
 void
 MapManager::add_colisions()
 {
@@ -33,6 +34,11 @@ MapManager::add_colisions()
     	for( auto obj: objects)
 	    	add_object(obj);
     }
+
+	Enime* bat = new Enime(m_target,"bat");
+	bat->set_animation("res/images/enemies/bats.png",0,0,120,130,4,80,true);
+	bat->set_position(300,300);
+	m_target->add_child(bat);
 }
 
 void
