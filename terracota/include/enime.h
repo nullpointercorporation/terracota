@@ -12,7 +12,7 @@ class Life;
 class Enime: public Object
 {
 public:
-	Enime(Object* parent,ObjectID id);
+	Enime(Object* parent,ObjectID id,int time,int radius,int speed);
 	~Enime();
 	void set_animation(const string& file,double x,double y,
 					   double w,double h, double n_frame, 
@@ -28,7 +28,7 @@ private:
     Life* m_life;
     Animation* m_animation;
 	unsigned long m_start,m_time;
-	int m_radius,speed;
+	int m_radius,m_speed;
 };
 
 #endif

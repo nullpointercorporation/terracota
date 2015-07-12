@@ -4,8 +4,8 @@
 #include "gamecontrol.h"
 #include <cmath>
 
-Enime::Enime(Object* parent,ObjectID id)
-	: Object(parent,id),m_life(new Life(1,0)),m_animation(nullptr),m_start(0),m_time(120),m_radius(500),speed(10)
+Enime::Enime(Object* parent,ObjectID id,int time,int radius,int speed)
+	: Object(parent,id),m_life(new Life(1,0)),m_animation(nullptr),m_start(0),m_time(time),m_radius(radius),m_speed(speed)
 {
 }
 
@@ -47,21 +47,21 @@ Enime::follow_main_char()
 	{
 		if (dx>0 )
 		{
-			set_x(x()+speed);
+			set_x(x()+m_speed);
 			m_animation->set_row(1);
 		}
 		else
 		{
-			set_x(x()-speed);
+			set_x(x()-m_speed);
 			m_animation->set_row(0);
 		}
 	}
 	if ( abs(dy) <= m_radius )
 	{
 		if (dy>0 )
-			set_y(y()+speed);
+			set_y(y()+m_speed);
 		else
-			set_y(y()-speed);
+			set_y(y()-m_speed);
 	}
 }
 
