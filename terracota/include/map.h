@@ -4,10 +4,11 @@
 #include <core/level.h>
 #include <list>
 #include <string.h>
-#include "map_manager.h"
 #include "stage.h"
+#include "map_manager.h"
 
 using std::shared_ptr;
+
 class Map: public Level
 {
 public:
@@ -16,7 +17,6 @@ public:
     void run_physics(unsigned long elapsed);
 	void next_map(const string& object);
 private:
-	MapManager* m_map_manager;
 };
 
 #endif

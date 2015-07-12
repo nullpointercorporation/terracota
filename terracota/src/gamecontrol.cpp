@@ -8,7 +8,7 @@
 #include "ui.h"
 #include "inti.h"
 #include "killa.h"
-#include "bat.h"
+#include "life.h"
 
 #include <iostream>
 using namespace std;
@@ -30,9 +30,8 @@ GameControl::GameControl(Object* parent, ObjectID id)
     m_killa = new Killa(this,"killa");
 
     m_killa->set_active(false);
+    m_killa->set_visible(false);
 
-	m_inti->set_position(600,300);
-    m_killa->set_position(0,0);
 
     Interface *ui = new Interface(this, "ui", this);
 
@@ -44,11 +43,19 @@ GameControl::GameControl(Object* parent, ObjectID id)
     env->events_manager->register_listener(this);
 }
 
+void 
+GameControl::set_char_position(double x,double y)
+{
+	m_inti->set_position(x,y);
+    m_killa->set_position(x,y);
+}
+
 Level*
 GameControl::level()
 {
 	return m_level;
 }
+
 
 void
 GameControl::set_level(Level* level)
@@ -84,15 +91,32 @@ GameControl::get_main_char()
 
 void
 GameControl::swap_char(){
-    if (m_inti->active() and m_inti->can_change())
+    if (m_inti->active() and m_inti->state_id() == Inti::IDLE)
     {
+        cout << "swap"<<endl;
         m_inti->set_active(false);  
+        m_inti->set_visible(false);
         m_killa->set_active(true);
+        m_killa->set_visible(true);
+        m_killa->set_position( m_inti->x(),m_inti->y());
+
+        if (  m_inti->direction() == Inti::LEFT  )
+            m_killa->set_direction(Killa::LEFT);
+        else
+            m_killa->set_direction(Killa::RIGHT);
+
     }
-    else if (m_killa->active() and m_killa->can_change())
+    else if (m_killa->active() and m_killa->state_id() == Killa::IDLE)
     {
         m_inti->set_active(true);  
+        m_inti->set_visible(true);
         m_killa->set_active(false);
+        m_killa->set_visible(false);
+        m_inti->set_position( m_killa->x(),m_killa->y());
+        if (  m_killa->direction() == Killa::LEFT )
+            m_inti->set_direction(Inti::LEFT);
+        else
+            m_inti->set_direction(Inti::RIGHT);
     }
 }
 
@@ -104,6 +128,11 @@ GameControl::draw_self()
 void 
 GameControl::update_self(unsigned long elapsed)
 {
+    if (  m_inti->life()->life() <= 0     )
+    {
+        level()->set_next("gameover");
+        level()->finish();
+    }
 }
 
 

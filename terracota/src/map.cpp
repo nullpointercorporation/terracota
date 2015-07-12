@@ -2,24 +2,30 @@
 #include "layer.h"
 #include "gamecontrol.h"
 #include "dialogue_manager.h"
+#include "battle_manager.h"
+
+#include <iostream>
+using namespace  std;
 
 Map::Map(ObjectID id,const string& conf_file)
 	: Level(id)
 {
     GameControl* gamecontrol = GameControl::get_instance(); 
+	MapManager::get_instance()->set_map(this,conf_file);
+    MapManager::get_instance()->add_objects();
+    MapManager::get_instance()->add_colisions();
 	DialogueManager::get_instance()->set_map(this);
-	gamecontrol->set_level(this);
-    m_map_manager = new MapManager(this,conf_file);
-    m_map_manager->add_objects();
-    m_map_manager->add_colisions();
 	DialogueManager::get_instance()->add_children(children());
+	BattleManager::get_instance()->set_map(this);
+	gamecontrol->set_level(this);
 }
 
 Map::~Map()
 {
     GameControl* gamecontrol = GameControl::get_instance(); 
-    remove_child(gamecontrol);
+	remove_child(gamecontrol);
 	DialogueManager::get_instance()->remove_children();
+	BattleManager::get_instance()->remove_children();
 }
 
 void
@@ -32,5 +38,5 @@ Map::run_physics(unsigned long elapsed)
 void 
 Map::next_map(const string& object)
 {
-	m_map_manager->next_map(object);
+	MapManager::get_instance()->next_map(object);
 }

@@ -11,30 +11,46 @@
 #include "npc.h"
 #include "inti.h"
 #include "dialogue.h"
+#include "enime.h"
 
 using namespace std;
 
-MapManager::MapManager(Object* target, const string& file)
-	: m_settings(nullptr), env(nullptr),m_target(target)
+static MapManager* instance = nullptr;
+
+MapManager* 
+MapManager::get_instance()
 {
-	GameFlow::get_instance()->set_state(GameState::PLAYING);
-    env = Environment::get_instance();	
-	m_settings = env->resources_manager->get_settings(file);
+	if (not instance)
+		instance = new MapManager();
+	return instance;
 }
 
-#include "enime.h"
+
+MapManager::MapManager()
+	: m_settings(nullptr), env(nullptr)
+{
+	GameFlow::get_instance()->set_state(GameState::PLAYING);
+}
+
+void
+MapManager::set_map(Map* map,const string& file)
+{
+	m_target = (Object*)map; 
+    env = Environment::get_instance();	
+	m_settings = env->resources_manager->get_settings(file);
+	remove_children();
+}
+
 void
 MapManager::add_colisions()
 {
     list<string> objects;
 	string text = m_settings->read<string>("list","colisions","null");
-
     if (text != "null"){
         objects = make_list(text);
     	for( auto obj: objects)
 	    	add_object(obj);
     }
-
 }
 
 void
@@ -53,6 +69,19 @@ MapManager::next_map(const string& object)
     mapa->set_next(next_level);
     mapa->finish();
 }
+
+void
+MapManager::remove_children()
+{
+	Map* mapa= (Map*) m_target;
+	list<Object*> m_children = mapa->children();
+	for (auto obj : m_children)	
+	{
+		m_target->remove_child(obj);
+	}
+}
+
+
 
 void 
 MapManager::add_objects()
