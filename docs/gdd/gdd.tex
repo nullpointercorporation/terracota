@@ -41,6 +41,7 @@
     1.0 & 11/07/2015 & Álvaro Fernando & Inimigos \\
     \rowcolor[gray]{0.9}
     1.1 & 12/07/2015 & Álvaro Fernando & Visão Geral do Mundo do Jogo \\
+    1.1 & 12/07/2015 & Álvaro Fernando & Mecânicas Universais e Níveis \\
     \bottomrule
   \end{tabular}
   \caption{Histórico de Revisões}
@@ -91,6 +92,8 @@ prática a barganha para obtenção de itens, peças, alimentos, etc.
 Também não estará presente modificadores de estado (ou power ups). O jogo não
 conterá um sistema de pontuação, portanto não será contabilizado nenhum tipo
 de ponto medidos geralmente por moedas, tempo, barras, etc.
+
+{\bf Não} haverá Minigames no Terracota.
 
 \section{Visão geral}
 O jogo é dividido em 5 segmentos, ou 5 capítulos:
@@ -784,7 +787,7 @@ do Cacique é o proposto na imagem a seguir.
 
 \newpage
 
-\section{Progresso do Jogo}
+\section{Progresso do Jogo e Níveis}
 O jogo Terracota possuirá 4 cenários distintos. Por ser uma quantidade pequena de
 níveis jogáveis, e por não fazer parte do conceito, o jogo {\bf não} possuirá uma
 {\bf visão geral do mundo}, por exemplo a visão superior do mais famoso sistema
@@ -839,7 +842,7 @@ mostram este segundo cenário e as Lhamas.
 
 \begin{figure}[!htb]
 	\centering
-    \includegraphics[scale=0.4]{cenario_02.png}
+    \includegraphics[scale=0.45]{cenario_02.png}
     \label{fig:cenario_02}
     \caption{Cenário 2 - Torre 1 - Andar das Lhamas}
 \end{figure}
@@ -848,7 +851,7 @@ mostram este segundo cenário e as Lhamas.
 	\centering
     \includegraphics[scale=0.4]{lhamas.png}
     \label{fig:lhamas}
-    \caption{Lhamas do Cenário 4}
+    \caption{Lhamas do Cenário 2}
 \end{figure}
 
 \newpage
@@ -966,5 +969,36 @@ derrota do Boss é a liberação da saída da torre 1.
     \caption{Boss - Robô}
 \end{figure}
 
+\newpage
+
+\section{Mecânicas Universais}
+
+\subsection{Portais}
+As portas que serão de transição sensíveis à presença do jogador (para atravessar
+basta se aproximar e "realizar a colisão"), serão:
+
+\begin{itemize}
+    \item Transição entre o Cenário 1 e o Cenário 3 - Porta da Casa, localizada na
+    moradia do canto esquerdo superior do Cenário 1;
+    \item Transição entre o Cenário 1 e o Cenário 2 - Localizada no centro, parte
+    inferior;
+    \item Transição entre o Cenário 1 e o Cenário 4 - Localizada no centro, parte
+    superior.
+\end{itemize}
+
+A única porta travada é a do Cenário 4 para fora da Torre 1, destravada mediante
+a derrota do chefão Robô.
+
+\subsection{Checkpoints}
+Os checkpoints serão gravados assim que o jogador iniciar uma nova missão, podendo
+continuar deste último ponto em diante, quando acessar o jogo pelo botão de
+continue, mesmo que aquele tenha sido fechado.
+
+\subsection{Outras}
+Foi planejado para o escopo do jogo Terracota a presença de puzzles (quebra-
+cabeças), objetos escaláveis e outras mecânicas universais. Porém por motivos de
+tempo e para manter a qualidade, essas mecânicas foram retiradas parcialmente do
+desenvolvimento. Não haverão objetos destrutíveis, por consequente modo todos os
+outros serão indestrutíveis.
 
 \end{document}
