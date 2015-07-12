@@ -1,7 +1,0 @@
-Game		Magical Quest Starring Mickey Mouse
-Section		Level 2 Enemies
-Filesize	33.41 KB
-Submitter	Nitratez
-Format		PNG (image/png)
-Size		560x334 pixels
-Link		http://www.spriters-resource.com/snes/magicalqueststarringmickeymouse/sheet/1217/
