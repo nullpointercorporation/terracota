@@ -35,10 +35,6 @@ MapManager::add_colisions()
 	    	add_object(obj);
     }
 
-	Enime* bat = new Enime(m_target,"bat");
-	bat->set_animation("res/images/enemies/bats.png",0,0,120,130,4,80,true);
-	bat->set_position(300,300);
-	m_target->add_child(bat);
 }
 
 void
@@ -135,7 +131,6 @@ MapManager::add_object(const string& element)
 	}
     else if (type == "NPC")
     {
-		int dialogue = m_settings->read<int>(element,"dialogue",0);
 	    file = m_settings->read<string>(element,"file","null");
         NPC* npc = new NPC(m_target,element,file);
         npc->set_dimensions(box_w,box_h);
@@ -143,7 +138,32 @@ MapManager::add_object(const string& element)
 		npc->set_walkable(walkable);
 		npc->set_visible(visible);
         m_target->add_child(npc);
-    }
+    }else if (type == "Enime")
+	{
+		int time,speed,radius;
+		double x,y,w,h;
+		double animation_frames,animation_fps;
+		bool loop;
+
+	    time = m_settings->read<int>(element,"time",0);
+	    speed = m_settings->read<int>(element,"speed",0);
+	    radius = m_settings->read<int>(element,"radius",0);
+		Enime* enime = new Enime(m_target,element,time,radius,speed);
+	    file = m_settings->read<string>(element,"file","null");
+		string box = m_settings->read<string>(element,"box","0.0x0.0x0.0x0.0");
+		sscanf(box.c_str(),"%lfx%lfx%lfx%lf",&x,&y,&w,&h);
+		animation_frames = m_settings->read<int>(element,"animation_frames",0);
+		animation_fps = m_settings->read<int>(element,"animation_fps",0);
+		loop = m_settings->read<bool>(element,"loop",true);
+
+		enime->set_animation(file,x,y,w,h,animation_frames,animation_fps,loop);
+		string pos = m_settings->read<string>(element,"pos","0.0x0.0");
+		sscanf(pos.c_str(),"%lfx%lf",&x,&y);
+		enime->set_position(x,y);
+		enime->set_walkable(walkable);
+		enime->set_visible(visible);
+		m_target->add_child(enime);
+	}
 }
 
 shared_ptr<Texture> 
