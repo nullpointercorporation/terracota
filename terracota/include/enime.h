@@ -23,7 +23,7 @@ public:
 	void update_self(unsigned long elapsed);
 	void draw_self();
     void follow_main_char();
-
+	void die();
 private:
     Life* m_life;
     Animation* m_animation;

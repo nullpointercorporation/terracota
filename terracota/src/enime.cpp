@@ -20,6 +20,7 @@ Enime::set_animation(const string& file,double x,double y,
 			   double frame_rate,bool animate)
 {
 	m_animation = new Animation(file,x,y,w,h,n_frame,frame_rate,animate);
+	set_dimensions(w,h);
 }
 
 Life*
@@ -75,8 +76,20 @@ Enime::update_self(unsigned long elapsed)
 		follow_main_char();
 		m_start=0;
 	}
+
+	if (m_life->life() <= 0  ) die();
+
 	m_animation->update(elapsed);
 }
+
+void
+Enime::die()
+{
+	set_walkable(true);
+	set_visible(false);
+	set_position(0,0);
+}
+
 
 void
 Enime::draw_self()

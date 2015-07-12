@@ -26,6 +26,7 @@ public:
     bool on_event(const JoyStickEvent& event);
 	Level* level();
 	void set_level(Level* level);
+	void set_char_position(double x,double y);
 private:
     GameControl(Object *parent, ObjectID id);
     ~GameControl();

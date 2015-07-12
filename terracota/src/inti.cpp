@@ -9,6 +9,7 @@
 #include <core/level.h>
 #include "gamecontrol.h"
 #include "dialogue_manager.h"
+#include "battle_manager.h"
 
 using namespace std;
 
@@ -58,7 +59,7 @@ public:
 				m_inti->set_y(sender->y()+sender->h());
 			}
 
-            if (sender->id()[0] == 'c' )
+            if (sender->id()[0] == 'c')
             {
 					if ( r.w() <= r.h() )
 					{
@@ -92,8 +93,12 @@ public:
 			}
             if (sender->id()[0] == 'n' && m_inti->state_id() == INTERACTING )
             {
-		            DialogueManager::get_instance()->next_dialogue(sender->id());			
+		         DialogueManager::get_instance()->next_dialogue(sender->id());			
             }
+			if (sender->id()[0] == 'e' )
+			{
+				BattleManager::get_instance()->fight((Object*)m_inti,sender->id());
+			}
         }
 
         return false;
@@ -821,16 +826,13 @@ Inti::life()
     return m_impl->life();
 }
 
-
 bool 
 Inti::can_change(){
 	return m_impl->can_change(); 
 }
-
 
 bool
 Inti::on_message(Object *sender, MessageID id, Parameters p)
 {
     return m_impl->on_message(sender, id, p);
 }
-
