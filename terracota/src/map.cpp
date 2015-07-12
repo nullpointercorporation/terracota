@@ -12,8 +12,7 @@ Map::Map(ObjectID id,const string& conf_file)
     m_map_manager = new MapManager(this,conf_file);
     m_map_manager->add_objects();
     m_map_manager->add_colisions();
-	DialogueManager::get_instance()->add_children();
-	
+	DialogueManager::get_instance()->add_children(children());
 }
 
 Map::~Map()

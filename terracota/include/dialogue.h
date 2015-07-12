@@ -10,11 +10,13 @@ using std::shared_ptr;
 class Dialogue : public Object
 {
 public:
-	Dialogue(Object* parent,ObjectID id,const string& file,unsigned long time, const string& next_id,Object* speaking=nullptr,double x=0,double y=0);
+	Dialogue(Object* parent,ObjectID id,const string& file,unsigned long time, const string& next_id,Object* speaking,double x,double y);
     ~Dialogue();
     void show_quest();
 	void draw_self();
 	void update_self(unsigned long elapsed);
+	void set_speaker(Object* speaker);
+	Object* speaker();
 private:
 	shared_ptr<Texture> m_texture;
     bool hide;

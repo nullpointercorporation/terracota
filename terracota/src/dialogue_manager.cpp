@@ -54,6 +54,7 @@ DialogueManager::add_dialogue(const string& id)
 	string next = m_settings->read<string>(id,"next","null");
 	int time = m_settings->read<int>(id,"time",5000);
 	Object* speaker = nullptr;
+
 	if (speaking != "null")
 	{
 		if (speaking == "inti")
@@ -67,6 +68,12 @@ DialogueManager::add_dialogue(const string& id)
 	}
 	Dialogue* dialogue = new Dialogue(m_map,id,file,time,next,speaker,x,y);
     m_dialogues[id] = dialogue;
+
+	if (speaking != "null" )
+	{
+		m_map->add_child(m_dialogues[id]);
+	}
+
 }
 
 list<string> 
@@ -92,11 +99,21 @@ DialogueManager::make_list(const string& text)
 
 
 void 
-DialogueManager::add_children()
+DialogueManager::add_children(list<Object *> children)
 {
-	for (auto x: m_dialogues)
+
+	map<string,Dialogue*>::iterator it;
+	for (auto child : children)
 	{
-		m_map->add_child(x.second);
+	    it = m_dialogues.find(child->id());
+
+		if ( it != m_dialogues.end())	
+		{
+			m_map->add_child(m_dialogues[child->id()]);
+			if ( m_dialogues[child->id()]->speaker() != nullptr   )
+				continue;
+			m_dialogues[child->id()]->set_speaker(child);
+		}
 	}
 }
 
