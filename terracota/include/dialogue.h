@@ -10,7 +10,7 @@ using std::shared_ptr;
 class Dialogue : public Object
 {
 public:
-	Dialogue(Object* parent,ObjectID id,const string& file,unsigned long time, const string& next_id );
+	Dialogue(Object* parent,ObjectID id,const string& file,unsigned long time, const string& next_id,Object* speaking=nullptr,double x=0,double y=0);
     ~Dialogue();
     void show_quest();
 	void draw_self();
@@ -20,6 +20,8 @@ private:
     bool hide;
     string m_id;
     unsigned long m_time,m_start;
+    Object* m_speaking;
+    double m_x,m_y;
 };
 
 #endif

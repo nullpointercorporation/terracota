@@ -11,13 +11,12 @@ using std::shared_ptr;
 class NPC: public Object
 {
 public:
-    NPC(Object* parent,ObjectID id,const string& file,int dialogue);
+    NPC(Object* parent,ObjectID id,const string& file);
     ~NPC();
     void draw_self();
     void update_self(unsigned long elapsed);
 private:
    shared_ptr<Texture> m_texture;
-   int m_dialogue;
 };
 
 

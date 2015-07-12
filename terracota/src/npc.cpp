@@ -3,11 +3,10 @@
 
 #include <iostream>
 using namespace std;
-NPC::NPC(Object* parent,ObjectID id,const string& file,int dialogue)
-	: Object(parent,id),m_texture(nullptr),m_dialogue(dialogue)
+NPC::NPC(Object* parent,ObjectID id,const string& file)
+	: Object(parent,id),m_texture(nullptr)
 {
 	Environment* env = Environment::get_instance();
-	cout << file << endl;
     m_texture = env->resources_manager->get_texture(file);
 }
 

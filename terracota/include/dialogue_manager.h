@@ -17,6 +17,8 @@ public:
 	void set_map(Map* map);
 	void generate_dialogue();
 	void add_dialogue(const string& id);
+	void add_children();
+	void remove_children();
 	list<string> make_list(const string& text);
 	DialogueManager();
 	~DialogueManager();

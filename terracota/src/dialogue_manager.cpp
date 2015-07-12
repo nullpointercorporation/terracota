@@ -48,17 +48,25 @@ DialogueManager::add_dialogue(const string& id)
 {
 	string file = m_settings->read<string>(id,"file","null");
 	string pos = m_settings->read<string>(id,"pos","0x0");
+	string speaking = m_settings->read<string>(id,"speaking","null");
     double x,y;
     sscanf(pos.c_str(),"%lfx%lf",&x,&y);
 	string next = m_settings->read<string>(id,"next","null");
 	int time = m_settings->read<int>(id,"time",5000);
-
-	cout << file << pos << time << next <<endl;
-
-	Dialogue* dialogue = new Dialogue(m_map,id,file,time,next);
-	dialogue->set_position(x,y);
+	Object* speaker = nullptr;
+	if (speaking != "null")
+	{
+		if (speaking == "inti")
+		{
+			speaker = (Object*) GameControl::get_instance()->get_inti();
+		}
+		else
+		{
+			speaker = (Object*) GameControl::get_instance()->get_killa();
+		}
+	}
+	Dialogue* dialogue = new Dialogue(m_map,id,file,time,next,speaker,x,y);
     m_dialogues[id] = dialogue;
-	m_map->add_child(dialogue);
 }
 
 list<string> 
@@ -84,11 +92,27 @@ DialogueManager::make_list(const string& text)
 
 
 void 
+DialogueManager::add_children()
+{
+	for (auto x: m_dialogues)
+	{
+		m_map->add_child(x.second);
+	}
+}
+
+void 
+DialogueManager::remove_children()
+{
+	for (auto x: m_dialogues)
+	{
+		m_map->remove_child(x.second);
+	}
+}
+
+void 
 DialogueManager::next_dialogue(const string& id)
 {
-	if (m_dialogues.size() == 0)
-		generate_dialogue();
-	if (id != "null" )
+	if (id != "null")
 	{
 		m_dialogues[id]->show_quest();
 	}
@@ -97,5 +121,7 @@ DialogueManager::next_dialogue(const string& id)
 void 
 DialogueManager::set_map(Map* map)
 {
+	m_dialogues.clear();
 	m_map = map;
+	generate_dialogue();
 }

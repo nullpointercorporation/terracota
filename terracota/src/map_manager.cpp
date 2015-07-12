@@ -131,14 +131,12 @@ MapManager::add_object(const string& element)
     {
 		int dialogue = m_settings->read<int>(element,"dialogue",0);
 	    file = m_settings->read<string>(element,"file","null");
-        NPC* npc = new NPC(m_target,element,file,dialogue);
+        NPC* npc = new NPC(m_target,element,file);
         npc->set_dimensions(box_w,box_h);
 		npc->set_position(pos_x,pos_y);
 		npc->set_walkable(walkable);
 		npc->set_visible(visible);
         m_target->add_child(npc);
-
-
     }
 }
 
