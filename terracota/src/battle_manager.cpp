@@ -41,14 +41,9 @@ BattleManager::fight(Object* object, ObjectID enime_id)
 	Killa* killa;
 	Enime* enime;
 
-	cout << "enime_id"<<enime_id<<endl;
-
 	if ( m_children.empty())
 	{
 		m_children=m_target->children();
-		cout << "here"<<endl;
-		for (auto x : m_children)
-			cout << x->id() << endl;
 	}
 
 	for (auto x : m_children )
@@ -58,6 +53,11 @@ BattleManager::fight(Object* object, ObjectID enime_id)
 			break;
 		}
 	}
+
+
+	if ( not enime->can_attack() )
+		return;
+
 
 	if (  object->id() == "inti"  )
 	{

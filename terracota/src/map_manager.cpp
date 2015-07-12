@@ -12,6 +12,7 @@
 #include "inti.h"
 #include "dialogue.h"
 #include "enime.h"
+#include "life.h"
 
 using namespace std;
 
@@ -178,6 +179,8 @@ MapManager::add_object(const string& element)
 	    speed = m_settings->read<int>(element,"speed",0);
 	    radius = m_settings->read<int>(element,"radius",0);
 		Enime* enime = new Enime(m_target,element,time,radius,speed);
+
+		// animation normal
 	    file = m_settings->read<string>(element,"file","null");
 		string box = m_settings->read<string>(element,"box","0.0x0.0x0.0x0.0");
 		sscanf(box.c_str(),"%lfx%lfx%lfx%lf",&x,&y,&w,&h);
@@ -185,7 +188,20 @@ MapManager::add_object(const string& element)
 		animation_fps = m_settings->read<int>(element,"animation_fps",0);
 		loop = m_settings->read<bool>(element,"loop",true);
 
-		enime->set_animation(file,x,y,w,h,animation_frames,animation_fps,loop);
+		int  rows = m_settings->read<int>(element,"rows",0);
+		int  life = m_settings->read<int>(element,"life",0);
+		enime->set_animation(file,x,y,w,h,animation_frames,animation_fps,loop,rows);
+		enime->get_life()->set_life(life);
+		// animation die
+	    file = m_settings->read<string>(element,"file_die","null");
+		box = m_settings->read<string>(element,"box_die","0.0x0.0x0.0x0.0");
+		sscanf(box.c_str(),"%lfx%lfx%lfx%lf",&x,&y,&w,&h);
+		animation_frames = m_settings->read<int>(element,"animation_frames_die",0);
+		animation_fps = m_settings->read<int>(element,"animation_fps_die",0);
+		loop = m_settings->read<bool>(element,"loop_die",true);
+		rows = m_settings->read<int>(element,"rows_die",0);
+		enime->set_die_animation(file,x,y,w,h,animation_frames,animation_fps,loop,rows);
+		// set position enime 
 		string pos = m_settings->read<string>(element,"pos","0.0x0.0");
 		sscanf(pos.c_str(),"%lfx%lf",&x,&y);
 		enime->set_position(x,y);
