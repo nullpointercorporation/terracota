@@ -20,26 +20,32 @@ TitleScreen::TitleScreen()
     double h  = env->canvas->h();
     double bx=263,by=76,space=20;
  
-    Button* m_start = new Button(this,"start", "res/images/titlescreen/play.png",
-                                               "res/images/titlescreen/play.png");
+    Button* m_start = new Button(this,"start", "res/images/titlescreen/play_01.png",
+                                               "res/images/titlescreen/play_02.png");
 
-    Button* m_continue = new Button(this,"continue", "res/images/titlescreen/continue.png",
-                                                     "res/images/titlescreen/continue.png");
+    Button* m_continue = new Button(this,"continue", "res/images/titlescreen/continue_01.png",
+                                                     "res/images/titlescreen/continue_02.png");
 
-	Button* m_options = new Button(this,"options","res/images/titlescreen/options.png",
-                                                  "res/images/titlescreen/options.png");
+	Button* m_options = new Button(this,"options","res/images/titlescreen/options_01.png",
+                                                  "res/images/titlescreen/options_02.png");
 
-    Button* m_quit = new Button(this,"quit","res/images/titlescreen/quit.png",
-                                            "res/images/titlescreen/quit.png");
+    Button* m_quit = new Button(this,"quit","res/images/titlescreen/quit_01.png",
+                                            "res/images/titlescreen/quit_02.png");
+
+    m_ballow = new Button(this,"ballow","res/images/titlescreen/ballow.png",
+                                            "res/images/titlescreen/ballow.png");
+    m_ballow->set_visible(false);
 
     m_continue->add_observer(this);
     m_start->add_observer(this);
     m_options->add_observer(this);
+    m_ballow->add_observer(this);
     m_quit->add_observer(this);
         
     add_child(m_continue);
     add_child(m_start);
     add_child(m_options);
+    add_child(m_ballow);
     add_child(m_quit);
 
     double dx = -65;
@@ -48,6 +54,7 @@ TitleScreen::TitleScreen()
     m_start->set_position(189 + dx, 492 + dy);
     m_continue->set_position(425 + dx, 498 + dy);
     m_options->set_position(661 + dx, 492 + dy);
+    m_ballow->set_position(666 + dx, 332 + dy);
     m_quit->set_position(898 + dx, 504 + dy);
 }
 
@@ -78,17 +85,24 @@ TitleScreen::on_message(Object* object, MessageID id, Parameters)
     if(button->id() == "start")
         set_next("map1");
 	if (button->id() == "options")
-		set_next("options");
+    {
+        if ( m_ballow->visible() == false)
+            m_ballow->set_visible(true); 
+        else
+            m_ballow->set_visible(false); 
 
-    finish();
+    }
+
+    if ( button->id() == "ballow"  )
+    {
+        if (Environment::get_instance()->video->fullscreen()   )
+		Environment::get_instance()->video->set_fullscreen(false);
+        else
+		Environment::get_instance()->video->set_fullscreen(true);
+
+    }
+    if ( button->id() == "quit" )
+        finish();
+
     return true;
 }
-
-
-
-
-
-
-
-
-

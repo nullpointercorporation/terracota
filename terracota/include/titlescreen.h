@@ -3,6 +3,7 @@
 
 #include <core/level.h>
 #include <core/image.h>
+#include <util/button.h>
 #include <memory>
 
 using std::shared_ptr;
@@ -19,6 +20,7 @@ public:
 private:
 	shared_ptr<Texture> m_background;	
 	void draw_self();
+	Button* m_ballow;
 };
 
 #endif
