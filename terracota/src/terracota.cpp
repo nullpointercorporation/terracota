@@ -65,7 +65,7 @@ Terracota::load_level(const string& id)
         return new FrontEnd("c1j","map3","res/images/cutscenes/c1j.png",15000);
 	if (id == "map1")
 	{
-		return new Map("map1","res/conf/map1.conf");
+		return new Map("map1","res/conf/map1.conf","res/sounds/musicas/aboda/loop2.wav");
 	}
 	if (id == "map2")
 	{	
