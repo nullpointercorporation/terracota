@@ -19,7 +19,7 @@
 using namespace std;
 
 Terracota::Terracota()
-    : Game ("credit1")
+    : Game ("a")
 {
 }
 
