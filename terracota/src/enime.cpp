@@ -14,6 +14,8 @@ Enime::~Enime()
 	delete m_animation;
 }
 
+#include <iostream>
+using namespace std;
 void
 Enime::set_animation(const string& file,double x,double y,
 			   double w,double h, double n_frame, 
@@ -31,7 +33,6 @@ Enime::set_die_animation(const string& file,double x,double y,
 			   double frame_rate,bool animate,int rows)
 {
 	m_die_animation = new Animation(file,x,y,w,h,n_frame,frame_rate,animate);
-	set_dimensions(w,h);
 	m_rows = rows;
 }
 
@@ -92,6 +93,10 @@ Enime::follow_main_char()
 	}
 }
 
+
+#include <core/rect.h>
+#include "gamecontrol.h"
+#include "inti.h"
 void
 Enime::update_self(unsigned long elapsed)
 {
@@ -108,7 +113,14 @@ Enime::update_self(unsigned long elapsed)
 		follow_main_char();
 		m_start=0;
 	}
+
+	m_animation->reset();
 	m_animation->update(elapsed);
+	m_die_animation->reset();
+	m_die_animation->update(elapsed);
+			
+	//Rect r =GameControl::get_instance()->get_inti()->bounding_box();
+ 	//cout << "init:"<<r.x() << "x"<<r.y()<<"x"<<r.w()<<"x"<<r.h() <<endl;
 }
 
 void
@@ -117,6 +129,7 @@ Enime::die()
 	set_walkable(true);
 	set_visible(false);
 	set_position(0,0);
+	set_dimensions(0,0);
 }
 
 

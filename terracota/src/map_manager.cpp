@@ -82,8 +82,6 @@ MapManager::remove_children()
 	}
 }
 
-
-
 void 
 MapManager::add_objects()
 {
@@ -168,7 +166,8 @@ MapManager::add_object(const string& element)
 		npc->set_walkable(walkable);
 		npc->set_visible(visible);
         m_target->add_child(npc);
-    }else if (type == "Enime")
+    }
+	else if (type == "Enime")
 	{
 		int time,speed,radius;
 		double x,y,w,h;
@@ -200,10 +199,11 @@ MapManager::add_object(const string& element)
 		animation_fps = m_settings->read<int>(element,"animation_fps_die",0);
 		loop = m_settings->read<bool>(element,"loop_die",true);
 		rows = m_settings->read<int>(element,"rows_die",0);
-		enime->set_die_animation(file,x,y,w,h,animation_frames,animation_fps,loop,rows);
+		enime->set_die_animation(file,x,y,w,h,animation_frames,animation_fps,false,0);
 		// set position enime 
 		string pos = m_settings->read<string>(element,"pos","0.0x0.0");
 		sscanf(pos.c_str(),"%lfx%lf",&x,&y);
+
 		enime->set_position(x,y);
 		enime->set_walkable(walkable);
 		enime->set_visible(visible);
