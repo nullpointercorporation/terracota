@@ -24,7 +24,6 @@ public:
 	void set_moviment(double xaxis,double yaxis);
 	Life* life();
     bool can_change();
-
     bool on_message(Object *sender, MessageID id, Parameters p);
 
 private:

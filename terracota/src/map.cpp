@@ -3,6 +3,7 @@
 #include "gamecontrol.h"
 #include "dialogue_manager.h"
 #include "battle_manager.h"
+#include "inti.h"
 
 #include <iostream>
 using namespace  std;
@@ -23,7 +24,7 @@ Map::Map(ObjectID id,const string& conf_file)
 Map::~Map()
 {
     GameControl* gamecontrol = GameControl::get_instance(); 
-	remove_child(gamecontrol);
+	remove_child((Object*)gamecontrol);
 	DialogueManager::get_instance()->remove_children();
 	BattleManager::get_instance()->remove_children();
 }

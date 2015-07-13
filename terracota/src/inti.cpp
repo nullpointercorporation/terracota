@@ -10,6 +10,7 @@
 #include "gamecontrol.h"
 #include "dialogue_manager.h"
 #include "battle_manager.h"
+#include <core/rect.h>
 
 using namespace std;
 
@@ -104,6 +105,16 @@ public:
         return false;
     }
 
+	list<Rect *> hit_boxes() const
+    {
+        list<Rect *> boxes;
+		Rect r =  m_inti->bounding_box();
+//		Rect box(r.x()-30,r.y(),r.w(),r.h());
+		cout << "=="<< r.x() <<"x" <<r.y()<<"x" <<r.w()<<"x"<<r.h() << endl;
+        boxes.push_back(const_cast<Rect *>(&r));
+        return boxes;
+    }
+
 private:
     Inti* m_inti;
     Direction m_direction;
@@ -128,6 +139,9 @@ public:
         m_right = m_left = m_up = m_down = m_attack = m_interacting = 0;
         m_animation->reset();
     }
+
+
+
 
     void leave(int)
     {
@@ -338,7 +352,7 @@ public:
     void enter(int from)
     {
         Inti::Direction dir = m_inti->direction();
-
+        m_inti->set_dimensions(m_inti->w()+40, m_inti->h());
         m_right = dir == Inti::RIGHT ? 1 : 0;
         m_left = dir == Inti::LEFT ? 1 : 0;
         m_up = dir == Inti::UP ? 1 : 0;
@@ -350,6 +364,7 @@ public:
 
     void leave(int)
     {
+        m_inti->set_dimensions(m_inti->w()-40, m_inti->h());
     }
 
     void draw()
@@ -835,3 +850,4 @@ Inti::on_message(Object *sender, MessageID id, Parameters p)
 {
     return m_impl->on_message(sender, id, p);
 }
+

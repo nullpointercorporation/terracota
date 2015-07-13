@@ -54,32 +54,39 @@ BattleManager::fight(Object* object, ObjectID enime_id)
 		}
 	}
 
-
-	if ( not enime->can_attack() )
-		return;
-
-
+	cout << enime_id << endl;
 	if (  object->id() == "inti"  )
 	{
+		
 		inti = (Inti*) object;
 		if ( inti->state_id() != Inti::ATTACKING )
-			inti->life()->damage(1);
+		{
+			inti->life()->damage(1);	
+			if (  enime->x() < object->x() )
+				object->set_x(enime->x() + enime->w()+5);
+			else
+				object->set_x(enime->x()-object->w()-5);
+		}
 		else
+		{
 			enime->damage(1);
+		}
 	}
 	else if ( object->id() == "killa" )
 	{
 		killa = (Killa*) object;
-		if ( killa->state_id() != Killa::ATTACKING )
+		if ( killa->state_id() != Killa::ATTACKING ){
 			killa->life()->damage(1);
+			if (  enime->x() < object->x() )
+				object->set_x(enime->x() + enime->w()+5);
+			else
+				object->set_x(enime->x()-object->w()-5);
+		}
 		else
+		{
 			enime->damage(1);
+		}
 	}
-
-	if (  enime->x() < object->x()    )
-		object->set_x(enime->x() + enime->w()+50);
-	else
-		object->set_x(enime->x()-object->w()-50);
 }
 
 BattleManager::BattleManager()
