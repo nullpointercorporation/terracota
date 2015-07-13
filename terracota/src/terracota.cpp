@@ -65,7 +65,6 @@ Terracota::load_level(const string& id)
         return new FrontEnd("c1j","map3","res/images/cutscenes/c1j.png",15000);
 	if (id == "map1")
 	{
-        GameControl::get_instance()->set_char_position(2000,700);
 		return new Map("map1","res/conf/map1.conf");
 	}
 	if (id == "map2")
