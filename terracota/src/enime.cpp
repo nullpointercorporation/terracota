@@ -33,7 +33,7 @@ Enime::set_die_animation(const string& file,double x,double y,
 			   double frame_rate,bool animate,int rows)
 {
 	m_die_animation = new Animation(file,x,y,w,h,n_frame,frame_rate,animate);
-	m_rows = rows;
+	m_rows_die = rows;
 }
 
 bool
@@ -114,10 +114,17 @@ Enime::update_self(unsigned long elapsed)
 		m_start=0;
 	}
 
-	m_animation->reset();
+
+    if (  m_rows_die == 0 )
+        m_die_animation->reset();
+    if ( m_rows == 0)
+        m_animation->reset();
+
+    m_die_animation->update(elapsed);
+        
+
+
 	m_animation->update(elapsed);
-	m_die_animation->reset();
-	m_die_animation->update(elapsed);
 			
 	//Rect r =GameControl::get_instance()->get_inti()->bounding_box();
  	//cout << "init:"<<r.x() << "x"<<r.y()<<"x"<<r.w()<<"x"<<r.h() <<endl;

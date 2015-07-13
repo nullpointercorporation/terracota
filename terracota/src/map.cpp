@@ -4,6 +4,7 @@
 #include "dialogue_manager.h"
 #include "battle_manager.h"
 #include "inti.h"
+#include "gameflow.h"
 
 #include <iostream>
 using namespace  std;
@@ -27,6 +28,7 @@ Map::~Map()
 	remove_child((Object*)gamecontrol);
 	DialogueManager::get_instance()->remove_children();
 	BattleManager::get_instance()->remove_children();
+	GameFlow::get_instance()->set_state(GameState::FRONT_END);
 }
 
 void

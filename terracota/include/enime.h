@@ -37,6 +37,7 @@ private:
 	int m_radius,m_speed;
 	bool m_allow_attack;
 	int m_rows;
+	int m_rows_die;
 };
 
 #endif
