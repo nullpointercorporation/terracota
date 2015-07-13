@@ -9,7 +9,7 @@
 #include <iostream>
 using namespace  std;
 
-Map::Map(ObjectID id,const string& conf_file)
+Map::Map(ObjectID id,const string& conf_file, const string& audio)
 	: Level(id)
 {
     GameControl* gamecontrol = GameControl::get_instance(); 
@@ -20,6 +20,11 @@ Map::Map(ObjectID id,const string& conf_file)
 	DialogueManager::get_instance()->add_children(children());
 	BattleManager::get_instance()->set_map(this);
 	gamecontrol->set_level(this);
+	if (audio != "")
+	{
+    	Environment* env = Environment::get_instance();
+    	env->music->play(audio,50);
+	}
 }
 
 Map::~Map()
@@ -29,6 +34,8 @@ Map::~Map()
 	DialogueManager::get_instance()->remove_children();
 	BattleManager::get_instance()->remove_children();
 	GameFlow::get_instance()->set_state(GameState::FRONT_END);
+    Environment* env = Environment::get_instance();
+    env->music->stop();
 }
 
 void

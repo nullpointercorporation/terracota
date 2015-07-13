@@ -12,7 +12,7 @@ using std::shared_ptr;
 class Map: public Level
 {
 public:
-	Map(ObjectID id,const string& conf_file);
+	Map(ObjectID id,const string& conf_file,const string& audio="");
 	~Map();
     void run_physics(unsigned long elapsed);
 	void next_map(const string& object);

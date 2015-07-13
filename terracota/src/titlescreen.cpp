@@ -56,10 +56,14 @@ TitleScreen::TitleScreen()
     m_options->set_position(661 + dx, 492 + dy);
     m_ballow->set_position(666 + dx, 332 + dy);
     m_quit->set_position(898 + dx, 504 + dy);
+
+	env->music->play("res/sounds/musicas/title.mp3",50);
 }
 
 TitleScreen::~TitleScreen()
 {
+	Environment* env = Environment::get_instance();
+	env->music->stop();
 }
 
 void 

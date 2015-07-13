@@ -75,12 +75,12 @@ Terracota::load_level(const string& id)
 	if (id == "map3")
 	{
         GameControl::get_instance()->set_char_position(300,400);
-		return new Map("map3","res/conf/map3.conf");
+		return new Map("map3","res/conf/map3.conf","res/sounds/musicas/casa_inti.mp3");
 	}
 
 	if (id == "map4")
 	{
-		return new Map("map4","res/conf/map4.conf");
+		return new Map("map4","res/conf/map4.conf","res/sounds/musicas/boss.mp3");
 	}
 
     if (id == "c2a")
