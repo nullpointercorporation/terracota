@@ -69,7 +69,7 @@ Terracota::load_level(const string& id)
 	}
 	if (id == "map2")
 	{	
-		return new Map("map2","res/conf/map2.conf");
+		return new Map("map2","res/conf/map2.conf","res/sounds/musicas/aboda/loop2.wav");
 	}
 
 	if (id == "map3")
@@ -88,7 +88,7 @@ Terracota::load_level(const string& id)
     if (id == "c2b")
         return new FrontEnd("c2b","c2c","res/images/cutscenes/c2b.png",15000);
     if (id == "c2c")
-        return new FrontEnd("c2c","title","res/images/cutscenes/c2c.png",15000);
+        return new FrontEnd("c2c","credit1","res/images/cutscenes/c2c.png",15000);
 
 	if (id == "credit1")
         return new FrontEnd("credit1","title","res/images/cutscenes/credit2.png",15000);

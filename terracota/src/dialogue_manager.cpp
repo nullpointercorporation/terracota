@@ -61,10 +61,6 @@ DialogueManager::add_dialogue(const string& id)
 		{
 			speaker = (Object*) GameControl::get_instance()->get_inti();
 		}
-		else
-		{
-			speaker = (Object*) GameControl::get_instance()->get_killa();
-		}
 	}
 	Dialogue* dialogue = new Dialogue(m_map,id,file,time,next,speaker,x,y,speaking);
     m_dialogues[id] = dialogue;

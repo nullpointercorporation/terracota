@@ -29,7 +29,6 @@ Dialogue::draw_self()
 	if(not hide)
 	{
 		Environment* env = Environment::get_instance();
-
 		cout <<  m_speaking->x() << "x" << m_speaking->y()<<endl;
 			env->canvas->draw(m_texture.get(),
 			m_speaking->x()+m_x,m_speaking->y()-m_y);
@@ -61,7 +60,7 @@ Dialogue::speaker_id()
 void 
 Dialogue::set_speaker(Object* speaker)
 {
-	m_speaking= speaker;
+	m_speaking=speaker;
 }
 
 Object*
