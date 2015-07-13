@@ -83,14 +83,13 @@ TitleScreen::on_message(Object* object, MessageID id, Parameters)
     if (not button)
         return false;
     if(button->id() == "start")
-        set_next("map1");
+        set_next("c1a");
 	if (button->id() == "options")
     {
         if ( m_ballow->visible() == false)
             m_ballow->set_visible(true); 
         else
             m_ballow->set_visible(false); 
-
     }
 
     if ( button->id() == "ballow"  )
@@ -101,7 +100,7 @@ TitleScreen::on_message(Object* object, MessageID id, Parameters)
 		Environment::get_instance()->video->set_fullscreen(true);
 
     }
-    if ( button->id() == "quit" )
+    if ( button->id() == "quit" || button->id() == "start" || button->id() == "continue" )
         finish();
 
     return true;
