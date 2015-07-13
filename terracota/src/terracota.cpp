@@ -19,7 +19,7 @@
 using namespace std;
 
 Terracota::Terracota()
-    : Game ("map4")
+    : Game ("credit1")
 {
 }
 
@@ -90,6 +90,9 @@ Terracota::load_level(const string& id)
     if (id == "c2c")
         return new FrontEnd("c2c","title","res/images/cutscenes/c2c.png",15000);
 
+	if (id == "credit1")
+        return new FrontEnd("credit1","title","res/images/cutscenes/credit2.png",15000);
+
 	if (id == "gameover")
 	{
     	Environment *env = Environment::get_instance();
@@ -99,6 +102,8 @@ Terracota::load_level(const string& id)
 		GameControl::get_instance()->get_killa()->life()->set_life(6);
         return new FrontEnd("gameover","title","res/images/gameover/over.png");
 	}
+    if (id == "credit2")
+        return new FrontEnd("credit2","","res/images/cutscenes/credit1.png",15000);
     return nullptr; 
 }
 

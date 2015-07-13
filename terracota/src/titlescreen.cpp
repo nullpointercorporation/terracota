@@ -100,6 +100,9 @@ TitleScreen::on_message(Object* object, MessageID id, Parameters)
 		Environment::get_instance()->video->set_fullscreen(true);
 
     }
+	if (button->id() == "quit")
+		set_next("credit2");
+
     if ( button->id() == "quit" || button->id() == "start" || button->id() == "continue" )
         finish();
 
