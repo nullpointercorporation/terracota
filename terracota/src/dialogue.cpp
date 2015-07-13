@@ -4,8 +4,8 @@
 #include <iostream>
 using namespace std;
 
-Dialogue::Dialogue(Object* parent,ObjectID id,const string& file,unsigned long time,const string& next_id,Object* speaking,double x,double y)
-	:Object(parent,id),m_texture(nullptr),hide(true),m_id(next_id), m_speaking(speaking),m_x(x),m_y(y)
+Dialogue::Dialogue(Object* parent,ObjectID id,const string& file,unsigned long time,const string& next_id,Object* speaking,double x,double y,const string&speaker_id)
+	:Object(parent,id),m_texture(nullptr),hide(true),m_id(next_id), m_speaking(speaking),m_x(x),m_y(y),m_speaker_id(speaker_id)
 {
 	Environment* env = Environment::get_instance();
 	m_texture = env->resources_manager->get_texture(file);
@@ -50,6 +50,14 @@ Dialogue::update_self(unsigned long elapsed)
 	}
 }
 	
+
+string 
+Dialogue::speaker_id()
+{
+	return m_speaker_id;
+}
+
+
 void 
 Dialogue::set_speaker(Object* speaker)
 {

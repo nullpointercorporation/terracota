@@ -66,7 +66,7 @@ DialogueManager::add_dialogue(const string& id)
 			speaker = (Object*) GameControl::get_instance()->get_killa();
 		}
 	}
-	Dialogue* dialogue = new Dialogue(m_map,id,file,time,next,speaker,x,y);
+	Dialogue* dialogue = new Dialogue(m_map,id,file,time,next,speaker,x,y,speaking);
     m_dialogues[id] = dialogue;
 
 	if (speaking != "null" )
@@ -102,17 +102,18 @@ void
 DialogueManager::add_children(list<Object *> children)
 {
 
-	map<string,Dialogue*>::iterator it;
-	for (auto child : children)
+	for (auto d: m_dialogues)
 	{
-	    it = m_dialogues.find(child->id());
-
-		if ( it != m_dialogues.end())	
+		for (auto element: children)
 		{
-			m_map->add_child(m_dialogues[child->id()]);
-			if ( m_dialogues[child->id()]->speaker() != nullptr   )
-				continue;
-			m_dialogues[child->id()]->set_speaker(child);
+			if (d.second->speaker_id() == element->id())
+			{
+				cout << d.second->speaker_id() << endl;
+				m_map->add_child(d.second);
+				if ( d.second->speaker() != nullptr   )
+					continue;
+				d.second->set_speaker(element);
+			}
 		}
 	}
 }

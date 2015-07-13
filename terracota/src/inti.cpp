@@ -19,7 +19,7 @@ class Inti::Impl
 {
 public:
     Impl(Inti* inti)
-        : m_inti(inti), m_direction(Inti::LEFT), m_moviment(make_pair(0.0, 0.0)),m_life(new Life())
+        : m_inti(inti), m_direction(Inti::LEFT), m_moviment(make_pair(0.0, 0.0)),m_life(new Life()),m_key(false)
     {
     }
 
@@ -114,12 +114,21 @@ public:
         boxes.push_back(const_cast<Rect *>(&r));
         return boxes;
     }
+	void set_key(bool key)	
+	{
+		m_key = key;	
+	}
+	bool key( )
+	{
+		return m_key;
+	}
 
 private:
     Inti* m_inti;
     Direction m_direction;
     pair<double, double> m_moviment;
     Life* m_life;
+	bool m_key;
 };
 
 class Idle : public SpriteState
@@ -851,3 +860,14 @@ Inti::on_message(Object *sender, MessageID id, Parameters p)
     return m_impl->on_message(sender, id, p);
 }
 
+void
+Inti::set_key(bool key)
+{
+    return m_impl->set_key(key);
+}
+
+bool
+Inti::key()
+{
+	return m_impl->key();
+}

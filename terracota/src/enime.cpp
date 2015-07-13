@@ -5,9 +5,24 @@
 #include <cmath>
 
 Enime::Enime(Object* parent,ObjectID id,int time,int radius,int speed)
-	: Object(parent,id),m_life(new Life(1,0)),m_animation(nullptr),m_start(0),m_time(time),m_radius(radius),m_speed(speed),m_allow_attack(true),m_rows(0),m_die_animation(nullptr)
+	: Object(parent,id),m_life(new Life(1,0)),m_animation(nullptr),m_start(0),m_time(time),m_radius(radius),m_speed(speed),m_allow_attack(true),m_rows(0),m_die_animation(nullptr),m_key(false)
 {
 }
+
+
+void 
+Enime::set_has_key(bool key)
+{
+    m_key = key;
+}
+
+
+bool 
+Enime::has_key()
+{
+    return m_key;
+}
+
 
 Enime::~Enime()
 {

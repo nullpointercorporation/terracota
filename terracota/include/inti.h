@@ -18,6 +18,8 @@ public:
 	~Inti();
 
 
+	void set_key(bool key);
+	bool key();
 	Direction direction() const;
 	void set_direction(Direction direction);
 	const pair<double,double>& moviment() const;

@@ -19,7 +19,7 @@
 using namespace std;
 
 Terracota::Terracota()
-    : Game ("map2")
+    : Game ("a")
 {
 }
 
@@ -65,6 +65,7 @@ Terracota::load_level(const string& id)
         return new FrontEnd("c1j","map3","res/images/cutscenes/c1j.png",15000);
 	if (id == "map1")
 	{
+        GameControl::get_instance()->set_char_position(2000,700);
 		return new Map("map1","res/conf/map1.conf");
 	}
 	if (id == "map2")
@@ -74,6 +75,7 @@ Terracota::load_level(const string& id)
 
 	if (id == "map3")
 	{
+        GameControl::get_instance()->set_char_position(300,400);
 		return new Map("map3","res/conf/map3.conf");
 	}
 

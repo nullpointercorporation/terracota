@@ -207,6 +207,12 @@ MapManager::add_object(const string& element)
 		enime->set_position(x,y);
 		enime->set_walkable(walkable);
 		enime->set_visible(visible);
+
+
+		// key
+		bool key = m_settings->read<bool>(element,"has_key",false);
+		enime->set_has_key(key);
+
 		m_target->add_child(enime);
 	}
 }

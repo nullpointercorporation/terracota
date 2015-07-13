@@ -32,7 +32,6 @@ GameControl::GameControl(Object* parent, ObjectID id)
     m_killa->set_active(false);
     m_killa->set_visible(false);
 
-    m_inti->set_position(300,350);
 
     Interface *ui = new Interface(this, "ui", this);
 

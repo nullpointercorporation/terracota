@@ -22,6 +22,8 @@ public:
 					   double frame_rate,bool animate,int rows);
 	Life* get_life();
 
+	void set_has_key(bool key);
+	bool has_key();
 	void damage(int life);
 	void update_self(unsigned long elapsed);
 	void draw_self();
@@ -38,6 +40,7 @@ private:
 	bool m_allow_attack;
 	int m_rows;
 	int m_rows_die;
+	bool m_key;
 };
 
 #endif
