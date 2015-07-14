@@ -4,8 +4,8 @@
 #include "gamecontrol.h"
 #include <cmath>
 
-Enime::Enime(Object* parent,ObjectID id,int time,int radius,int speed)
-	: Object(parent,id),m_life(new Life(1,0)),m_animation(nullptr),m_start(0),m_time(time),m_radius(radius),m_speed(speed),m_allow_attack(true),m_rows(0),m_die_animation(nullptr),m_key(false)
+Enime::Enime(Object* parent,ObjectID id,int time,int radius,int speed,int force)
+	: Object(parent,id),m_life(new Life(1,0)),m_animation(nullptr),m_start(0),m_time(time),m_radius(radius),m_speed(speed),m_allow_attack(true),m_rows(0),m_die_animation(nullptr),m_key(false),m_force(force)
 {
 }
 
@@ -162,6 +162,12 @@ Enime::draw_self()
 		m_die_animation->draw(x(),y());
 	else
 		m_animation->draw(x(),y());
+}
+
+int 
+Enime::force()
+{
+    return m_force;
 }
 
 void 

@@ -61,7 +61,7 @@ BattleManager::fight(Object* object, ObjectID enime_id)
 		inti = (Inti*) object;
 		if ( inti->state_id() != Inti::ATTACKING )
 		{
-			inti->life()->damage(1);	
+			inti->life()->damage(enime->force());	
 			if (  enime->x() < object->x() )
 				object->set_x(enime->x() + enime->w()+5);
 			else

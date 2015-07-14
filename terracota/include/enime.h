@@ -12,7 +12,7 @@ class Life;
 class Enime: public Object
 {
 public:
-	Enime(Object* parent,ObjectID id,int time,int radius,int speed);
+	Enime(Object* parent,ObjectID id,int time,int radius,int speed,int force);
 	~Enime();
 	void set_animation(const string& file,double x,double y,
 					   double w,double h, double n_frame, 
@@ -28,6 +28,7 @@ public:
 	void update_self(unsigned long elapsed);
 	void draw_self();
     void follow_main_char();
+	int force();
 	void die();
 	bool can_attack();
 	void set_can_attack(bool can);
@@ -41,6 +42,7 @@ private:
 	int m_rows;
 	int m_rows_die;
 	bool m_key;
+	int m_force;
 };
 
 #endif

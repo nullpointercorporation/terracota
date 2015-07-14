@@ -57,7 +57,7 @@ TitleScreen::TitleScreen()
     m_ballow->set_position(666 + dx, 332 + dy);
     m_quit->set_position(898 + dx, 504 + dy);
 
-	env->music->play("res/sounds/musicas/title.mp3",50);
+	env->music->play("res/sounds/musicas/aboda/hopeofinti.mp3",50);
 }
 
 TitleScreen::~TitleScreen()

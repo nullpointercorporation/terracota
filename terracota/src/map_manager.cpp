@@ -169,7 +169,7 @@ MapManager::add_object(const string& element)
     }
 	else if (type == "Enime")
 	{
-		int time,speed,radius;
+		int time,speed,radius,force;
 		double x,y,w,h;
 		double animation_frames,animation_fps;
 		bool loop;
@@ -177,7 +177,8 @@ MapManager::add_object(const string& element)
 	    time = m_settings->read<int>(element,"time",0);
 	    speed = m_settings->read<int>(element,"speed",0);
 	    radius = m_settings->read<int>(element,"radius",0);
-		Enime* enime = new Enime(m_target,element,time,radius,speed);
+	    force = m_settings->read<int>(element,"force",0);
+		Enime* enime = new Enime(m_target,element,time,radius,speed,force);
 
 		// animation normal
 	    file = m_settings->read<string>(element,"file","null");
