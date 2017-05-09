@@ -2,8 +2,7 @@
 
 ## Context of the game
 
-The game has a similar movement to Beat'em up games, as the main references and examples the games Little Fighter 2 (PC), Captain Commando (SNES), Double Dragon (SNES).
-The theme is that of a post-apocalyptic world, where various technologies have become extinct and humanity is communicating in an archaic way through figures and body indications. The player will have, among other challenges, solve puzzles deciphering as the audio-visual codes to complete the quests.
+The main theme is a post-apocalyptic world, where various technologies have become extinct and humanity is communicating in an archaic way through figures and body indications. The player will have to, among other challenges, solve puzzles deciphering audio-visual codes to complete the quests.
 
 ## Installing the game for development
 
