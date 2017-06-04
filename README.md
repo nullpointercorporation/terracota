@@ -1,7 +1,8 @@
 # TerraCota
 
-The game has a similar movement to Beat'em up games, as the main references and examples the games Little Fighter 2 (PC), Captain Commando (SNES), Double Dragon (SNES).
-The theme is that of a post-apocalyptic world, where various technologies have become extinct and humanity is communicating in an archaic way through figures and body indications. The player will have, among other challenges, solve puzzles deciphering as the audio-visual codes to complete the quests.
+## Context of the game
+
+The main theme is a post-apocalyptic world, where various technologies have become extinct and humanity is communicating in an archaic way through figures and body indications. The player will have to, among other challenges, solve puzzles deciphering audio-visual codes to complete the quests.
 
 ## Installing the game for development
 
@@ -30,10 +31,13 @@ Great! Environment raised and dependencies installed, enjoy and contribute with 
 
 #### Perform these steps after the installation is complete
 
-* Run the script to play the game
+* Run the script or run the direct executable to play the game 
+
+    ```
+        ./config/run.sh ``` or run the ``` ./terracota.exe     
     ```
-    ./config/run.sh
-    ```
+    
+    
 Enjoy and pass some phases of Terracotta
 
 ## Instruction manual
