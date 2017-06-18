@@ -12,6 +12,8 @@ echo "Install ijengine"
 make
 echo "Copy to from engine to system"
 sudo make install
-echo "Install the game"
 cd ..
+echo "Install the game"
+mkdir build && cd build
+cmake ..
 make
