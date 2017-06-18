@@ -1,0 +1,21 @@
+---
+- name: Install core packages
+  package: name={{ item }} state=present
+  with_items:
+    - vim
+    - git
+    - unzip
+    - gzip
+    - g++
+    - tar
+    - cmake
+    - make
+    - wget
+
+- name: Packages OS RedHat Distribuitions
+  include: "redhat/main.yml"
+  when: ansible_os_family | lower == 'redhat'
+
+- name: Packages OS Debian Distribuitions
+  include: "debian/main.yml"
+  when: ansible_os_family | lower == 'debian'

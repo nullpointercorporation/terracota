@@ -42,3 +42,7 @@
 
 # Vagrant files
 .vagrant/
+.retry
+
+# CMake folder
+build/

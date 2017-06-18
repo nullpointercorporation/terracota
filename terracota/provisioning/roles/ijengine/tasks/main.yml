@@ -1,0 +1,12 @@
+---
+- name: Unpack ijengine
+  unarchive: 
+    src=/vagrant/lib/ijengine-0.0.5.tar.gz 
+    dest=/vagrant/lib/ 
+    copy=no
+  
+- name: Make install in ijengine
+  command: 'chdir=/vagrant/lib/ {{item}}'
+  with_items:
+   - make
+   - make install

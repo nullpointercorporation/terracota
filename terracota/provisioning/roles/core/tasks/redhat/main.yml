@@ -1,0 +1,27 @@
+---
+- name: Update packages
+  yum: update_cache=yes upgrade=dist
+
+- name: Install Dependencies
+  yum: name={{ item }} state=present
+  with_items:
+    - SDL2-devel
+    - SDL2_ttf-devel
+    - SDL2_image-devel
+    - SDL2_mixer-devel
+    
+- name: Remove chef and puppet
+  yum: name={{ item }} state=absent purge=yes
+  with_items:
+    - chef
+    - puppet
+    - puppet-common
+
+- name: Autoremove unused packages
+  command: yum -y autoremove
+  sudo: yes
+
+- name: Clean yum
+  command: yum clean all
+  sudo: yes
+

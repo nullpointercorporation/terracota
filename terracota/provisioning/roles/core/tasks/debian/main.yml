@@ -1,0 +1,27 @@
+---
+- name: Update packages
+  apt: update_cache=yes upgrade=dist
+
+- name: Install Dependencies
+  apt: name={{ item }} state=present
+  with_items:
+    - apt-transport-https
+    - libsdl2-dev
+    - libsdl2-ttf-dev
+    - libsdl2-image-dev
+    - libsdl2-mixer-dev
+
+- name: Remove chef and puppet
+  apt: name={{ item }} state=absent purge=yes
+  with_items:
+    - chef
+    - puppet
+    - puppet-common
+
+- name: Autoremove unused packages
+  command: apt-get -y autoremove
+  sudo: yes
+
+- name: Clean apt
+  command: apt-get clean
+  sudo: yes
