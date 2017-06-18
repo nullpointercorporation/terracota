@@ -1,0 +1,10 @@
+---
+- name: Terracota Machine Setup
+  hosts: default
+  user: vagrant
+  sudo: yes
+
+  roles:
+    - core
+    - ijengine
+    - terracota
