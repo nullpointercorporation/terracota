@@ -1,0 +1,11 @@
+---
+- name: Create folder build for CMake
+  file:
+    path: /vagrant/build
+    state: directory
+
+- name: CMake and Make in game Terracota
+  command: 'chdir=/vagrant/build {{item}}'
+  with_items:
+   - cmake ..
+   - make

@@ -39,3 +39,10 @@
 *.toc
 
 .DS_Store
+
+# Vagrant files
+.vagrant/
+.retry
+
+# CMake folder
+build/
